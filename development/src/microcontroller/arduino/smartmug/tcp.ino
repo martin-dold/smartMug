@@ -1,11 +1,19 @@
-/*
- *  This is the TCP sketch of the smartmug project.
+/*! @file  tcp.ino
+ *  @brief This is the TCP sketch of the smartmug project.
+ *
+ *  @defgroup tcp TCP
+ *  @brief Adds TCP functionality to the smartmug.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup tcp
+ *  @{
  */
 
 #include <ESP8266WiFi.h>
 
 /* === Global defines === */
-
 /*! @brief Remote TCP port to connect to. */
 const uint16_t  remote_port = 8080;
 /*! @brief Remote host to connect to. Provided either as IP address or URL. */
@@ -14,12 +22,11 @@ const char     *remote_host = "192.168.2.184";
 const uint16_t  local_port = 8081;
 
 /* === Global variables === */
-
-/* @brief Use and even initialize WiFiClient class to create TCP connections */
+/*! @brief Use and even initialize WiFiClient class to create TCP connections. */
 WiFiClient client;
-
-/* @brief Create WiFi server listening on the given port. */
+/*! @brief Create WiFi server listening on the given port. */
 WiFiServer server(local_port);
+/*! @brief Create WiFi client that handles client connections received through listening server. */
 WiFiClient serverRemote;
 
 /* === Local/private function prototypes === */
@@ -105,6 +112,8 @@ void tcp_close()
 
 /*!
  * @brief Sends data through established TCP connection.
+ * @param data Pointer to the data to be send.
+ * @param len  Length of the data to be send.
  */
 void tcp_send(const uint8_t *data, uint16_t len)
 {
@@ -131,3 +140,8 @@ void tcp_send(const uint8_t *data, uint16_t len)
 }
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */

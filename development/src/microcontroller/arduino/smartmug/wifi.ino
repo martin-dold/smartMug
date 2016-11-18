@@ -1,5 +1,14 @@
-/*
- *  This is the wifi sketch of the smartmug project.
+/*! @file  wifi.ino
+ *  @brief This is the wifi sketch of the smartmug project.
+ *
+ *  @defgroup wifi WiFi
+ *  @brief Adds WiFi functionality to the smartmug.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup wifi
+ *  @{
  */
 
 #include <ESP8266WiFi.h>
@@ -205,4 +214,9 @@ void wifi_eventHandler(WiFiEvent_t event)
         break;
   }
 }
+
+/*!
+ * @}
+ * @}
+ */
 
