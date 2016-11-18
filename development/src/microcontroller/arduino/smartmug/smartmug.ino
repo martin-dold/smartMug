@@ -53,6 +53,9 @@ void loop()
 
     // For now just send some dummy data.
     tcp_send(tcpDummyData, sizeof(tcpDummyData));
+
+    // For now read the ADC once a second for testing.
+    adc_loop();
   }
 
 }
