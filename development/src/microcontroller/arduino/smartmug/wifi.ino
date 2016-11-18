@@ -16,30 +16,46 @@ IPAddress localIpAddr;
 /*! @brief Holds the RSSI of the established wifi connection. */
 long rssiEstablished;
 
+/* === Local/private function prototypes === */
+void wifi_scan();
+void wifi_connect();
+void wifi_printStatus();
+void wifi_eventHandler(WiFiEvent_t event);
 
 /* === Public API functions starting here === */
 
+/*!
+ * @brief Setup function of this ino sketch to setup WiFi for operation.
+ */
 void wifi_setup()
 {
   Serial.println("###");
   Serial.println("Starting wifi setup.");
   Serial.println("###");
 
-  // Firstly scan the wifi to get a feeling for the smartmug environment
+  // Firstly scan the wifi to get a feeling for the smartmug environment.
   wifi_scan();
 
-  // Secondly, connect to the requested smartmug SSID
+  // Secondly, connect to the requested smartmug SSID.
   wifi_connect();
 
   // If we end up here, we are connected to wifi. Print status.
   wifi_printStatus();
+
+  // Finally, register event handler function to monitor wifi status.
+  WiFi.onEvent(wifi_eventHandler);
 }
 
+/*!
+ * @brief Loop function of this ino sketch to run WiFi connection.
+ */
 void wifi_loop()
 {
-
+  /*
+   * Currently there is nothing to here. The WiFi lib even performs the
+   * reconnect to the SSID in case it was lost. Check wifi_eventHandler().
+   */
 }
-
 
 
 /* === Local utility functions starting here === */
@@ -154,5 +170,37 @@ void wifi_printStatus()
   Serial.print("  Signal strength (RSSI):");
   Serial.print(rssiEstablished);
   Serial.println(" dBm");
+}
+
+/*!
+ * @brief Event handler that is called once a WiFi event occurs.
+ */
+void wifi_eventHandler(WiFiEvent_t event)
+{
+  Serial.print("wifi_eventHandler(): ");
+
+  switch(event)
+  {
+    case WIFI_EVENT_STAMODE_CONNECTED:
+        Serial.println("connected.");
+        break;
+    case WIFI_EVENT_STAMODE_DISCONNECTED:
+        Serial.println("lost connection.");
+        break;
+    case WIFI_EVENT_STAMODE_AUTHMODE_CHANGE:
+        Serial.println("authentication mode changed.");
+        break;
+    case WIFI_EVENT_STAMODE_GOT_IP:
+        localIpAddr = WiFi.localIP();
+        Serial.print("got IP address ");
+        Serial.println(localIpAddr);
+        break;
+    case WIFI_EVENT_STAMODE_DHCP_TIMEOUT:
+        Serial.println("DHCP timeout.");
+        break;
+    default:
+        Serial.printf("default case, event id: %d\n", event);
+        break;
+  }
 }
 
