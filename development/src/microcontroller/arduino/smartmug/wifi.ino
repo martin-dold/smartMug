@@ -126,6 +126,7 @@ void wifi_scan()
  */
 void wifi_connect()
 {
+  int connectionTicks = 0; // counts 500ms ticks
   Serial.println("");
   Serial.println("WiFi connect");
   Serial.print("  Connecting to SSID: ");
@@ -140,11 +141,12 @@ void wifi_connect()
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
+    connectionTicks++;
     Serial.print(".");
   }
 
   Serial.println("");
-  Serial.println("  WiFi connected.");
+  Serial.printf("  WiFi connected after %d second(s).\n", (connectionTicks/2));
 }/* wifi_connect() */
 
 
