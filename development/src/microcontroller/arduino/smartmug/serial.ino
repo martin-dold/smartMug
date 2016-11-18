@@ -13,4 +13,5 @@ void serial_setup()
 
   Serial.println("");
   Serial.println("Serial connection ready.");
+  Serial.println("");
 }
