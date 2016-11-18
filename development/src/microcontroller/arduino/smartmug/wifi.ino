@@ -4,10 +4,17 @@
 
 #include <ESP8266WiFi.h>
 
+/* === Global defines === */
 /*! @brief SSID the smartmug shall connect to. */
 const char* ssid     = "smartmug";
 /*! @brief Password of the SSID the smartmug shall connect to. */
 const char* password = "smartmug12345";
+
+/* === Global variables === */
+/*! @brief Holds the own IP address (asigned by DHCP). */
+IPAddress localIpAddr;
+/*! @brief Holds the RSSI of the established wifi connection. */
+long rssiEstablished;
 
 
 /* === Public API functions starting here === */
@@ -23,6 +30,9 @@ void wifi_setup()
 
   // Secondly, connect to the requested smartmug SSID
   wifi_connect();
+
+  // If we end up here, we are connected to wifi. Print status.
+  wifi_printStatus();
 }
 
 void wifi_loop()
@@ -40,30 +50,25 @@ void wifi_loop()
 void wifi_scan()
 {
   bool ssidFound = false;
-  int rssiFound = -100;
+  long rssiFound = -100;
 
   // Set WiFi to station mode and disconnect from an AP if it was previously connected
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
 
-  Serial.println("");
-  Serial.println("Wifi scan start");
+  Serial.println("WiFi scan");
 
   // WiFi.scanNetworks will return the number of networks found
   int n = WiFi.scanNetworks();
-  Serial.println("scan done");
-  if (n == 0)
+  Serial.print("  scan done. Found networks: ");
+  Serial.println(n);
+  if (n > 0)
   {
-    Serial.println("no networks found");
-  }
-  else
-  {
-    Serial.print(n);
-    Serial.println(" networks found");
     for (int i = 0; i < n; ++i)
     {
       // Print SSID and RSSI for each network found
+      Serial.print("  ");
       Serial.print(i + 1);
       Serial.print(": ");
       Serial.print(WiFi.SSID(i));
@@ -82,11 +87,10 @@ void wifi_scan()
       delay(10);
     }
   }
-  Serial.println("");
 
   if(ssidFound)
   {
-    Serial.print("We found the SSID to connect to: ");
+    Serial.print("  We found the SSID to connect to: ");
     Serial.print(ssid);
     Serial.print(" (RSSI: ");
     Serial.print(rssiFound);
@@ -94,13 +98,10 @@ void wifi_scan()
   }
   else
   {
-    Serial.print("ERROR: ");
+    Serial.print("  ERROR: ");
     Serial.print(ssid);
-    Serial.println("was not found! Stop here.");
-    while(1);
+    Serial.println(" was not found!");
   }
-
-  Serial.println("");
 }/* wifi_scan() */
 
 
@@ -110,8 +111,10 @@ void wifi_scan()
 void wifi_connect()
 {
   Serial.println("");
-  Serial.print("Connecting to ");
+  Serial.println("WiFi connect");
+  Serial.print("  Connecting to SSID: ");
   Serial.println(ssid);
+  Serial.print("  "); // just for nice debug print.
 
   /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
      would try to act as both a client and an access-point and could cause
@@ -124,7 +127,32 @@ void wifi_connect()
     Serial.print(".");
   }
 
-  Serial.println("WiFi connected.");
   Serial.println("");
+  Serial.println("  WiFi connected.");
 }/* wifi_connect() */
+
+
+/*!
+ * @brief Prints the wifi status information for debugging purpose.
+ */
+void wifi_printStatus()
+{
+  Serial.println("");
+  Serial.println("WiFi status");
+
+  // Print network name.
+  Serial.print("  SSID: ");
+  Serial.println(WiFi.SSID());
+
+  // Print WiFi shield IP address.
+  localIpAddr = WiFi.localIP();
+  Serial.print("  IP Address: ");
+  Serial.println(localIpAddr);
+
+  // Print the signal strength.
+  rssiEstablished = WiFi.RSSI();
+  Serial.print("  Signal strength (RSSI):");
+  Serial.print(rssiEstablished);
+  Serial.println(" dBm");
+}
 
