@@ -75,7 +75,8 @@ void tcp_send(const uint8_t *data, uint16_t len)
     for (int i = 0; i < len; ++i)
     {
       // Make debug print of data first.
-      Serial.print(data[i]);
+      Serial.print(data[i], HEX);
+      Serial.print(" ");
 
       // Now actually send data through TCP socket.
       client.write(data[i]);
