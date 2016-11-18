@@ -10,11 +10,17 @@
 const uint16_t  remote_port = 8080;
 /*! @brief Remote host to connect to. Provided either as IP address or URL. */
 const char     *remote_host = "192.168.2.184";
+/*! @brief Local TCP port to listen for incomming connections. */
+const uint16_t  local_port = 8081;
 
 /* === Global variables === */
 
 /* @brief Use and even initialize WiFiClient class to create TCP connections */
 WiFiClient client;
+
+/* @brief Create WiFi server listening on the given port. */
+WiFiServer server(local_port);
+WiFiClient serverRemote;
 
 /* === Local/private function prototypes === */
 
@@ -42,6 +48,10 @@ void tcp_setup()
       return;
   }
   Serial.println("  Connected.");
+
+  Serial.println("  Start TCP listener.");
+  // Start the server.
+  server.begin();
 }
 
 /*!
@@ -49,7 +59,37 @@ void tcp_setup()
  */
 void tcp_loop()
 {
+  // Check if we already established a connection.
+  if (!serverRemote)
+  {
+    // No connection yet. Listen for incoming client requests.
+    serverRemote = server.available();
+    if (!serverRemote)
+    {
+      return;
+    }
 
+    Serial.println("Client connected");
+  }
+
+  // Read available bytes.
+  while (serverRemote.available())
+  {
+    char c = serverRemote.read();
+
+    // Print the value (for debugging).
+    Serial.write(c);
+
+    // Exit loop if end of line.
+    if ('\n' == c)
+    {
+      break;
+    }
+  }
+
+  // close the connection:
+//  client.stop();
+//  Serial.println("Connection closed.");
 }
 
 

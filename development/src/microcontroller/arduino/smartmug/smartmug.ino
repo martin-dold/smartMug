@@ -31,6 +31,10 @@ void setup()
 
   // Start a timer for sending TCP data periodically.
   tcpSendTimer = millis();
+
+  Serial.println("\n###");
+  Serial.println("Firmware setup complete. Entering main loop.");
+  Serial.println("###");
 }
 
 void loop()
