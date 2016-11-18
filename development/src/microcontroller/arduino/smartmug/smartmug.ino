@@ -1,6 +1,19 @@
-/*
- *  This is the main() sketch of the smartmug project.
+/*! @file  smartmug.ino
+ *  @brief This is the main() sketch of the smartmug project.
+ *
+ *  @defgroup arduino Arduino Code
+ *  @brief Arduino code of the smartmug firmware.
+ *
+ *  @defgroup main SmartMug Main
+ *  @brief Main entry of the smartmug firmware.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup main
+ *  @{
  */
+
 
 /* === Global defines === */
 
@@ -18,6 +31,9 @@ uint8_t tcpDummyData[] = {0x30, 0x31, 0x32, 0x33, 0x34, 0x35};
 
 /* === Local/private function prototypes === */
 
+/*!
+ * @brief Main setup function of this ino firmware.
+ */
 void setup()
 {
   // Setup serial connection for debugging purpose.
@@ -37,6 +53,9 @@ void setup()
   Serial.println("###");
 }
 
+/*!
+ * @brief Main loop function of this ino firmware.
+ */
 void loop()
 {
   // Handle WiFi connection.
@@ -59,3 +78,8 @@ void loop()
 
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */
