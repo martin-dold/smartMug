@@ -11,22 +11,26 @@
  *  @{
  */
 
- /*! @brief Defines serial (UART) baudrate. */
- #define BAUDRATE  115200
+/*! @brief Defines serial (UART) baudrate. */
+#define BAUDRATE  115200
+
 
 /*!
  * @brief Setup function of this ino sketch to setup serial port for operation.
  */
 void serial_setup()
 {
+  /* Serial is required for debugging only. */
+#ifdef DEBUG
   Serial.begin(BAUDRATE);
 
   // Wait for serial port to connect. Needed for Leonardo only
   while (!Serial) { ; }
+#endif
 
-  Serial.println("");
-  Serial.println("Serial connection ready.");
-  Serial.println("");
+  DEBUG_PRINTLN("");
+  DEBUG_PRINTLN("Serial connection ready.");
+  DEBUG_PRINTLN("");
 }
 
 /*!
