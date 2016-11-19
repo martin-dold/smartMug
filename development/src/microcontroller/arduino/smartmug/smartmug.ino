@@ -17,6 +17,9 @@
 
 /* === Global defines === */
 
+/*! @brief Enables/disables debug prints. Debug is enabled if this macro is defined. */
+#define DEBUG
+
 /*! @brief Timeout that defines the period (in milliseconds) when new TCP data is sent. */
 #define TCP_SEND_TIMEOUT_MS   1000
 
