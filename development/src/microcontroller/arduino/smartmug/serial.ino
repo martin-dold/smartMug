@@ -17,6 +17,7 @@
 
 /*!
  * @brief Setup function of this ino sketch to setup serial port for operation.
+ * @attention The serial port is initialized only if @ref DEBUG is enabled.
  */
 void serial_setup()
 {
