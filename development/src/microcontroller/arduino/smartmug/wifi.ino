@@ -125,7 +125,9 @@ void wifi_scan()
   {
     Serial.print("  ERROR: ");
     Serial.print(ssid);
-    Serial.println(" was not found!");
+    Serial.println(" was not found! Rebooting...");
+    delay(3000);
+    ESP.restart();
   }
 }/* wifi_scan() */
 
