@@ -1,7 +1,6 @@
 /*
  *  This is the Over-The-Air-Update sketch of the smartmug project.
  */
-#include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 
@@ -24,6 +23,9 @@ void ota_setup()
   #endif
 
   #ifdef OTA_HOSTNAME
+  Serial.printf(" ESP8266 Chip id = %08X\n", ESP.getChipId());
+  String hostname = OTA_HOSTNAME + ESP.getChipId();
+  //ArduinoOTA.setHostname(hostname.c_str());
   ArduinoOTA.setHostname(OTA_HOSTNAME);
   #endif
 
