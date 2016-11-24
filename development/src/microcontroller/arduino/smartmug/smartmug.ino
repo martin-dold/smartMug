@@ -45,6 +45,9 @@ void setup()
   // Setup the wifi connection.
   wifi_setup();
 
+  // Setup over-the-air update
+  ota_setup();
+
   // Setup the TCP connection.
   tcp_setup();
 
@@ -63,6 +66,9 @@ void loop()
 {
   // Handle WiFi connection.
   wifi_loop();
+
+  // Handle over-the-air update
+  ota_loop();
 
   // Handle TCP connection.
   tcp_loop();
