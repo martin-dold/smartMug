@@ -48,6 +48,9 @@ void setup()
   // Setup over-the-air update
   ota_setup();
 
+  // Setup multicast DNS
+  mdns_setup();
+
   // Setup the TCP connection.
   tcp_setup();
 
@@ -69,6 +72,9 @@ void loop()
 
   // Handle over-the-air update
   ota_loop();
+
+  // Handle multicast DNS
+  mdns_loop();
 
   // Handle TCP connection.
   tcp_loop();
