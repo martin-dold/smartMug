@@ -1,7 +1,6 @@
 /*
  *  This is the Over-The-Air-Update sketch of the smartmug project.
  */
-#include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 
