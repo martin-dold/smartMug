@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.io.IOException;
+
 public class ConnectionActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
@@ -24,7 +26,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
     }
 
 
-    public void onClick(View arg){
+    public void onClick(View arg) {
         switch (arg.getId()){
 
             case R.id.qrCodeButoon:
@@ -38,8 +40,10 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 break;
 
             case R.id.manuellInput:
-                Intent intent = new Intent (this, ManuellInput.class);
+                Intent intent = new Intent (this,ClientActivity.class);
                 startActivity(intent);
+                //Intent intent = new Intent (this, ManuellInput.class);
+                //startActivity(intent);
                 break;
 
         }
