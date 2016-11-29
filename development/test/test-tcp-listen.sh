@@ -20,4 +20,4 @@ echo -e ""
 
 echo -e "Start listening..."
 # start linstener for data port
-nc -v -n -k -l -p $LOCAL_PORT_DATA
+nc -v -n -l -p $LOCAL_PORT_DATA

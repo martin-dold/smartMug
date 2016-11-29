@@ -14,9 +14,49 @@
         android:text="Connect to Mug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:id="@+id/connectMugButton"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Statistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/statisticButon"
+        android:layout_below="@+id/connectMugButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:id="@+id/connectMugButton" />
+        android:onClick="onClick" />
+
+    <Button
+        android:text="Personal Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:id="@+id/personalDataButton"
+        android:onClick="onClick"
+        android:layout_below="@+id/orderButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orderButton"
+        android:onClick="onClick"
+        android:layout_below="@+id/statisticButon"
+        android:layout_alignLeft="@+id/statisticButon"
+        android:layout_alignStart="@+id/statisticButon"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/personalDataButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/txtOrder" />
 
 </RelativeLayout>

@@ -16,7 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ManuellInput" />
-        <activity android:name=".ConnectionActivity"></activity>
+        <activity android:name=".ConnectionActivity" />
+        <activity android:name=".Statistic" />
+        <activity android:name=".PersonalData" />
+        <activity android:name=".Order"></activity>
     </application>
 
 </manifest>
