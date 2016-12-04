@@ -1,6 +1,8 @@
 package com.example.smartmug;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +12,10 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import java.io.IOException;
+public class ConnectionActivity extends AppCompatActivity implements OnClickListener{
 
-public class ConnectionActivity extends AppCompatActivity implements OnClickListener {
+    private TCPClient mTCPClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,11 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         btnScanQRCode.setOnClickListener(this);
         View btnManuellInput = findViewById(R.id.manuellInput);
         btnManuellInput.setOnClickListener(this);
+
+        //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.
+        //        Builder().permitNetwork().build());
+
+
     }
 
 
@@ -30,6 +38,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         switch (arg.getId()){
 
             case R.id.qrCodeButoon:
+
                 IntentIntegrator integretor = new IntentIntegrator(this);
                 integretor.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integretor.setPrompt("Scan");
@@ -40,13 +49,21 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 break;
 
             case R.id.manuellInput:
-                Intent intent = new Intent (this,ClientActivity.class);
-                startActivity(intent);
-                //Intent intent = new Intent (this, ManuellInput.class);
-                //startActivity(intent);
+                new ConnectTask().execute("");
+                Intent intentConect = new Intent (this, MainActivity.class);
+                startActivity(intentConect);
                 break;
 
         }
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        //disconnect
+        mTCPClient.stopClient();
+        mTCPClient =null;
     }
 
     @Override
@@ -65,4 +82,37 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+    public class ConnectTask extends AsyncTask<String, String, TCPClient> {
+
+        @Override
+        protected TCPClient doInBackground(String... message) {
+
+            //we create a TCPClient object
+            mTCPClient = new TCPClient(new TCPClient.OnMessageReceived() {
+                @Override
+                //here the messageReceived method is implemented
+                public void messageReceived(String message) {
+                    //this method calls the onProgressUpdate
+                    publishProgress(message);
+                }
+            });
+            mTCPClient.run("192.168.178.29",8080);
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            //response received from server
+            Log.d("test", "response " + values[0]);
+            //process server response here....
+
+        }
+    }
+
+
 }
+
+

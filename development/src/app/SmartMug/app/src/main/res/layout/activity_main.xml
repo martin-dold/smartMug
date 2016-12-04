@@ -59,4 +59,19 @@
         android:layout_marginTop="24dp"
         android:id="@+id/txtOrder" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/progressBar"
+        android:layout_toStartOf="@+id/txtOrder"
+        android:layout_alignRight="@+id/orderButton"
+        android:layout_alignEnd="@+id/orderButton" />
+
 </RelativeLayout>

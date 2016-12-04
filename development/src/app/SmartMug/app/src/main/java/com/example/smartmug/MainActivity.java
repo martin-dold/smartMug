@@ -2,11 +2,13 @@ package com.example.smartmug;
 
 
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -14,6 +16,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     public int orderCont = 0;
     private TextView tvOrder;
+   // private TCPClient tcpC = new TCPClient();
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +26,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvOrder=(TextView)findViewById(R.id.txtOrder);
         View btnManuellInput = findViewById(R.id.connectMugButton);
         btnManuellInput.setOnClickListener(this);
+
+
     }
+
 
     public void onClick(View arg){
         switch (arg.getId()){

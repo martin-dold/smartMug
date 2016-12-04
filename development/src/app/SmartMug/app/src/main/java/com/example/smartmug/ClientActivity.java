@@ -37,11 +37,13 @@ public class ClientActivity extends AppCompatActivity {
 
     }
 
-
+// class making runing behind
+    // input should open and receiving data -> while
+    // value change in the main class of the beer level in the mug
 
     private void ejecutaCliente() {
 
-        String ip="192.168.0.100";
+        String ip="192.168.178.29";
 
         int puerto=8080;
 
