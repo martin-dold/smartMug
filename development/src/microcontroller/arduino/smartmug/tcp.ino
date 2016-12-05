@@ -38,7 +38,8 @@ void tcp_setup()
   Serial.println("Starting TCP setup.");
   Serial.println("###");
 
-  Serial.println("  Start TCP listener.");
+  Serial.print("  Start TCP listener on port ");
+  Serial.println(local_port);
   remoteConnected = false;
   // Start the server.
   server.begin();
