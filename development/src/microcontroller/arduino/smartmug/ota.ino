@@ -23,8 +23,12 @@ void ota_setup()
   #endif
 
   #ifdef OTA_HOSTNAME
-  Serial.printf(" ESP8266 Chip id = %08X\n", ESP.getChipId());
-  String hostname = OTA_HOSTNAME + ESP.getChipId();
+  /* TODO:
+   * fix me. We need a unique smartmug ID, either by concatenation
+   * with chipID or by own increasing counter.
+   */
+  //Serial.printf(" ESP8266 Chip id = %08X\n", ESP.getChipId());
+  //String hostname = OTA_HOSTNAME + ESP.getChipId();
   //ArduinoOTA.setHostname(hostname.c_str());
   ArduinoOTA.setHostname(OTA_HOSTNAME);
   #endif
