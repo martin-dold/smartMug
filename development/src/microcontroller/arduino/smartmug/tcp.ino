@@ -15,7 +15,7 @@
 
 /* === Global defines === */
 /*! @brief Local TCP port to listen for incomming connections. */
-const uint16_t  local_port = 8081;
+const uint16_t  local_port = 8080;
 /*! @brief States if an remote client is connected to our server port. */
 bool remoteConnected;
 
