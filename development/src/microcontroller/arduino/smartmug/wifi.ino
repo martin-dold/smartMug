@@ -207,6 +207,7 @@ void wifi_eventHandler(WiFiEvent_t event)
         localIpAddr = WiFi.localIP();
         Serial.print("got IP address ");
         Serial.println(localIpAddr);
+        tcp_close();
         break;
     case WIFI_EVENT_STAMODE_DHCP_TIMEOUT:
         Serial.println("DHCP timeout.");

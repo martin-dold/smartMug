@@ -91,6 +91,7 @@ void tcp_close()
 {
   Serial.println("Closing TCP connection");
   serverRemote.stop();
+  remoteConnected = false;
 }
 
 
