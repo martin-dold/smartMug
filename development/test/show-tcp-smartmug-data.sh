@@ -21,4 +21,4 @@ echo -e "Remote TCP port: $REMOTE_IP_ADDR"
 echo -e ""
 
 echo -e "Connecting to remote..."
-nc -n -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA
+nc -n -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | xxd -c 3 -g 1
