@@ -28,8 +28,14 @@
 /*! @brief Timer for sending TCP data periodically. */
 unsigned long tcpSendTimer;
 
-/*! @brief Some dummy data to be send through TCP socket. In ASCII this is 0 ... 5. */
-uint8_t tcpDummyData[] = {0x30, 0x31, 0x32, 0x33, 0x34, 0x35};
+/*! @brief Some dummy smartmug data to be send through TCP socket.
+ *
+ *  The dummy data follows the first version of the smartmug protocol by sending:
+ *  TAG:   0x01 (Smartmug sensor data)
+ *  LEN:   0x01 (One byte of sensor data)
+ *  VALUE: 0xXX (Dummy sensor data from 10, 20, 30, ... 100)
+ */
+uint8_t tcpDummyData[] = {0x01, 0x01, 0x00};
 
 
 /* === Local/private function prototypes === */
@@ -87,6 +93,11 @@ void loop()
 
     // For now just send some dummy data.
     tcp_send(tcpDummyData, sizeof(tcpDummyData));
+    tcpDummyData[2] += 10;
+    if(tcpDummyData[2] == 110)
+    {
+      tcpDummyData[2] = 0;
+    }
   }
 
 }
