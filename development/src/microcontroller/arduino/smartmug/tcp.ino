@@ -16,6 +16,8 @@
 /* === Global defines === */
 /*! @brief Local TCP port to listen for incomming connections. */
 const uint16_t  local_port = 8081;
+/*! @brief States if an remote client is connected to our server port. */
+bool remoteConnected;
 
 /* === Global variables === */
 /*! @brief Create WiFi server listening on the given port. */
@@ -37,6 +39,7 @@ void tcp_setup()
   Serial.println("###");
 
   Serial.println("  Start TCP listener.");
+  remoteConnected = false;
   // Start the server.
   server.begin();
 }
@@ -47,15 +50,19 @@ void tcp_setup()
 void tcp_loop()
 {
   // Check if we already established a connection.
-  if (!serverRemote)
+  if (!remoteConnected)
   {
     // No connection yet. Listen for incoming client requests.
     serverRemote = server.available();
     if (!serverRemote)
     {
+      /* No connection available.
+       * Therefore, skip reading data below and return here.
+       */
       return;
     }
 
+    remoteConnected = true;
     Serial.println("Client connected");
   }
 
@@ -109,7 +116,8 @@ void tcp_send(const uint8_t *data, uint16_t len)
   }
   else
   {
-     Serial.println("cannot send data. No connection.");
+    remoteConnected = false;
+    Serial.println("cannot send data. No connection.");
   }
 
   Serial.println("");
