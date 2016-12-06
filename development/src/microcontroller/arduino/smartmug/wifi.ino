@@ -61,9 +61,10 @@ void wifi_setup()
 void wifi_loop()
 {
   /*
-   * Currently there is nothing to here. The WiFi lib even performs the
+   * Currently there is nothing to do here. The WiFi lib even performs the
    * reconnect to the SSID in case it was lost. Check wifi_eventHandler().
    */
+  return;
 }
 
 
