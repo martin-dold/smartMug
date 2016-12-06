@@ -11,12 +11,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static android.R.id.progress;
+
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     public int orderCont = 0;
     private TextView tvOrder;
    // private TCPClient tcpC = new TCPClient();
+    private ProgressBar progressBar;
+    int progress = 0;
 
 
 
@@ -26,8 +30,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvOrder=(TextView)findViewById(R.id.txtOrder);
         View btnManuellInput = findViewById(R.id.connectMugButton);
         btnManuellInput.setOnClickListener(this);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+    }
 
+    private void setProgressValue(final int progress) {
+
+        // set the progress
+        progressBar.setProgress(progress);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progress + 10);
+            }
+        });
+        thread.start();
     }
 
 
@@ -46,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 orderCont++;
                 String resu = String.valueOf(orderCont);
                 tvOrder.setText(resu);
+                setProgressValue(progress);
 //                Intent intentOrder = new Intent (this, Statistic.class);
 //                startActivity(intentOrder);
                 break;
