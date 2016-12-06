@@ -1,0 +1,34 @@
+Initializing the scale
+set_scale()
+Place weight!
+get_units(10)
+get_units(10) result: 59663.00
+get_units(10) result/139: 429.23
+Remove weight!
+set_scale() value = 429.23
+After setting up the scale:
+read: 		-35146
+read average: 		-35161
+get value: 		-411.00
+get units: 		-0.3
+Readings:
+one reading:	-0.6	| average:	-0.7
+one reading:	-0.2	| average:	31.6
+one reading:	139.0	| average:	139.1
+one reading:	139.1	| average:	138.3
+one reading:	0.6	| average:	111.3
+one reading:	145.4	| average:	146.2
+one reading:	148.5	| average:	147.4
+one reading:	148.5	| average:	147.1
+one reading:	146.8	| average:	147.2
+one reading:	146.7	| average:	146.1
+one reading:	-0.3	| average:	0.2
+one reading:	1.3	| average:	-0.2
+one reading:	0.2	| average:	0.3
+one reading:	0.7	| average:	14.1
+one reading:	24.1	| average:	23.3
+one reading:	23.7	| average:	23.8
+one reading:	24.9	| average:	24.1
+one reading:	2.1	| average:	0.3
+one reading:	-0.8	| average:	-0.9
+one reading:	-1.4	| average:	-0.5

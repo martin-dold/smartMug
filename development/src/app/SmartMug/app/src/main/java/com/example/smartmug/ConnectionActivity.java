@@ -50,13 +50,14 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
 
             case R.id.manuellInput:
                 new ConnectTask().execute("");
-                Intent intentConect = new Intent (this, MainActivity.class);
-                startActivity(intentConect);
+                //Intent intentConect = new Intent (this, MainActivity.class);
+                //startActivity(intentConect);
                 break;
 
         }
     }
 
+    /*
     @Override
     protected void onPause(){
         super.onPause();
@@ -64,7 +65,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         //disconnect
         mTCPClient.stopClient();
         mTCPClient =null;
-    }
+    } */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -97,7 +98,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                     publishProgress(message);
                 }
             });
-            mTCPClient.run("192.168.178.29",8080);
+            mTCPClient.run("192.168.5.103",8080);
 
             return null;
         }
