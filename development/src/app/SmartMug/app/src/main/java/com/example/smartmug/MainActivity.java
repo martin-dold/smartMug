@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public int orderCont = 0;
     private TextView tvOrder;
    // private TCPClient tcpC = new TCPClient();
-    private ProgressBar progressBar;
+    public static ProgressBar progressBar;
     int progress = 0;
 
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     }
 
-    private void setProgressValue(final int progress) {
+    public static void setProgressValue(final int progress) {
 
         // set the progress
         progressBar.setProgress(progress);
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         });
         thread.start();
     }
-
 
     public void onClick(View arg){
         switch (arg.getId()){

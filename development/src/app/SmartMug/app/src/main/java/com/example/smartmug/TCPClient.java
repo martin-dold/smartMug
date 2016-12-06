@@ -31,6 +31,8 @@ public class TCPClient {
     // used to read messages from the server
     private BufferedReader mBufferIn;
 
+    private byte[] byteArray;
+
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
      */
@@ -97,6 +99,13 @@ public class TCPClient {
 
                     if (mServerMessage != null && mMessageListener != null) {
                         //call the method messageReceived from MyActivity class
+
+                        byteArray = mServerMessage.getBytes();
+                        //output the byte value
+                        for (byte b: byteArray){
+                            Log.e("Byte output :", String.format("0x%20x", b));
+                        }
+                        MugContent.setMugContent(byteArray);
                         mMessageListener.messageReceived(mServerMessage);
                     }
 
