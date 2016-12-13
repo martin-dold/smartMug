@@ -15,6 +15,8 @@
 /* === Global defines === */
 /*! @brief Scale value obtained by calibration in the lab. (see hx711_weight_calibration_log.txt) */
 #define HX711_SCALE   429.23f
+#define PIN_DOUT  14
+#define PIN_PD_SCK  16
 
 /* === Global variables === */
 /*! @brief Global instance of the HX711 scale. */
@@ -34,7 +36,7 @@ void hx711_setup()
   Serial.println("###");
 
   // parameter "gain" is ommited; the default value 128 is used by the library
-  scale.begin(14, 16);
+  scale.begin(PIN_DOUT, PIN_PD_SCK);
   // this value was obtained by calibrating the scale with known weights
   scale.set_scale(HX711_SCALE);
   // reset the scale to 0
