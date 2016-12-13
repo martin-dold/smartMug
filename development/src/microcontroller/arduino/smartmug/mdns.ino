@@ -44,8 +44,9 @@ void mdns_setup()
 void mdns_loop()
 {
   /*
-   * Currently there is nothing to here.
+   * Currently there is nothing to do here.
    */
+  return;
 }
 
 /* === Local utility functions starting here === */

@@ -37,6 +37,8 @@ unsigned long tcpSendTimer;
  */
 uint8_t tcpDummyData[] = {0x01, 0x01, 0x00};
 
+float currentWeight;
+
 
 /* === Local/private function prototypes === */
 
@@ -59,6 +61,10 @@ void setup()
 
   // Setup the TCP connection.
   tcp_setup();
+
+  // Setup the HX711 for weight scaling
+  hx711_setup();
+  currentWeight = 0.0f;
 
   // Start a timer for sending TCP data periodically.
   tcpSendTimer = millis();
@@ -85,9 +91,14 @@ void loop()
   // Handle TCP connection.
   tcp_loop();
 
+  // Handle the HX711
+  hx711_loop();
+
   // Send out TCP data periodically.
   if (millis() - tcpSendTimer > TCP_SEND_TIMEOUT_MS)
   {
+    currentWeight = hx711_getWeight();
+
     // Restart timer
     tcpSendTimer = millis();
 
