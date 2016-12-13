@@ -14,9 +14,9 @@
 /* === Global defines === */
 
 /* === Global variables === */
-#define LED_1_PIN_R  13
+#define LED_1_PIN_R   5
 #define LED_1_PIN_G  12
-#define LED_1_PIN_B  15
+#define LED_1_PIN_B  13
 
 /* === Local/private function prototypes === */
 
@@ -28,7 +28,7 @@
 void led_setup()
 {
   Serial.println("\n###");
-  Serial.println("Firmware setup complete. Entering main loop.");
+  Serial.println("Starting LED setup.");
   Serial.println("###");
 
   pinMode(LED_1_PIN_R,OUTPUT);
@@ -48,28 +48,74 @@ void led_loop()
   return;
 }
 
-void led_set(bool on)
+void led_setRed(bool on)
 {
   if(on)
   {
-    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_R, LOW);
     digitalWrite(LED_1_PIN_G, HIGH);
     digitalWrite(LED_1_PIN_B, HIGH);
   }
   else
   {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, HIGH);
+    digitalWrite(LED_1_PIN_B, HIGH);
+  }
+}
+void led_setGreen(bool on)
+{
+  if(on)
+  {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, LOW);
+    digitalWrite(LED_1_PIN_B, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, HIGH);
+    digitalWrite(LED_1_PIN_B, HIGH);
+  }
+}
+void led_setBlue(bool on)
+{
+  if(on)
+  {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, HIGH);
+    digitalWrite(LED_1_PIN_B, LOW);
+  }
+  else
+  {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, HIGH);
+    digitalWrite(LED_1_PIN_B, HIGH);
+  }
+}
+
+void led_set(bool on)
+{
+  if(on)
+  {
     digitalWrite(LED_1_PIN_R, LOW);
     digitalWrite(LED_1_PIN_G, LOW);
     digitalWrite(LED_1_PIN_B, LOW);
+  }
+  else
+  {
+    digitalWrite(LED_1_PIN_R, HIGH);
+    digitalWrite(LED_1_PIN_G, HIGH);
+    digitalWrite(LED_1_PIN_B, HIGH);
   }
   return;
 }
 
 void led_setColor(int red, int green, int blue)
 {
-  analogWrite(LED_1_PIN_R, red);
-  analogWrite(LED_1_PIN_G, green);
-  analogWrite(LED_1_PIN_B, blue);
+  analogWrite(LED_1_PIN_R, 255 - red);
+  analogWrite(LED_1_PIN_G, 255 - green);
+  analogWrite(LED_1_PIN_B, 255 - blue);
 }
 
 /* === Local utility functions starting here === */

@@ -21,7 +21,7 @@
 #define DEBUG
 
 /*! @brief Timeout that defines the period (in milliseconds) when new TCP data is sent. */
-#define TCP_SEND_TIMEOUT_MS   1000
+#define TCP_SEND_TIMEOUT_MS   10000
 
 /* === Global variables === */
 
@@ -38,6 +38,8 @@ unsigned long tcpSendTimer;
 uint8_t tcpDummyData[] = {0x01, 0x01, 0x00};
 
 float currentWeight;
+
+bool isLedOn;
 
 
 /* === Local/private function prototypes === */
@@ -69,6 +71,10 @@ void setup()
   // Start a timer for sending TCP data periodically.
   tcpSendTimer = millis();
 
+  // Setup LEDs for operation
+  led_setup();
+  isLedOn = false;
+
   Serial.println("\n###");
   Serial.println("Firmware setup complete. Entering main loop.");
   Serial.println("###");
@@ -95,9 +101,24 @@ void loop()
   hx711_loop();
 
   // Send out TCP data periodically.
-  if (millis() - tcpSendTimer > TCP_SEND_TIMEOUT_MS)
+  //if (millis() - tcpSendTimer > TCP_SEND_TIMEOUT_MS)
   {
+    led_setRed(true);
+    delay(1000);
+    led_setRed(false);
+    delay(1000);
+    led_setGreen(true);
+    delay(1000);
+    led_setGreen(false);
+    delay(1000);
+    led_setBlue(true);
+    delay(1000);
+    led_setBlue(false);
+    delay(1000);
+
     currentWeight = hx711_getWeight();
+    Serial.print("currentWeight: ");
+    Serial.println(currentWeight);
 
     // Restart timer
     tcpSendTimer = millis();
