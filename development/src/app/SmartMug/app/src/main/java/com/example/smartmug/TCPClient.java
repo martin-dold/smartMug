@@ -32,6 +32,7 @@ public class TCPClient {
     private BufferedReader mBufferIn;
 
     private byte[] byteArray;
+    private byte Byte;
 
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
