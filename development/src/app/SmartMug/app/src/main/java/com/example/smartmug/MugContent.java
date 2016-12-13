@@ -1,6 +1,7 @@
 package com.example.smartmug;
 
 import android.app.Activity;
+import android.util.Log;
 
 import static com.example.smartmug.MainActivity.progressBar;
 
@@ -10,36 +11,33 @@ import static com.example.smartmug.MainActivity.progressBar;
 
 public class MugContent {
 
-    public static int Mugcontent =0;
+    public static int Mugcontent;
     private static Activity activity;
 
     public static void setMugContent(byte[] bytearray) {
         Byte first = bytearray[2];
         Byte second = bytearray[3];
-
-        if(first != null){
-            if (second != null){
-                Mugcontent = first*256 + second;
-            }
-
-        }
-       // Mugcontent = ((int) bytearray[0]);
+        if (first != null) {
+            if (second != null) {
+                int val = ((first & 0xff) << 8) | (second & 0xff);
+                Log.e("Val: ", String.valueOf(val));
+                Mugcontent = (val / 400) * 100;
 
 
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.post(new Runnable() {
+                new Thread(new Runnable() {
+                    @Override
                     public void run() {
-                        progressBar.setProgress(Mugcontent);
+                        progressBar.post(new Runnable() {
+                            public void run() {
+                                progressBar.setProgress(Mugcontent);
+                            }
+                        });
                     }
-                });
+                }).start();
+
+
             }
-        }).start();
-
-
-
+        }
 
         /*
         new Thread(new Runnable() {

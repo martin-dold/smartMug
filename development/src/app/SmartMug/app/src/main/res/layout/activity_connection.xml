@@ -36,4 +36,30 @@
         android:id="@+id/manuellInput"
         android:layout_below="@+id/textOr"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/manuellInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:id="@+id/ipAdress"
+        tools:text="ip Adress"
+        android:contentDescription="enter the ip adress"
+        android:hint="ipAdress" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/ipAdress"
+        android:layout_alignLeft="@+id/ipAdress"
+        android:layout_alignStart="@+id/ipAdress"
+        android:layout_marginTop="23dp"
+        android:id="@+id/port"
+        tools:text="port number "
+        android:hint="port number(8080)" />
 </RelativeLayout>

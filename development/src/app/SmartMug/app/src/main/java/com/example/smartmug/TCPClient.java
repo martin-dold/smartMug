@@ -12,14 +12,13 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.*;
 import java.net.Socket;
+import java.lang.System;
 /**
  * Created by FuechsleXD on 04.12.2016.
  */
 
 public class TCPClient {
 
-    public static final String SERVER_IP = "192.168.1.8"; //your computer IP address
-    public static final int SERVER_PORT = 1234;
     // message to send to the server
     private String mServerMessage;
     // sends message received notifications
@@ -96,6 +95,7 @@ public class TCPClient {
                 //in this while the client listens for the messages sent by the server
                 while (mRun) {
 
+
                     mServerMessage = mBufferIn.readLine();
 
                     if (mServerMessage != null && mMessageListener != null) {
@@ -103,9 +103,6 @@ public class TCPClient {
 
                         byteArray = mServerMessage.getBytes();
                         //output the byte value
-                        for (byte b: byteArray){
-                            Log.e("Byte output :", String.format("0x%20x", b));
-                        }
                         MugContent.setMugContent(byteArray);
                         mMessageListener.messageReceived(mServerMessage);
                     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -15,7 +16,10 @@ import com.google.zxing.integration.android.IntentResult;
 public class ConnectionActivity extends AppCompatActivity implements OnClickListener{
 
     private TCPClient mTCPClient;
-
+    private EditText ipInput;
+    private EditText port;
+    private String ip ;
+    private int por;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         View btnManuellInput = findViewById(R.id.manuellInput);
         btnManuellInput.setOnClickListener(this);
 
+        ipInput = (EditText)findViewById(R.id.ipAdress);
+        //View ipInput = findViewById(R.id.ipAdress);
+        port = (EditText)findViewById(R.id.port);
         //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.
         //        Builder().permitNetwork().build());
 
@@ -49,6 +56,10 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 break;
 
             case R.id.manuellInput:
+
+                //ip = ipInput.getText().toString();
+                //por = Integer.parseInt(port.getText().toString());
+
                 new ConnectTask().execute("");
                 Intent intentConect = new Intent (this, MainActivity.class);
                 startActivity(intentConect);
@@ -98,7 +109,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                     publishProgress(message);
                 }
             });
-            mTCPClient.run("192.168.5.101",8080);
+
+            //mTCPClient.run(ip,por);
+            mTCPClient.run("192.168.5.102",8080);
 
             return null;
         }
