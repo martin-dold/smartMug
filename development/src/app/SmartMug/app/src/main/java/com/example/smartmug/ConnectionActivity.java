@@ -50,8 +50,8 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
 
             case R.id.manuellInput:
                 new ConnectTask().execute("");
-                //Intent intentConect = new Intent (this, MainActivity.class);
-                //startActivity(intentConect);
+                Intent intentConect = new Intent (this, MainActivity.class);
+                startActivity(intentConect);
                 break;
 
         }
@@ -98,7 +98,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                     publishProgress(message);
                 }
             });
-            mTCPClient.run("192.168.5.103",8080);
+            mTCPClient.run("192.168.5.101",8080);
 
             return null;
         }

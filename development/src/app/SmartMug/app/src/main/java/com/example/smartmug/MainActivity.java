@@ -17,8 +17,7 @@ import static android.R.id.progress;
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     public int orderCont = 0;
-    private TextView tvOrder;
-   // private TCPClient tcpC = new TCPClient();
+    public static TextView tvOrder;
     public static ProgressBar progressBar;
     int progress = 0;
 
@@ -27,13 +26,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvOrder=(TextView)findViewById(R.id.txtOrder);
+        tvOrder = (TextView) findViewById(R.id.txtOrder);
         View btnManuellInput = findViewById(R.id.connectMugButton);
         btnManuellInput.setOnClickListener(this);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
     }
 
+
+ /*
     public static void setProgressValue(final int progress) {
 
         // set the progress
@@ -43,15 +43,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2500);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                setProgressValue(progress + 10);
+                setProgressValue(progress);
+                tvOrder.setText(progress);
             }
         });
         thread.start();
-    }
+    } */
 
     public void onClick(View arg){
         switch (arg.getId()){
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 orderCont++;
                 String resu = String.valueOf(orderCont);
                 tvOrder.setText(resu);
-                setProgressValue(progress);
+                //setProgressValue(progress);
 //                Intent intentOrder = new Intent (this, Statistic.class);
 //                startActivity(intentOrder);
                 break;
@@ -80,4 +81,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    public static void setProgressTest(int progress){
+        progressBar.setProgress(progress);
+    }
 }
