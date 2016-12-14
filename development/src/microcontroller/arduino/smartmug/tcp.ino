@@ -60,11 +60,13 @@ void tcp_loop()
       /* No connection available.
        * Therefore, skip reading data below and return here.
        */
+      led_setRed(false);
       return;
     }
 
     remoteConnected = true;
     Serial.println("Client connected");
+    led_setRed(true);
   }
 
   // Read available bytes.
