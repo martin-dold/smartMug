@@ -123,10 +123,6 @@ void loop()
       tcpDummyData[3] = 0;
     }
     #else
-    if(currentWeight < 0)
-    {
-      currentWeight = 0;
-    }
     tcpSensorData[2] = highByte(currentWeight);
     tcpSensorData[3] = lowByte(currentWeight);
     tcp_send(tcpSensorData, sizeof(tcpSensorData));

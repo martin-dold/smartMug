@@ -74,9 +74,17 @@ float hx711_getWeight()
   ret = scale.get_units(10);
   scale.power_down();
 
+  if(ret < 0)
+  {
+    ret = 0;
+  }
+
   return ret;
 }
 
+/*!
+ * @brief Returns current weight measured as int
+ */
 int hx711_getWeightAsInt()
 {
   int ret = 0;
