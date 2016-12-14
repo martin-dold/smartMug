@@ -2,7 +2,7 @@
  *  @brief This is the LED sketch of the smartmug project.
  *
  *  @defgroup led LEDs
- *  @brief Functions LED handling.
+ *  @brief Functions for LED handling.
  *
  *  @addtogroup arduino
  *  @{
@@ -12,18 +12,18 @@
  */
 
 /* === Global defines === */
-
-/* === Global variables === */
 #define LED_1_PIN_R   5
 #define LED_1_PIN_G  12
 #define LED_1_PIN_B  13
+
+/* === Global variables === */
 
 /* === Local/private function prototypes === */
 
 /* === Public API functions starting here === */
 
 /*!
- * @brief Setup function of this ino sketch to setup HX711 for operation.
+ * @brief Setup function of this ino sketch to setup LEDs for operation.
  */
 void led_setup()
 {
@@ -48,69 +48,42 @@ void led_loop()
   return;
 }
 
-void led_setRed(bool on)
+void led_setRed()
 {
-  if(on)
-  {
-    digitalWrite(LED_1_PIN_R, LOW);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
-  else
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
-}
-void led_setGreen(bool on)
-{
-  if(on)
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, LOW);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
-  else
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
-}
-void led_setBlue(bool on)
-{
-  if(on)
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, LOW);
-  }
-  else
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
+  digitalWrite(LED_1_PIN_R, LOW);
+  digitalWrite(LED_1_PIN_G, HIGH);
+  digitalWrite(LED_1_PIN_B, HIGH);
 }
 
-void led_set(bool on)
+void led_setGreen()
 {
-  if(on)
-  {
-    digitalWrite(LED_1_PIN_R, LOW);
-    digitalWrite(LED_1_PIN_G, LOW);
-    digitalWrite(LED_1_PIN_B, LOW);
-  }
-  else
-  {
-    digitalWrite(LED_1_PIN_R, HIGH);
-    digitalWrite(LED_1_PIN_G, HIGH);
-    digitalWrite(LED_1_PIN_B, HIGH);
-  }
-  return;
+  digitalWrite(LED_1_PIN_R, HIGH);
+  digitalWrite(LED_1_PIN_G, LOW);
+  digitalWrite(LED_1_PIN_B, HIGH);
 }
 
+void led_setBlue()
+{
+  digitalWrite(LED_1_PIN_R, HIGH);
+  digitalWrite(LED_1_PIN_G, HIGH);
+  digitalWrite(LED_1_PIN_B, LOW);
+}
+
+void led_setWhite()
+{
+  digitalWrite(LED_1_PIN_R, LOW);
+  digitalWrite(LED_1_PIN_G, LOW);
+  digitalWrite(LED_1_PIN_B, LOW);
+}
+
+void led_setOff()
+{
+  digitalWrite(LED_1_PIN_R, HIGH);
+  digitalWrite(LED_1_PIN_G, HIGH);
+  digitalWrite(LED_1_PIN_B, HIGH);
+}
+
+/*! @brief Do not use. Not working properly. */
 void led_setColor(int red, int green, int blue)
 {
   analogWrite(LED_1_PIN_R, 255 - red);
