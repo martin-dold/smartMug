@@ -15,7 +15,7 @@
 /* === Global defines === */
 /*! @brief Scale value obtained by calibration in the lab. (see hx711_weight_calibration_log.txt) */
 #define HX711_SCALE   429.23f
-#define PIN_DOUT  14
+#define PIN_DOUT    14
 #define PIN_PD_SCK  16
 
 /* === Global variables === */
@@ -74,6 +74,15 @@ float hx711_getWeight()
   ret = scale.get_units(10);
   scale.power_down();
 
+  return ret;
+}
+
+int hx711_getWeightAsInt()
+{
+  int ret = 0;
+  float weight = 0.0;
+  weight = hx711_getWeight();
+  ret = (int)(weight+.5);
   return ret;
 }
 
