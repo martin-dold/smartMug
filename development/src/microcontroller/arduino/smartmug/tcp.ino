@@ -25,6 +25,8 @@ WiFiServer server(local_port);
 /*! @brief Create WiFi client that handles client connections received through listening server. */
 WiFiClient serverRemote;
 
+uint8_t rxData[50];
+
 /* === Local/private function prototypes === */
 
 /* === Public API functions starting here === */
@@ -43,6 +45,11 @@ void tcp_setup()
   remoteConnected = false;
   // Start the server.
   server.begin();
+
+  for(int i = 0; i < sizeof(rxData); i++)
+  {
+    rxData[i] = 0;
+  }
 }
 
 /*!
@@ -50,6 +57,7 @@ void tcp_setup()
  */
 void tcp_loop()
 {
+  int rxDataCount = 0;
   // Check if we already established a connection.
   if (!remoteConnected)
   {
@@ -72,16 +80,30 @@ void tcp_loop()
   // Read available bytes.
   while (serverRemote.available())
   {
-    char c = serverRemote.read();
+    uint8_t b = serverRemote.read();
+    rxData[rxDataCount] = b;
+    rxDataCount++;
 
     // Print the value (for debugging).
-    Serial.write(c);
+    Serial.write(b);
 
     // Exit loop if end of line.
-    if ('\n' == c)
+    if ('\n' == b)
     {
       break;
     }
+
+    if(rxDataCount >= sizeof(rxData))
+    {
+      // Stop reading to not overflow our RX buffer.
+      break;
+    }
+  }
+
+  if(rxDataCount <= sizeof(rxData))
+  {
+    // New data is available
+    parseTcpRxData(rxData, rxDataCount);
   }
 }
 
@@ -117,17 +139,46 @@ void tcp_send(const uint8_t *data, uint16_t len)
       // Now actually send data through TCP socket.
       serverRemote.write(data[i]);
     }
+    Serial.println("");
   }
   else
   {
     remoteConnected = false;
     Serial.println("cannot send data. No connection.");
   }
-
-  Serial.println("");
 }
 
 /* === Local utility functions starting here === */
+
+void parseTcpRxData(uint8_t *data, uint16_t len)
+{
+  if(rxData[0] == 0x02)
+  {
+    if(rxData[1] == 0x01)
+    {
+      if(rxData[2] == 0x00)
+      {
+        led_setOff();
+      }
+      else if(rxData[2] == 0x01)
+      {
+        led_setRed();
+      }
+      else if(rxData[2] == 0x02)
+      {
+        led_setGreen();
+      }
+      else if(rxData[2] == 0x03)
+      {
+        led_setBlue();
+      }
+      else if(rxData[2] == 0x04)
+      {
+        led_setWhite();
+      }
+    }
+  }
+}
 
 /*!
  * @}
