@@ -74,7 +74,8 @@ void tcp_loop()
 
     remoteConnected = true;
     Serial.println("Client connected");
-    led_setRed();
+    // Turn on using the color that was set by the user/app
+    led_turnOnLastColor();
   }
 
   // Read available bytes.

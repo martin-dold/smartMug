@@ -16,7 +16,14 @@
 #define LED_1_PIN_G  12
 #define LED_1_PIN_B  13
 
+#define LED_COLOR_OFF    0
+#define LED_COLOR_RED    1
+#define LED_COLOR_GREEN  2
+#define LED_COLOR_BLUE   3
+#define LED_COLOR_WHITE  4
+
 /* === Global variables === */
+uint8_t currentColor;
 
 /* === Local/private function prototypes === */
 
@@ -34,6 +41,10 @@ void led_setup()
   pinMode(LED_1_PIN_R,OUTPUT);
   pinMode(LED_1_PIN_G,OUTPUT);
   pinMode(LED_1_PIN_B,OUTPUT);
+
+  led_setOff();
+  // Prepare default color RED first TCP connect()
+  currentColor = LED_COLOR_RED;
   return;
 }
 
@@ -53,6 +64,7 @@ void led_setRed()
   digitalWrite(LED_1_PIN_R, LOW);
   digitalWrite(LED_1_PIN_G, HIGH);
   digitalWrite(LED_1_PIN_B, HIGH);
+  currentColor = LED_COLOR_RED;
 }
 
 void led_setGreen()
@@ -60,6 +72,7 @@ void led_setGreen()
   digitalWrite(LED_1_PIN_R, HIGH);
   digitalWrite(LED_1_PIN_G, LOW);
   digitalWrite(LED_1_PIN_B, HIGH);
+  currentColor = LED_COLOR_GREEN;
 }
 
 void led_setBlue()
@@ -67,6 +80,7 @@ void led_setBlue()
   digitalWrite(LED_1_PIN_R, HIGH);
   digitalWrite(LED_1_PIN_G, HIGH);
   digitalWrite(LED_1_PIN_B, LOW);
+  currentColor = LED_COLOR_BLUE;
 }
 
 void led_setWhite()
@@ -74,6 +88,7 @@ void led_setWhite()
   digitalWrite(LED_1_PIN_R, LOW);
   digitalWrite(LED_1_PIN_G, LOW);
   digitalWrite(LED_1_PIN_B, LOW);
+  currentColor = LED_COLOR_WHITE;
 }
 
 void led_setOff()
@@ -81,6 +96,27 @@ void led_setOff()
   digitalWrite(LED_1_PIN_R, HIGH);
   digitalWrite(LED_1_PIN_G, HIGH);
   digitalWrite(LED_1_PIN_B, HIGH);
+}
+
+void led_turnOnLastColor()
+{
+  switch(currentColor)
+  {
+    case LED_COLOR_RED:
+      led_setRed();
+      break;
+    case LED_COLOR_GREEN:
+      led_setGreen();
+      break;
+    case LED_COLOR_BLUE:
+      led_setBlue();
+      break;
+    case LED_COLOR_WHITE:
+      led_setWhite();
+      break;
+    default:
+      break;
+  }
 }
 
 /*! @brief Do not use. Not working properly. */
