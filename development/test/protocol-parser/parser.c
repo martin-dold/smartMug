@@ -17,48 +17,63 @@ typedef enum
   E_PARSER_STATE_READ_EOF,
 } E_PARSER_STATE_t;
 
+
+void displayMessage(S_MESSAGE_t *message)
+{
+  uint16_t sensorValue = 0U;
+
+  printf("Message received: ");
+  if(message->tag == 1U)
+  {
+    sensorValue = (uint16_t)( (message->value[0]) << 8 );
+    sensorValue += (message->value[1]);
+    printf("Tag = %u, Length = %u, Value = %u\n", message->tag, message->length, sensorValue);
+  }
+  else
+  {
+    printf("Unknown message tag");
+  }
+}
+
 int main()
 {
   uint8_t byte;
   uint8_t byteCount = 0U;
-  uint8_t buffer[10] = { 0U };
-  E_PARSER_STATE_t state = E_PARSER_STATE_READ_TAG;
 
-  printf("Start.\n");
+  E_PARSER_STATE_t state = E_PARSER_STATE_READ_TAG;
+  S_MESSAGE_t message;
+
+  printf("SmartMug Protocol Parser Start.\n");
 
   while( read(0, &byte, 1) > 0)
   {
     switch(state)
     {
       case E_PARSER_STATE_READ_TAG:
-        printf("E_PARSER_STATE_READ_TAG.\n");
-        buffer[0] = byte;
+        message.tag = byte;
         byteCount = 0U;
         state = E_PARSER_STATE_READ_LENGTH;
         break;
 
       case E_PARSER_STATE_READ_LENGTH:
-        printf("E_PARSER_STATE_READ_LENGTH.\n");
-        buffer[1] = byte;
+        message.length = byte;
         state = E_PARSER_STATE_READ_VALUE;
         break;
 
       case E_PARSER_STATE_READ_VALUE:
-        printf("E_PARSER_STATE_READ_VALUE.\n");
-        buffer[2 + byteCount] = byte;
+        message.value[byteCount] = byte;
         byteCount++;
-        if(byteCount == buffer[1])
+        if(byteCount == message.length)
         {
           state = E_PARSER_STATE_READ_EOF;
         }
         break;
 
       case E_PARSER_STATE_READ_EOF:
-        printf("E_PARSER_STATE_READ_EOF.\n");
         if(byte == '\n')
         {
           state = E_PARSER_STATE_READ_TAG;
-          printf("Message read.\n");
+          displayMessage(&message);
         }
         else
         {
@@ -71,5 +86,5 @@ int main()
     }
   }
 
-  printf("Exit.\n");
+  printf("SmartMug Protocol Parser Exit.\n");
 }
