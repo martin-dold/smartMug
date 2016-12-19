@@ -12,7 +12,6 @@ import static com.example.smartmug.MainActivity.progressBar;
 public class MugContent {
 
     public static int Mugcontent;
-    private static Activity activity;
 
     public static void setMugContent(byte[] bytearray) {
         Byte first = bytearray[2];
@@ -20,8 +19,14 @@ public class MugContent {
         if (first != null) {
             if (second != null) {
                 int val = ((first & 0xff) << 8) | (second & 0xff);
-                Log.e("Val: ", String.valueOf(val));
-                Mugcontent = (val / 400) * 100;
+                Log.e("Value get from mug: ", String.valueOf(val));
+
+                //int fillingWeight = (val);
+                //Mugcontent = (100/400) * val;
+                Mugcontent = val/4;
+
+                //Mugcontent = 50;
+                Log.e("Value of Mugcontent: ", String.valueOf(Mugcontent));
 
 
                 new Thread(new Runnable() {

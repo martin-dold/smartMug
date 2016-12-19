@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_re_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.smartmug.reOrderActivity">
+
+    <Button
+        android:text="Rot "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:id="@+id/buttonLightRed" />
+
+    <Button
+        android:text="Blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLightRed"
+        android:layout_alignLeft="@+id/buttonLightRed"
+        android:layout_alignStart="@+id/buttonLightRed"
+        android:layout_marginTop="67dp"
+        android:id="@+id/buttonLightBlue" />
+
+    <Button
+        android:text="Green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLightBlue"
+        android:layout_alignRight="@+id/buttonLightBlue"
+        android:layout_alignEnd="@+id/buttonLightBlue"
+        android:layout_marginTop="71dp"
+        android:id="@+id/buttonLightGreen" />
+
+    <Button
+        android:text="White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/buttonLightGreen"
+        android:layout_alignStart="@+id/buttonLightGreen"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/buttonLightWhite" />
+</RelativeLayout>

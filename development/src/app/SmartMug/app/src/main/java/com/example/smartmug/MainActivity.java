@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public static ProgressBar progressBar;
     int progress = 0;
 
+    public static boolean tcpClientRunning = false;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         tvOrder = (TextView) findViewById(R.id.txtOrder);
         View btnManuellInput = findViewById(R.id.connectMugButton);
         btnManuellInput.setOnClickListener(this);
+        View btnOrder = findViewById(R.id.orderButton);
+        btnOrder.setOnClickListener(this);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
@@ -66,9 +70,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(intentStat);
                 break;
             case R.id.orderButton:
-                orderCont++;
-                String resu = String.valueOf(orderCont);
-                tvOrder.setText(resu);
+
+                Intent intentOrder = new Intent(this, reOrderActivity.class);
+                startActivity(intentOrder);
+
+
+                //orderCont++;
+                //String resu = String.valueOf(orderCont);
+                //tvOrder.setText(resu);
                 //setProgressValue(progress);
 //                Intent intentOrder = new Intent (this, Statistic.class);
 //                startActivity(intentOrder);

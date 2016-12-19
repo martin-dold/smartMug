@@ -22,7 +22,8 @@
         <activity android:name=".Statistic" />
         <activity android:name=".PersonalData" />
         <activity android:name=".Order" />
-        <activity android:name=".ClientActivity"></activity>
+        <activity android:name=".ClientActivity" />
+        <activity android:name=".reOrderActivity"></activity>
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ import java.lang.System;
 
 public class TCPClient {
 
+
     // message to send to the server
     private String mServerMessage;
     // sends message received notifications
@@ -26,7 +27,7 @@ public class TCPClient {
     // while this is true, the server will continue running
     private boolean mRun = false;
     // used to send messages
-    private PrintWriter mBufferOut;
+    private static PrintWriter mBufferOut;
     // used to read messages from the server
     private BufferedReader mBufferIn;
 
@@ -45,11 +46,19 @@ public class TCPClient {
      *
      * @param message text entered by client
      */
-    public void sendMessage(String message) {
+    public static void sendMessage(String message) {
         if (mBufferOut != null && !mBufferOut.checkError()) {
             mBufferOut.println(message);
             mBufferOut.flush();
         }
+    }
+
+    public static void sendMessageByteArray(byte[] array){
+      /*
+        if (mBufferOut != null && !mBufferOut.checkError()) {
+            mBufferOut.println(message);
+            mBufferOut.flush();
+        }  */
     }
 
     /**
@@ -70,6 +79,7 @@ public class TCPClient {
         mServerMessage = null;
     }
 
+
     public void run(String ip, int port) {
 
         mRun = true;
@@ -82,7 +92,9 @@ public class TCPClient {
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(ip, port);
-            System.out.println(ip);
+            //set in the mainactivity that the tcp client is running -> so that its possible to communicate
+            MainActivity.tcpClientRunning = true;
+
             try {
 
                 //sends the message to the server
@@ -119,6 +131,10 @@ public class TCPClient {
                 //the socket must be closed. It is not possible to reconnect to this socket
                 // after it is closed, which means a new socket instance has to be created.
                 socket.close();
+                Log.e("TCP closing socket", "");
+                //TODO
+                // If connection is lost then we have to set the variable in main to false
+                //MainActivity.tcpClientRunning = false;
             }
 
         } catch (Exception e) {
