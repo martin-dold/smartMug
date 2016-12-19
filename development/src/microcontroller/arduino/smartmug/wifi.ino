@@ -18,6 +18,9 @@
 const char* ssid     = "smartmug";
 /*! @brief Password of the SSID the smartmug shall connect to. */
 const char* password = "smartmug12345";
+IPAddress ip(192, 168, 5, 10);
+IPAddress gateway(192, 168, 5, 1);
+IPAddress subnet(255, 255, 255, 0);
 
 /* === Global variables === */
 /*! @brief Holds the own IP address (asigned by DHCP). */
@@ -47,6 +50,8 @@ void wifi_setup()
 
   // Secondly, connect to the requested smartmug SSID.
   wifi_connect();
+
+  WiFi.config(ip, gateway, subnet);
 
   // If we end up here, we are connected to wifi. Print status.
   wifi_printStatus();
