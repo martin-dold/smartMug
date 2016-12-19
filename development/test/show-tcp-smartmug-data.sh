@@ -6,7 +6,7 @@ clean='\e[0m' # No Color
 
 # IP configs
 REMOTE_PORT_DATA=8080
-REMOTE_IP_ADDR=192.168.5.101
+REMOTE_IP_ADDR=192.168.5.10
 
 # ---- start of script ----
 

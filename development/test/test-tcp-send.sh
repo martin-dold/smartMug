@@ -5,8 +5,8 @@ green='\e[0;32m'
 clean='\e[0m' # No Color
 
 # IP configs
-REMOTE_PORT_DATA=8081
-REMOTE_IP_ADDR=192.168.2.100
+REMOTE_PORT_DATA=8080
+REMOTE_IP_ADDR=192.168.5.10
 
 # ---- start of script ----
 
@@ -20,4 +20,9 @@ echo -e "Local TCP listen port:       \t$LOCAL_PORT_DATA"
 echo -e ""
 
 echo -e "Start sending..."
-echo -e "123" | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA
+# 0x00 - LED OFF
+# 0x01 - LED Red
+# 0x02 - LED Green
+# 0x03 - LED Blue
+# 0x04 - LED White
+echo -e '\x02\x01\x01\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
