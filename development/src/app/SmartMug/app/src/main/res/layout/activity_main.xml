@@ -10,68 +10,65 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.smartmug.MainActivity">
 
-    <Button
-        android:text="Connect to Mug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:id="@+id/connectMugButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Statistics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:id="@+id/statisticButon"
-        android:layout_below="@+id/connectMugButton"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick" />
-
-    <Button
-        android:text="Personal Data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:id="@+id/personalDataButton"
-        android:onClick="onClick"
-        android:layout_below="@+id/orderButton"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/orderButton"
-        android:onClick="onClick"
-        android:layout_below="@+id/statisticButon"
-        android:layout_alignLeft="@+id/statisticButon"
-        android:layout_alignStart="@+id/statisticButon"
-        android:layout_marginTop="29dp" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/personalDataButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:id="@+id/txtOrder" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="16dp"
-        android:id="@+id/progressBar"
-        android:layout_toStartOf="@+id/txtOrder"
-        android:layout_alignRight="@+id/orderButton"
-        android:layout_alignEnd="@+id/orderButton" />
+        android:layout_alignParentStart="true">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_above="@+id/statisticButon"
+            android:layout_alignRight="@+id/connectMugButton"
+            android:layout_alignEnd="@+id/connectMugButton"
+            android:layout_marginBottom="21dp" />
+
+        <Button
+            android:text="Connect to Mug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/connectMugButton"
+            android:layout_above="@+id/orderButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp" />
+
+        <Button
+            android:text="Statistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/statisticButon"
+            android:onClick="onClick"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/orderButton"
+            android:layout_alignStart="@+id/orderButton"
+            android:layout_marginBottom="40dp" />
+
+        <Button
+            android:text="Order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderButton"
+            android:onClick="onClick"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/statisticButon"
+            android:layout_alignStart="@+id/statisticButon"
+            android:layout_marginBottom="40dp" />
+
+        <Button
+            android:text="Personal Data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/personalDataButton"
+            android:onClick="onClick"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/connectMugButton"
+            android:layout_alignStart="@+id/connectMugButton"
+            android:layout_marginBottom="40dp"/>
+    </LinearLayout>
 
 </RelativeLayout>
