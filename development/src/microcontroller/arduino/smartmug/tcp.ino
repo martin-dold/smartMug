@@ -89,7 +89,7 @@ void tcp_loop()
     Serial.write(b);
 
     // Exit loop if end of line.
-    if ('\n' == b)
+    if (0x0A == b)
     {
       break;
     }
@@ -159,22 +159,27 @@ void parseTcpRxData(uint8_t *data, uint16_t len)
     {
       if(rxData[2] == 0x00)
       {
+        Serial.println("led_setOff()");
         led_setOff();
       }
       else if(rxData[2] == 0x01)
       {
+        Serial.println("led_setRed()");
         led_setRed();
       }
       else if(rxData[2] == 0x02)
       {
+        Serial.println("led_setGreen()");
         led_setGreen();
       }
       else if(rxData[2] == 0x03)
       {
+        Serial.println("led_setBlue()");
         led_setBlue();
       }
       else if(rxData[2] == 0x04)
       {
+        Serial.println("led_setWhite()");
         led_setWhite();
       }
     }
