@@ -25,4 +25,22 @@ echo -e "Start sending..."
 # 0x02 - LED Green
 # 0x03 - LED Blue
 # 0x04 - LED White
-echo -e '\x02\x01\x01\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
+
+if [ -n "$1" ]; then
+
+  if [ "$1" == "-r" ]; then
+    echo -e '\x02\x01\x01\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
+  fi
+
+  if [ "$1" == "-g" ]; then
+    echo -e '\x02\x01\x02\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
+  fi
+
+  if [ "$1" == "-b" ]; then
+    echo -e '\x02\x01\x03\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
+  fi
+
+  if [ "$1" == "-w" ]; then
+    echo -e '\x02\x01\x04\x0a' | nc.traditional -n -w 2 -v -v $REMOTE_IP_ADDR $REMOTE_PORT_DATA | ./protocol-parser/parser
+  fi
+fi
