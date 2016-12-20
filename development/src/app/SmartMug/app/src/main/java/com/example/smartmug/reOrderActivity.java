@@ -31,33 +31,45 @@ public class reOrderActivity extends AppCompatActivity implements View.OnClickLi
         switch (arg.getId()) {
             case R.id.buttonLightBlue:
 
-                /*
-
-                if(MainActivity.tcpClientRunning == true){
-                    //change the color
-                    TCPClient.sendMessage("test\n");
-                } else {
-
-                    Context context = getApplicationContext();
-                    CharSequence text = "No TCP Connection!";
-                    int duration = Toast.LENGTH_LONG;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-*/
+                byte[] blue = new byte[] {0x02,0x01,0x03,0x0A};
+                changeColor(blue);
 
                 break;
             case R.id.buttonLightWhite:
 
+                byte[] white = new byte[] {0x02,0x01,0x04,0x0A};
+                changeColor(white);
+
                 break;
             case R.id.buttonLightGreen:
+
+                byte[] green = new byte[] {0x02,0x01,0x02,0x0A};
+                changeColor(green);
 
                 break;
             case R.id.buttonLightRed:
 
+                byte[] red = new byte[] {0x02,0x01,0x01,0x0A};
+                changeColor(red);
+
                 break;
 
+        }
+    }
+
+    private void changeColor(byte[] color) {
+
+        if(MainActivity.tcpClientRunning == true){
+            //change the color
+            TCPClient.sendMessageByteArray(color);
+        } else {
+
+            Context context = getApplicationContext();
+            CharSequence text = "No TCP Connection!";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
     }
 }

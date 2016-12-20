@@ -27,7 +27,9 @@ public class TCPClient {
     // while this is true, the server will continue running
     private boolean mRun = false;
     // used to send messages
-    private static PrintWriter mBufferOut;
+    private static BufferedWriter mBufferOut;
+
+    private static DataOutputStream mByteOutputStream;
     // used to read messages from the server
     private BufferedReader mBufferIn;
 
@@ -46,25 +48,59 @@ public class TCPClient {
      *
      * @param message text entered by client
      */
+    /*
     public static void sendMessage(String message) {
         if (mBufferOut != null && !mBufferOut.checkError()) {
             mBufferOut.println(message);
             mBufferOut.flush();
         }
-    }
+    } */
 
     public static void sendMessageByteArray(byte[] array){
-      /*
-        if (mBufferOut != null && !mBufferOut.checkError()) {
-            mBufferOut.println(message);
-            mBufferOut.flush();
-        }  */
+
+        if (mByteOutputStream != null) {
+            //mBufferOut.
+
+
+            try {
+                mByteOutputStream.write(array);
+                mByteOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // mBufferOut.write("\n");
+
+            //DataInputStream dOut = new DataOutputStream(so)
+
+
+           // mBufferOut.println(array);
+
+        }
     }
 
     /**
      * Close the connection and release the members
      */
-    public void stopClient() {
+
+    public void stopClient(){
+        mRun = false;
+
+        if(mByteOutputStream != null){
+            try {
+                mByteOutputStream.flush();
+                mByteOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        mMessageListener = null;
+        mBufferIn = null;
+        mByteOutputStream = null;
+        mServerMessage = null;
+
+    }
+/*    public void stopClient() {
 
         mRun = false;
 
@@ -78,7 +114,7 @@ public class TCPClient {
         mBufferOut = null;
         mServerMessage = null;
     }
-
+*/
 
     public void run(String ip, int port) {
 
@@ -98,7 +134,9 @@ public class TCPClient {
             try {
 
                 //sends the message to the server
-                mBufferOut = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                // mBufferOut = newPrintWriter(ne)(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+
+                mByteOutputStream = new DataOutputStream(socket.getOutputStream());
 
                 //receives the message which the server sends back
                 mBufferIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
