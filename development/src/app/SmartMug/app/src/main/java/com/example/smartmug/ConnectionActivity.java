@@ -111,7 +111,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             });
 
             //mTCPClient.run(ip,por);
-            mTCPClient.run("192.168.178.29",8080);
+            mTCPClient.run("192.168.5.10",8080);
 
             return null;
         }
