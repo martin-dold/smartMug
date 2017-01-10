@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 Intent intentPersData = new Intent (this, PersonalData.class);
                 startActivity(intentPersData);
                 break;
+            case R.id.gameButton:
+                Intent intentGameList = new Intent (this, GameList.class);
+                startActivity(intentGameList);
+                break;
+
 
         }
     }
