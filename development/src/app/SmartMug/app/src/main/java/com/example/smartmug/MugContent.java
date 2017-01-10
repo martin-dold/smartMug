@@ -3,6 +3,8 @@ package com.example.smartmug;
 import android.app.Activity;
 import android.util.Log;
 
+import static com.example.smartmug.MainActivity.mBuilder;
+import static com.example.smartmug.MainActivity.notificationmanager;
 import static com.example.smartmug.MainActivity.progressBar;
 
 /**
@@ -24,6 +26,7 @@ public class MugContent {
                 //int fillingWeight = (val);
                 //Mugcontent = (100/400) * val;
                 Mugcontent = val/4;
+                MainActivity.setMugContent(Mugcontent);
 
                 //Mugcontent = 50;
                 Log.e("Value of Mugcontent: ", String.valueOf(Mugcontent));
@@ -35,6 +38,9 @@ public class MugContent {
                         progressBar.post(new Runnable() {
                             public void run() {
                                 progressBar.setProgress(Mugcontent);
+                                //Update Notification
+                                mBuilder.setContentText(Mugcontent +"%");
+                                notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
                             }
                         });
                     }
@@ -43,28 +49,6 @@ public class MugContent {
 
             }
         }
-
-        /*
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable()){
-                    public void run(){
-                        MainActivity.setProgressTest(Mugcontent);
-                    }
-                }
-            }
-        }).start();
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                MainActivity.setProgressTest(Mugcontent);
-            }
-        });
-
-
-    } */
-
 
     }
 }

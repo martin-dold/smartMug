@@ -172,7 +172,7 @@ public class TCPClient {
                 Log.e("TCP closing socket", "");
                 //TODO
                 // If connection is lost then we have to set the variable in main to false
-                //MainActivity.tcpClientRunning = false;
+                MainActivity.tcpClientRunning = false;
             }
 
         } catch (Exception e) {

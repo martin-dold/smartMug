@@ -1,8 +1,11 @@
 package com.example.smartmug;
 
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +27,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public static boolean tcpClientRunning = false;
 
 
+    //Notification
+    public static NotificationCompat.Builder mBuilder;
+    private static int finalid = 3333;
+    public static NotificationManager notificationmanager;
+
+    public static int mugContent = 0;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +45,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         View btnOrder = findViewById(R.id.orderButton);
         btnOrder.setOnClickListener(this);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        //Notification
+        mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setAutoCancel(true);
+        notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        changeNotificationContent();
+        showNotification();
+
     }
 
-
- /*
-    public static void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress);
-                tvOrder.setText(progress);
-            }
-        });
-        thread.start();
-    } */
 
     public void onClick(View arg){
         switch (arg.getId()){
@@ -73,16 +72,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
                 Intent intentOrder = new Intent(this, reOrderActivity.class);
                 startActivity(intentOrder);
-
-
-                //orderCont++;
-                //String resu = String.valueOf(orderCont);
-                //tvOrder.setText(resu);
-                //setProgressValue(progress);
-//                Intent intentOrder = new Intent (this, Statistic.class);
-//                startActivity(intentOrder);
                 break;
             case R.id.personalDataButton:
+
                 Intent intentPersData = new Intent (this, PersonalData.class);
                 startActivity(intentPersData);
                 break;
@@ -90,7 +82,28 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 
-    public static void setProgressTest(int progress){
-        progressBar.setProgress(progress);
+    private void showNotification() {
+
+        notificationmanager.notify(finalid,mBuilder.build());
+
+    }
+
+    private void changeNotificationContent(){
+        mBuilder.setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("Smart Mug")
+                .setContentText(mugContent +"%")
+                .setTicker("This is the Ticker");
+        Intent intent = new Intent(this,MainActivity.class);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder.setContentIntent(pendingIntent);
+    }
+
+    public static void setMugContent(int value){
+        mugContent = value;
+    }
+    public static int getFinalid() {
+        return finalid;
     }
 }
