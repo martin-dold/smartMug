@@ -184,6 +184,9 @@ void parseTcpRxData(uint8_t *data, uint16_t len)
       }
     }
   }
+
+  /* Clear rx data buffer after reading. */
+  memset(rxData, 0, sizeof(rxData));
 }
 
 /*!
