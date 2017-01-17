@@ -17,21 +17,19 @@ public class MugContent {
     public static int Mugcontent_raw;
 
     public static void setMugContent(byte[] bytearray) {
+
         Byte first = bytearray[2];
         Byte second = bytearray[3];
         if (first != null) {
             if (second != null) {
-                int Mugcontent_raw = ((first & 0xff) << 8) | (second & 0xff);
-                Log.e("Value get from mug: ", String.valueOf(Mugcontent_raw));
 
-                //int fillingWeight = (val);
-                //Mugcontent = (100/400) * val;
+                short Mugcontent_raw = (short)(((bytearray[2] & 0xff) << 8) | (bytearray[3] & 0xff));
+                Log.d("MugContent", "_raw = " + Integer.toString(Mugcontent_raw));
+
                 Mugcontent_percent = Mugcontent_raw/4;
                 MainActivity.setMugContent(Mugcontent_percent);
 
-                //Mugcontent = 50;
-                Log.e("Value of Mugcontent: ", String.valueOf(Mugcontent_percent));
-
+                Log.d("MugContent", "_percent = " + String.valueOf(Mugcontent_percent));
 
                 new Thread(new Runnable() {
                     @Override

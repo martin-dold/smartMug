@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.io.*;
 import java.net.Socket;
 import java.lang.System;
+import java.nio.ByteBuffer;
+
 /**
  * Created by FuechsleXD on 04.12.2016.
  */
@@ -32,6 +34,9 @@ public class TCPClient {
     private static DataOutputStream mByteOutputStream;
     // used to read messages from the server
     private BufferedReader mBufferIn;
+
+    private int[] rxData = new int[256];
+    private int rxDataLen;
 
     private byte[] byteArray;
     private byte Byte;
@@ -124,7 +129,7 @@ public class TCPClient {
             //here you must put your computer's IP address.
             //InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
 
-            Log.e("TCP Client", "C: Connecting...");
+            Log.i("TCP Client", "C: Connecting...");
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(ip, port);
@@ -133,30 +138,33 @@ public class TCPClient {
 
             try {
 
-                //sends the message to the server
-                // mBufferOut = newPrintWriter(ne)(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-
                 mByteOutputStream = new DataOutputStream(socket.getOutputStream());
-
                 //receives the message which the server sends back
                 mBufferIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+                rxDataLen = 0;
+                int c = 0;
 
                 //in this while the client listens for the messages sent by the server
-                while (mRun) {
+                while (mRun)
+                {
+                    BufferedInputStream inputS = new BufferedInputStream(socket.getInputStream());
+                    byte[] buffer = new byte[5];
+                    int read;
+                    int readTotal = 0;
+                    while((read = inputS.read(buffer, readTotal, 1)) != -1)
+                    {
+                        readTotal += read;
 
-
-                    mServerMessage = mBufferIn.readLine();
-
-                    if (mServerMessage != null && mMessageListener != null) {
-                        //call the method messageReceived from MyActivity class
-
-                        byteArray = mServerMessage.getBytes();
-                        //output the byte value
-                        MugContent.setMugContent(byteArray);
-                        mMessageListener.messageReceived(mServerMessage);
+                        if(readTotal >= buffer.length)
+                        {
+                            readTotal = 0;
+                            if( (buffer[0] == 0x01) && (buffer[1] == 0x02) && (buffer[4] == 0x0A)  )
+                            {
+                                MugContent.setMugContent(buffer);
+                            }
+                        }
                     }
-
                 }
 
                 Log.e("RESPONSE FROM SERVER", "S: Received Message: '" + mServerMessage + "'");
