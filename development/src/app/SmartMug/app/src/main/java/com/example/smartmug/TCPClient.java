@@ -39,6 +39,10 @@ public class TCPClient {
     /** Current tag value read from current frame. */
     private int currentTag;
 
+    private static boolean isDataToBeSent = false;
+
+    private static byte[] txData = new byte[256];
+
     /** States of the state machine to parse the SmartMug Protocol that consists of:
      *  [TAG] [LEN] [VALUE] [EOF = '\n'] */
     private enum PARSER_STATE
@@ -67,12 +71,16 @@ public class TCPClient {
     public static void sendMessageByteArray(byte[] array){
 
         if (mByteOutputStream != null) {
+            txData = array;
+            isDataToBeSent = true;
+            /*
             try {
                 mByteOutputStream.write(array);
                 mByteOutputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            */
         }
     }
 
@@ -166,6 +174,17 @@ public class TCPClient {
                                 /* Reset state machine for next frame either way. */
                                 parser_state = PARSER_STATE.PARSER_STATE_READ_TAG;
                                 break;
+                        }
+
+                        if(isDataToBeSent)
+                        {
+                            try {
+                                mByteOutputStream.write(txData);
+                                mByteOutputStream.flush();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            isDataToBeSent = false;
                         }
                     }
                 }

@@ -122,12 +122,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(intentStat);
                 break;
             case R.id.orderButton:
-
                 Intent intentOrder = new Intent(this, reOrderActivity.class);
                 startActivity(intentOrder);
                 break;
             case R.id.personalDataButton:
-
                 Intent intentPersData = new Intent (this, PersonalData.class);
                 startActivity(intentPersData);
                 break;
