@@ -12,27 +12,29 @@ import android.widget.ToggleButton;
 
 public class PersonalData extends AppCompatActivity {
 
-
     private String sex;
     private String height;
     private EditText etHeight;
     private EditText etMaleFem;
+    private EditText etWeight;
    // private RadioButton rbtnMale, rbtnFemale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
-
-        etMaleFem=(EditText)findViewById(R.id.txtMaleFemale);
-        etHeight=(EditText)findViewById(R.id.txtCM);
-        SharedPreferences prefe=getSharedPreferences("datos", Context.MODE_PRIVATE);
-        etMaleFem.setText(prefe.getString("sex",""));
-        etHeight.setText(prefe.getString("height",""));
-       // etHeight.setText(prefe.getString("sex",""));
+        etMaleFem = (EditText)findViewById(R.id.txtMaleFemale);
+        etHeight = (EditText)findViewById(R.id.txtCM);
+        etWeight = (EditText)findViewById(R.id.txtGR);
+        /**
+         * Get the "personalData" from the database
+         */
+        SharedPreferences p = getSharedPreferences("personalData", Context.MODE_PRIVATE);
+        etMaleFem.setText(p.getString("sex",""));
+        etHeight.setText(p.getString("height",""));
+        etWeight.setText(p.getString("weight",""));
 //        rbtnMale=(RadioButton)findViewById(R.id.btnMale);
 //        rbtnFemale=(RadioButton)findViewById(R.id.btnFemale);
-
     }
 
     public void onClick(View arg) {
@@ -50,11 +52,21 @@ public class PersonalData extends AppCompatActivity {
 //                sex = "female";
 //                break;
             case R.id.saveButton:
-                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                /**
+                 * get the "personalData" data.
+                 */
+                SharedPreferences preferencias = getSharedPreferences("personalData", Context.MODE_PRIVATE);
+                /**
+                 * Change the data
+                 */
                 SharedPreferences.Editor editor = preferencias.edit();
                 editor.putString("sex", etMaleFem.getText().toString());
                 editor.putString("height", etHeight.getText().toString());
+                editor.putString("weight", etWeight.getText().toString());
                 //editor.putString("sex", sex);
+                /**
+                 * save the new data
+                 */
                 editor.commit();
                 finish();
                 break;

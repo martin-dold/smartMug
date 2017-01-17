@@ -22,14 +22,14 @@
             android:text="5 second challenge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/gameOneButton"
+            android:id="@+id/gameFiveSecButton"
             android:onClick="onClick"/>
 
         <Button
-            android:text="Button"
+            android:text="Guess Drinking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/gameGuessButton"
             android:onClick="onClick"/>
     </LinearLayout>
 </RelativeLayout>

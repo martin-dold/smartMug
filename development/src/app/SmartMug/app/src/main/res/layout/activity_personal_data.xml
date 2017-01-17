@@ -10,17 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.smartmug.PersonalData">
 
-    <Button
-        android:text="save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCM"
-        android:layout_toRightOf="@+id/txtHeight"
-        android:layout_toEndOf="@+id/txtHeight"
-        android:layout_marginTop="53dp"
-        android:id="@+id/saveButton"
-        android:onClick="onClick" />
-
     <TextView
         android:text="Sex: "
         android:layout_width="wrap_content"
@@ -34,30 +23,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtHeight"
-        android:textSize="24sp"
-        android:layout_below="@+id/txtSex"
-        android:layout_alignLeft="@+id/txtSex"
-        android:layout_alignStart="@+id/txtSex"
-        android:layout_marginTop="50dp" />
 
-    <EditText
+    <TextView
+        android:text="Weight (kg):"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/txtCM"
-        android:text="cm"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_alignBaseline="@+id/txtHeight"
-        android:layout_alignBottom="@+id/txtHeight"
-        android:layout_toRightOf="@+id/txtHeight"
-        android:layout_toEndOf="@+id/txtHeight" />
+        android:id="@+id/txtWeight"
+        android:textSize="24sp"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/txtHeight"
+        android:layout_alignLeft="@+id/txtHeight"
+        android:layout_alignStart="@+id/txtHeight" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -68,7 +44,55 @@
         android:id="@+id/txtMaleFemale"
         android:layout_alignBaseline="@+id/txtSex"
         android:layout_alignBottom="@+id/txtSex"
+        android:layout_toRightOf="@+id/txtWeight"
+        android:layout_toEndOf="@+id/txtWeight" />
+
+    <Button
+        android:text="save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:id="@+id/saveButton"
+        android:onClick="onClick"
+        android:layout_below="@+id/txtGR"
         android:layout_toRightOf="@+id/txtSex"
-        android:layout_toEndOf="@+id/txtSex" />
+        android:layout_toEndOf="@+id/txtSex"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtHeight"
+        android:textSize="24sp"
+        android:layout_marginTop="23dp"
+        android:text="Height (cm):"
+        android:layout_below="@+id/txtMaleFemale"
+        android:layout_alignLeft="@+id/txtSex"
+        android:layout_alignStart="@+id/txtSex" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="5"
+        android:id="@+id/txtCM"
+        android:text="cm"
+        android:layout_alignBaseline="@+id/txtHeight"
+        android:layout_alignBottom="@+id/txtHeight"
+        android:layout_toRightOf="@+id/saveButton"
+        android:layout_toEndOf="@+id/saveButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="5"
+        android:id="@+id/txtGR"
+        android:text="kg"
+        android:layout_alignBaseline="@+id/txtWeight"
+        android:layout_alignBottom="@+id/txtWeight"
+        android:layout_alignLeft="@+id/txtCM"
+        android:layout_alignStart="@+id/txtCM" />
 
 </RelativeLayout>

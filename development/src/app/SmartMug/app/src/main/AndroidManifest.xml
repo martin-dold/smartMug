@@ -22,7 +22,9 @@
         <activity android:name=".PersonalData" />
         <activity android:name=".reOrderActivity" />
         <activity android:name=".DrinkingGame" />
-        <activity android:name=".GameList"></activity>
+        <activity android:name=".GameList" />
+        <activity android:name=".GameFiveSeconds" />
+        <activity android:name=".GameGuessDrinking"></activity>
     </application>
 
 </manifest>

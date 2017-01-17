@@ -19,10 +19,15 @@ public class GameList extends AppCompatActivity {
      */
     public void onClick(View arg){
         switch (arg.getId()){
-            case R.id.gameOneButton:
-                Intent intentGameOne = new Intent (this, DrinkingGame.class);
-                startActivity(intentGameOne);
+            case R.id.gameFiveSecButton:
+                Intent intentGameFiveSeconds = new Intent (this, GameFiveSeconds.class);
+                startActivity(intentGameFiveSeconds);
                 break;
+            case R.id.gameGuessButton:
+                Intent intentGameGuess = new Intent (this, GameGuessDrinking.class);
+                startActivity(intentGameGuess);
+                break;
+
 
         }
     }
