@@ -29,10 +29,28 @@ public class TCPClient {
     private BufferedInputStream inputS;
     /** Rx data buffer to read single bytes of data from the socket stream. */
     private byte[] rxData = new byte[5];
-    /** Number of bytes read in a single socket.read() instruction. */
-    private int rxDataLen = 0;
-    /** Total number of bytes read. */
+    /** Total number of bytes read within one frame. */
     private int rxDataLenTotal = 0;
+    /** Holds the length field of the SmartMug Protocol frame
+     *  and thereby tells the len to read, i.e. the length of the frame. */
+    private int lenToRead = 0;
+    /** Single byte array memory to store the current byte to be processed within a frame. */
+    private byte[] currentByte = new byte[1];
+    /** Current tag value read from current frame. */
+    private int currentTag;
+
+    /** States of the state machine to parse the SmartMug Protocol that consists of:
+     *  [TAG] [LEN] [VALUE] [EOF = '\n'] */
+    private enum PARSER_STATE
+    {
+        PARSER_STATE_READ_TAG,
+        PARSER_STATE_READ_LENGTH,
+        PARSER_STATE_READ_VALUE,
+        PARSER_STATE_READ_EOF
+    }
+
+    private PARSER_STATE parser_state;
+
 
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
@@ -76,9 +94,10 @@ public class TCPClient {
         /* Reset all private variables when disconnecting. */
         mByteOutputStream = null;
         inputS = null;
-        rxDataLen = 0;
         rxDataLenTotal = 0;
-
+        lenToRead = 0;
+        parser_state = PARSER_STATE.PARSER_STATE_READ_TAG;
+        currentTag = 0;
     }
 
     public void run(String ip, int port) {
@@ -95,6 +114,8 @@ public class TCPClient {
             Socket socket = new Socket(ip, port);
             //set in the mainactivity that the tcp client is running -> so that its possible to communicate
             MainActivity.tcpClientRunning = true;
+            // Reset state machine before start
+            parser_state = PARSER_STATE.PARSER_STATE_READ_TAG;
 
             try {
 
@@ -104,14 +125,47 @@ public class TCPClient {
 
                 //in this while the client listens for the messages sent by the server
                 while (mRun) {
-                    while ((rxDataLen = inputS.read(rxData, rxDataLenTotal, 1)) != -1) {
-                        rxDataLenTotal += rxDataLen;
+                    /* Read byte per byte and pass it through the parsing state machine,
+                     * i.e. through the switch case.
+                     */
+                    while (inputS.read(currentByte, 0, 1) != -1) {
 
-                        if (rxDataLenTotal >= rxData.length) {
-                            rxDataLenTotal = 0;
-                            if ((rxData[0] == 0x01) && (rxData[1] == 0x02) && (rxData[4] == 0x0A)) {
-                                MugContent.setMugContent(rxData);
-                            }
+                        switch (parser_state)
+                        {
+                            case PARSER_STATE_READ_TAG:
+                                currentTag = (int) currentByte[0];
+                                rxDataLenTotal = 0;
+                                lenToRead = 0;
+                                parser_state = PARSER_STATE.PARSER_STATE_READ_LENGTH;
+                                break;
+
+                            case PARSER_STATE_READ_LENGTH:
+                                lenToRead = (int) currentByte[0];
+                                parser_state = PARSER_STATE.PARSER_STATE_READ_VALUE;
+                                break;
+
+                            case PARSER_STATE_READ_VALUE:
+                                /* Store current byte to our rx data buffer. */
+                                rxData[rxDataLenTotal] = currentByte[0];
+                                /* Increment length counter. */
+                                rxDataLenTotal++;
+                                /* Check if we read the complete frame already. */
+                                if(rxDataLenTotal == lenToRead)
+                                {
+                                    /* The complete data was read. Go to final state. */
+                                    parser_state = PARSER_STATE.PARSER_STATE_READ_EOF;
+                                }
+                                break;
+
+                            case PARSER_STATE_READ_EOF:
+                                if(currentByte[0] == 0x0A)
+                                {
+                                    /* The complete frame is read successfully. Pass it to the mug content. */
+                                    MugContent.setMugContent(currentTag, lenToRead, rxData);
+                                }
+                                /* Reset state machine for next frame either way. */
+                                parser_state = PARSER_STATE.PARSER_STATE_READ_TAG;
+                                break;
                         }
                     }
                 }

@@ -33,7 +33,7 @@ public class DrinkingGame extends AppCompatActivity {
         mugAfter = (TextView) findViewById(R.id.mugAfterText) ;
         start.setEnabled(true);
         //stop.setEnabled(false);
-        mugBef = MugContent.Mugcontent_raw;
+        mugBef = MugContent.mMugcontent_raw;
         total = (TextView) findViewById(R.id.totalText);
         //total.setText("Total drinked");
         mugBefore.setText("Mug Content: " + mugBef);
@@ -60,7 +60,7 @@ public class DrinkingGame extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         crono.setText("done!");
-                        mugAft = MugContent.Mugcontent_raw;
+                        mugAft = MugContent.mMugcontent_raw;
                         mugAfter.setText("Mug Content: " + mugAft);
                         int t = mugBef-mugAft;
                         total.setText("Total drinked: " +  t);
