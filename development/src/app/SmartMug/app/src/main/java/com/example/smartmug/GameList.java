@@ -13,6 +13,10 @@ public class GameList extends AppCompatActivity {
         setContentView(R.layout.activity_game_list);
     }
 
+    /**
+     * shows the game list
+     * @param arg
+     */
     public void onClick(View arg){
         switch (arg.getId()){
             case R.id.gameOneButton:
