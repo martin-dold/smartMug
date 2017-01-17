@@ -39,7 +39,6 @@ public class DrinkingGame extends AppCompatActivity {
         mugBefore.setText("Mug Content: " + mugBef);
         mugAfter.setText("Mug Content: " + mugAft);
 
-
     }
 
     public void onClick(View arg){

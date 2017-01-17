@@ -87,12 +87,20 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             }
             else {
                 Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
+                ip = result.getContents();
+                buildNewTCPConnection();
             }
         }
         else {
 
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void buildNewTCPConnection() {
+        new ConnectTask().execute("");
+        Intent intentConect = new Intent (this, MainActivity.class);
+        startActivity(intentConect);
     }
 
     public class ConnectTask extends AsyncTask<String, String, TCPClient> {
@@ -110,8 +118,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 }
             });
 
-            //mTCPClient.run(ip,por);
-            mTCPClient.run("192.168.5.10",8080);
+            mTCPClient.run(ip,8080);
+            /*hard coded TCP Connection*/
+            //mTCPClient.run("192.168.5.10",8080);
 
             return null;
         }

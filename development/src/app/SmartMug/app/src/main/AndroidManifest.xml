@@ -17,12 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ManuellInput" />
         <activity android:name=".ConnectionActivity" />
         <activity android:name=".Statistic" />
         <activity android:name=".PersonalData" />
-        <activity android:name=".Order" />
-        <activity android:name=".ClientActivity" />
         <activity android:name=".reOrderActivity" />
         <activity android:name=".DrinkingGame" />
         <activity android:name=".GameList"></activity>
