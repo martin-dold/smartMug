@@ -114,7 +114,7 @@ public class TCPClient {
 
         try {
             //here you must put your computer's IP address.
-            //InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+
 
             Log.i("TCP Client", "C: Connecting...");
 

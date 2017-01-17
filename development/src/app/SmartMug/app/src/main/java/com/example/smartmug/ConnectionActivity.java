@@ -13,19 +13,45 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class ConnectionActivity extends AppCompatActivity implements OnClickListener{
 
+    /**
+     * TCP Client
+     */
     private TCPClient mTCPClient;
+    /**
+     * Textfield for the IP
+     */
     private EditText ipInput;
+    /**
+     * Textfield for the port
+     */
     private EditText port;
+
+    /**
+     * value of the used ip
+     */
     private String ip ;
+    /**
+     * value of the used port
+     */
     private int por;
+
+    /**
+     * value if qrCode is used
+     */
+    private boolean qrCodeActive =false;
+
+    private InetAddress serverAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connection);
 
+        setContentView(R.layout.activity_connection);
         View btnScanQRCode = findViewById(R.id.qrCodeButoon);
         btnScanQRCode.setOnClickListener(this);
         View btnManuellInput = findViewById(R.id.manuellInput);
@@ -36,6 +62,8 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         port = (EditText)findViewById(R.id.port);
         //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.
         //        Builder().permitNetwork().build());
+
+
 
 
     }
@@ -57,26 +85,14 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
 
             case R.id.manuellInput:
 
-                //ip = ipInput.getText().toString();
+                ip = ipInput.getText().toString();
                 //por = Integer.parseInt(port.getText().toString());
 
-                new ConnectTask().execute("");
-                Intent intentConect = new Intent (this, MainActivity.class);
-                startActivity(intentConect);
+                buildNewTCPConnection();
                 break;
 
         }
     }
-
-    /*
-    @Override
-    protected void onPause(){
-        super.onPause();
-
-        //disconnect
-        mTCPClient.stopClient();
-        mTCPClient =null;
-    } */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -87,6 +103,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             }
             else {
                 Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
+                qrCodeActive = true;
                 ip = result.getContents();
                 buildNewTCPConnection();
             }
@@ -118,7 +135,19 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 }
             });
 
-            mTCPClient.run(ip,8080);
+            if (qrCodeActive == true){
+                try {
+                    serverAddr = InetAddress.getByName(ip);
+                    mTCPClient.run(serverAddr.getHostAddress(),8080);
+                    qrCodeActive = false;
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                mTCPClient.run(ip,8080);
+            }
+
+
             /*hard coded TCP Connection*/
             //mTCPClient.run("192.168.5.10",8080);
 
