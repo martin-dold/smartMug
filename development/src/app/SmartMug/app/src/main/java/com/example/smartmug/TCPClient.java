@@ -21,72 +21,46 @@ import java.nio.ByteBuffer;
 
 public class TCPClient {
 
-
-    // message to send to the server
-    private String mServerMessage;
-    // sends message received notifications
-    private OnMessageReceived mMessageListener = null;
-    // while this is true, the server will continue running
+    /** while this is true, the server will continue running */
     private boolean mRun = false;
-    // used to send messages
-    private static BufferedWriter mBufferOut;
-
+    /** used to send messages */
     private static DataOutputStream mByteOutputStream;
-    // used to read messages from the server
-    private BufferedReader mBufferIn;
-
-    private int[] rxData = new int[256];
-    private int rxDataLen;
-
-    private byte[] byteArray;
-    private byte Byte;
+    /** used to read messages from the server */
+    private BufferedInputStream inputS;
+    /** Rx data buffer to read single bytes of data from the socket stream. */
+    private byte[] rxData = new byte[5];
+    /** Number of bytes read in a single socket.read() instruction. */
+    private int rxDataLen = 0;
+    /** Total number of bytes read. */
+    private int rxDataLenTotal = 0;
 
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
      */
     public TCPClient(OnMessageReceived listener) {
-        mMessageListener = listener;
+
     }
 
     /**
-     * Sends the message entered by client to the server
+     * Sends the message (as byte array) entered by client to the server
      *
-     * @param message text entered by client
+     * @param array text entered by client
      */
-    /*
-    public static void sendMessage(String message) {
-        if (mBufferOut != null && !mBufferOut.checkError()) {
-            mBufferOut.println(message);
-            mBufferOut.flush();
-        }
-    } */
-
     public static void sendMessageByteArray(byte[] array){
 
         if (mByteOutputStream != null) {
-            //mBufferOut.
-
-
             try {
                 mByteOutputStream.write(array);
                 mByteOutputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            // mBufferOut.write("\n");
-
-            //DataInputStream dOut = new DataOutputStream(so)
-
-
-           // mBufferOut.println(array);
-
         }
     }
 
     /**
      * Close the connection and release the members
      */
-
     public void stopClient(){
         mRun = false;
 
@@ -99,27 +73,13 @@ public class TCPClient {
             }
         }
 
-        mMessageListener = null;
-        mBufferIn = null;
+        /* Reset all private variables when disconnecting. */
         mByteOutputStream = null;
-        mServerMessage = null;
+        inputS = null;
+        rxDataLen = 0;
+        rxDataLenTotal = 0;
 
     }
-/*    public void stopClient() {
-
-        mRun = false;
-
-        if (mBufferOut != null) {
-            mBufferOut.flush();
-            mBufferOut.close();
-        }
-
-        mMessageListener = null;
-        mBufferIn = null;
-        mBufferOut = null;
-        mServerMessage = null;
-    }
-*/
 
     public void run(String ip, int port) {
 
@@ -139,36 +99,22 @@ public class TCPClient {
             try {
 
                 mByteOutputStream = new DataOutputStream(socket.getOutputStream());
-                //receives the message which the server sends back
-                mBufferIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                rxDataLen = 0;
-                int c = 0;
+                inputS = new BufferedInputStream(socket.getInputStream());
 
                 //in this while the client listens for the messages sent by the server
-                while (mRun)
-                {
-                    BufferedInputStream inputS = new BufferedInputStream(socket.getInputStream());
-                    byte[] buffer = new byte[5];
-                    int read;
-                    int readTotal = 0;
-                    while((read = inputS.read(buffer, readTotal, 1)) != -1)
-                    {
-                        readTotal += read;
+                while (mRun) {
+                    while ((rxDataLen = inputS.read(rxData, rxDataLenTotal, 1)) != -1) {
+                        rxDataLenTotal += rxDataLen;
 
-                        if(readTotal >= buffer.length)
-                        {
-                            readTotal = 0;
-                            if( (buffer[0] == 0x01) && (buffer[1] == 0x02) && (buffer[4] == 0x0A)  )
-                            {
-                                MugContent.setMugContent(buffer);
+                        if (rxDataLenTotal >= rxData.length) {
+                            rxDataLenTotal = 0;
+                            if ((rxData[0] == 0x01) && (rxData[1] == 0x02) && (rxData[4] == 0x0A)) {
+                                MugContent.setMugContent(rxData);
                             }
                         }
                     }
                 }
-
-                Log.e("RESPONSE FROM SERVER", "S: Received Message: '" + mServerMessage + "'");
-
             } catch (Exception e) {
 
                 Log.e("TCP", "S: Error", e);
@@ -177,7 +123,7 @@ public class TCPClient {
                 //the socket must be closed. It is not possible to reconnect to this socket
                 // after it is closed, which means a new socket instance has to be created.
                 socket.close();
-                Log.e("TCP closing socket", "");
+                Log.i("TCP", "closing socket");
                 //TODO
                 // If connection is lost then we have to set the variable in main to false
                 MainActivity.tcpClientRunning = false;
@@ -186,7 +132,6 @@ public class TCPClient {
         } catch (Exception e) {
 
             Log.e("TCP", "C: Error", e);
-
         }
 
     }
