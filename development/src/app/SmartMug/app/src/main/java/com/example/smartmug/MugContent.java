@@ -13,43 +13,42 @@ import static com.example.smartmug.MainActivity.progressBar;
 
 public class MugContent {
 
-    public static int Mugcontent_percent;
-    public static int Mugcontent_raw;
+    /** Holds the last received content level of the mug in percent compared
+     *  to a mug with max. 400g, i.e. 400g equals 100%. */
+    public static int mMugcontent_percent;
+    /** Holds the last received content level of the mug in unit 'g' (gramm). */
+    public static int mMugcontent_raw;
 
-    public static void setMugContent(byte[] bytearray) {
-        Byte first = bytearray[2];
-        Byte second = bytearray[3];
-        if (first != null) {
-            if (second != null) {
-                int Mugcontent_raw = ((first & 0xff) << 8) | (second & 0xff);
-                Log.e("Value get from mug: ", String.valueOf(Mugcontent_raw));
+    public static void setMugContent(int tag, int len, byte[] value) {
 
-                //int fillingWeight = (val);
-                //Mugcontent = (100/400) * val;
-                Mugcontent_percent = Mugcontent_raw/4;
-                MainActivity.setMugContent(Mugcontent_percent);
+        switch (tag)
+        {
+            /* TAG = 1: Sensor Data */
+            case 1:
+                /* The tag "sensor data" should have a value length of 2. */
+                if(len == 2)
+                {
+                    /* Convert the two bytes into one value. */
+                    mMugcontent_raw = (((value[0] & 0xff) << 8) | (value[1] & 0xff));
+                    mMugcontent_percent = mMugcontent_raw / 4;
 
-                //Mugcontent = 50;
-                Log.e("Value of Mugcontent: ", String.valueOf(Mugcontent_percent));
+                    Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
+                    Log.d("MugContent", "_percent = " + String.valueOf(mMugcontent_percent));
 
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressBar.post(new Runnable() {
-                            public void run() {
-                                progressBar.setProgress(Mugcontent_percent);
-                                //Update Notification
-                                mBuilder.setContentText(Mugcontent_percent +"%");
-                                notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
-                            }
-                        });
-                    }
-                }).start();
-
-
-            }
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.post(new Runnable() {
+                                public void run() {
+                                    progressBar.setProgress(mMugcontent_percent);
+                                    //Update Notification
+                                    mBuilder.setContentText(mMugcontent_percent +"%");
+                                    notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
+                                }
+                            });
+                        }
+                    }).start();
+                }
         }
-
     }
 }

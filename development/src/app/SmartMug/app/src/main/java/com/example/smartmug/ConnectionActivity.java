@@ -120,7 +120,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
             //response received from server
-            Log.d("test", "response " + values[0]);
+            //Log.d("test", "response " + values[0]);
             //process server response here....
 
         }
