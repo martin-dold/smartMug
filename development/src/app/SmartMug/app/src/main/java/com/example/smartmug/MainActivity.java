@@ -3,6 +3,7 @@ package com.example.smartmug;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.NotificationCompat;
@@ -51,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
      * Notification Manager can be use to change the Notification
      */
     public static NotificationManager notificationmanager;
+
+    /**
+     * Helper class instance for Network Service Discovery (NSD) using mDNS
+     */
+    public NsdHelper mNsdHelper;
 
     /**
      * create the Activity
@@ -104,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
          */
         showNotification();
 
+        mNsdHelper = new NsdHelper(this);
+        mNsdHelper.discoverServices();
     }
 
     /**
