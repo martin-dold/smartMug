@@ -12,8 +12,11 @@ import android.widget.ToggleButton;
 
 public class PersonalData extends AppCompatActivity {
 
-    private String sex;
-    private String height;
+    public static boolean sex;
+    public int height;
+    public static int weight;
+
+
     private EditText etHeight;
     private EditText etMaleFem;
     private EditText etWeight;
@@ -56,6 +59,14 @@ public class PersonalData extends AppCompatActivity {
                  * get the "personalData" data.
                  */
                 SharedPreferences preferencias = getSharedPreferences("personalData", Context.MODE_PRIVATE);
+                /**
+                 * define sex height and weight
+                 */
+                height = Integer.parseInt(etHeight.getText().toString());
+                weight = Integer.parseInt(etWeight.getText().toString());
+                if (etMaleFem.getText().toString().equals("male")){
+                    sex = true;
+                } else sex = false;
                 /**
                  * Change the data
                  */
