@@ -65,6 +65,13 @@ CSS
     filter call_regexp_common C
     extension css
     3rd_gen_scale 1.00
+Java
+    filter remove_matches ^\s*//
+    filter call_regexp_common C
+    filter remove_inline //.*$
+    extension java
+    3rd_gen_scale 1.36
+    end_of_line_continuation \\$
 Python
     filter remove_matches ^\s*#
     filter docstring_to_C
