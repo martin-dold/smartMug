@@ -26,7 +26,13 @@ public class MugContent {
      *  to a mug with max. 400g, i.e. 400g equals 100%. */
     public static int mMugcontent_percent;
     /** @brief Holds the last received content level of the mug in unit 'g' (gramm). */
-    public static int mMugcontent_raw;
+    public static int mMugcontent_raw = 0;
+    /** @brief Difference between current _raw and previous _raw. */
+    public static int mMugcontent_diff_to_last;
+    /** @brief Old value of the MugCcontent*/
+    public static int tempOldValue = 0;
+
+    public static boolean newfill = false;
 
     public static void setMugContent(int tag, int len, byte[] value) {
 
@@ -37,12 +43,21 @@ public class MugContent {
                 /* The tag "sensor data" should have a value length of 2. */
                 if(len == 2)
                 {
-                    /* Convert the two bytes into one value. */
-                    mMugcontent_raw = (((value[0] & 0xff) << 8) | (value[1] & 0xff));
-                    mMugcontent_percent = mMugcontent_raw / 4;
 
-                    Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
-                    Log.d("MugContent", "_percent = " + String.valueOf(mMugcontent_percent));
+                    tempOldValue = mMugcontent_raw;
+                    /* Convert the two bytes into one value. update the new Mugcontent*/
+                    mMugcontent_raw = (((value[0] & 0xff) << 8) | (value[1] & 0xff));
+
+
+
+                        mMugcontent_diff_to_last = tempOldValue - mMugcontent_raw;
+
+                        mMugcontent_percent = mMugcontent_raw / 4;
+
+
+                        Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
+                        Log.d("MugContent", "_percent = " + String.valueOf(mMugcontent_percent));
+
 
                     new Thread(new Runnable() {
                         @Override
@@ -51,8 +66,24 @@ public class MugContent {
                                 public void run() {
                                     progressBar.setProgress(mMugcontent_percent);
                                     //Update Notification
-                                    mBuilder.setContentText(mMugcontent_percent +"%");
+                                    //mBuilder.setContentText(mMugcontent_percent +"%");
+                                    //notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
+
+                                    /**Update drink Amount */
+                                    if(mMugcontent_diff_to_last >=0){
+                                        Statistic.addDrinkingVolume(mMugcontent_diff_to_last);
+                                    }
+
+                                    /**Update Notification */
+                                    if(Statistic.promile >= 0.5){
+                                        //Update Notification
+                                        mBuilder.setContentText(mMugcontent_percent +"%" + "\n" +"    Promile : " + Statistic.promile);
+                                        notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
+                                    } else
+                                        //Update Notification
+                                        mBuilder.setContentText(mMugcontent_percent +"%");
                                     notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
+
                                 }
                             });
                         }

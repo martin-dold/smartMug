@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         showNotification();
 
         mNsdHelper = new NsdHelper(this);
+        mNsdHelper.initializeNsd();
         mNsdHelper.discoverServices();
     }
 

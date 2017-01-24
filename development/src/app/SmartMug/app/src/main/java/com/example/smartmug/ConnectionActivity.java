@@ -65,28 +65,44 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_connection);
+        /**
+         * QR Code Button
+         */
         View btnScanQRCode = findViewById(R.id.qrCodeButoon);
+        /**
+         * Listener for QR Code Button
+         */
         btnScanQRCode.setOnClickListener(this);
+        /**
+         * Manuell Input Button
+         */
         View btnManuellInput = findViewById(R.id.manuellInput);
+        /**
+         * Listener for Manuell Input Button
+         */
         btnManuellInput.setOnClickListener(this);
 
+        /**
+         * Text field for IP Adress
+         */
         ipInput = (EditText)findViewById(R.id.ipAdress);
-        //View ipInput = findViewById(R.id.ipAdress);
+        /**
+         * Text field for port
+         */
         port = (EditText)findViewById(R.id.port);
-        //StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.
-        //        Builder().permitNetwork().build());
-
-
-
-
     }
 
-
+    /**
+     * Click on Listener Method
+     * @param arg
+     */
     public void onClick(View arg) {
         switch (arg.getId()){
 
             case R.id.qrCodeButoon:
-
+                /**
+                 * Initialize the Barcode Scanner
+                 */
                 IntentIntegrator integretor = new IntentIntegrator(this);
                 integretor.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integretor.setPrompt("Scan");
@@ -98,6 +114,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
 
             case R.id.manuellInput:
 
+                /**
+                 * IP Input field
+                 */
                 ip = ipInput.getText().toString();
                 //por = Integer.parseInt(port.getText().toString());
 
@@ -107,6 +126,12 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         }
     }
 
+    /**
+     * QR Code Method
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -127,12 +152,18 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         }
     }
 
+    /**
+     * build the TCP Connection
+     */
     private void buildNewTCPConnection() {
         new ConnectTask().execute("");
         Intent intentConect = new Intent (this, MainActivity.class);
         startActivity(intentConect);
     }
 
+    /**
+     * Connect class as asynch task
+     */
     public class ConnectTask extends AsyncTask<String, String, TCPClient> {
 
         @Override
@@ -148,6 +179,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 }
             });
 
+            /**
+             * two cases: one for the QR Code connection, second for the manuell Input
+             */
             if (qrCodeActive == true){
                 try {
                     serverAddr = InetAddress.getByName(ip);
@@ -159,14 +193,13 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             } else {
                 mTCPClient.run(ip,8080);
             }
-
-
-            /*hard coded TCP Connection*/
-            //mTCPClient.run("192.168.5.10",8080);
-
             return null;
         }
 
+        /**
+         * Update Progeress
+         * @param values
+         */
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
