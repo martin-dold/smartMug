@@ -10,6 +10,19 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
+/*! @file  
+ *  @brief This is the personal data activity of the smartmug project.
+ *
+ *  @defgroup privatedata Private data
+ *  @brief Contains the personal data of the user of the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup privatedata
+ *  @{
+ */
+
 public class PersonalData extends AppCompatActivity {
 
     private String sex;
@@ -74,3 +87,8 @@ public class PersonalData extends AppCompatActivity {
     }
 
 }
+
+/*!
+ * @}
+ * @}
+ */

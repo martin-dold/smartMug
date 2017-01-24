@@ -7,8 +7,17 @@ import static com.example.smartmug.MainActivity.mBuilder;
 import static com.example.smartmug.MainActivity.notificationmanager;
 import static com.example.smartmug.MainActivity.progressBar;
 
-/**
- * Created by FuechsleXD on 06.12.2016.
+/*! @file  
+ *  @brief This is the mug content class of the smartmug project.
+ *
+ *  @defgroup mugcontent Drinking game list
+ *  @brief Lists the drinking games of the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup mugcontent
+ *  @{
  */
 
 public class MugContent {
@@ -52,3 +61,8 @@ public class MugContent {
         }
     }
 }
+
+/*!
+ * @}
+ * @}
+ */

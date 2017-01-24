@@ -15,8 +15,17 @@ import java.net.Socket;
 import java.lang.System;
 import java.nio.ByteBuffer;
 
-/**
- * Created by FuechsleXD on 04.12.2016.
+/*! @file  
+ *  @brief This is the TCP client class of the smartmug project.
+ *
+ *  @defgroup java_tcp TCP client
+ *  @brief Adds TCP client connectivity to the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup java_tcp
+ *  @{
  */
 
 public class TCPClient {
@@ -216,3 +225,8 @@ public class TCPClient {
     }
 
 }
+
+/*!
+ * @}
+ * @}
+ */

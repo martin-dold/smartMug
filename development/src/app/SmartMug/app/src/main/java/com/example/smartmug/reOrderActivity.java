@@ -7,6 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+/*! @file  
+ *  @brief This is the re order activity of the smartmug project.
+ *
+ *  @defgroup reorder Reorder
+ *  @brief Allows to re order a drink using the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup reorder
+ *  @{
+ */
+
 public class reOrderActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -73,3 +86,8 @@ public class reOrderActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 }
+
+/*!
+ * @}
+ * @}
+ */

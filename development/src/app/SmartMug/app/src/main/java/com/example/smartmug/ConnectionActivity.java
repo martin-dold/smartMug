@@ -16,6 +16,19 @@ import com.google.zxing.integration.android.IntentResult;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/*! @file  
+ *  @brief This is the connection activity of the smartmug project.
+ *
+ *  @defgroup connection Connection
+ *  @brief Adds TCP functionality to the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup connection
+ *  @{
+ */
+
 public class ConnectionActivity extends AppCompatActivity implements OnClickListener{
 
     /**
@@ -167,4 +180,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
 
 }
 
-
+/*!
+ * @}
+ * @}
+ */

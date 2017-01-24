@@ -7,6 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/*! @file  
+ *  @brief This is the five seconds game activity of the smartmug project.
+ *
+ *  @defgroup game_5s 5 seconds game
+ *  @brief Adds 5 second game to the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup game_5s
+ *  @{
+ */
+
 public class GameFiveSeconds extends AppCompatActivity {
 
     /**
@@ -66,3 +79,8 @@ public class GameFiveSeconds extends AppCompatActivity {
         }
     }
 }
+
+/*!
+ * @}
+ * @}
+ */
