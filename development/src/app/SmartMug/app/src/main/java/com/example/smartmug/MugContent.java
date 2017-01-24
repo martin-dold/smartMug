@@ -13,10 +13,10 @@ import static com.example.smartmug.MainActivity.progressBar;
 
 public class MugContent {
 
-    /** Holds the last received content level of the mug in percent compared
+    /** @brief Holds the last received content level of the mug in percent compared
      *  to a mug with max. 400g, i.e. 400g equals 100%. */
     public static int mMugcontent_percent;
-    /** Holds the last received content level of the mug in unit 'g' (gramm). */
+    /** @brief Holds the last received content level of the mug in unit 'g' (gramm). */
     public static int mMugcontent_raw;
 
     public static void setMugContent(int tag, int len, byte[] value) {
