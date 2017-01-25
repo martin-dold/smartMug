@@ -13,6 +13,19 @@ import android.widget.TextView;
 
 import static com.example.smartmug.MainActivity.progressBar;
 
+/*! @file  
+ *  @brief This is the drinking game activity of the smartmug project.
+ *
+ *  @defgroup drink Drinking Game
+ *  @brief Adds drinking games to the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup drink
+ *  @{
+ */
+
 public class DrinkingGame extends AppCompatActivity {
 
     /**
@@ -72,3 +85,8 @@ public class DrinkingGame extends AppCompatActivity {
         }
     }
 }
+
+/*!
+ * @}
+ * @}
+ */

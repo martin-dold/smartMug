@@ -1,0 +1,97 @@
+Arduino Sketch
+    filter remove_matches ^\s*//
+    filter call_regexp_common C
+    filter remove_inline //.*$
+    extension ino
+    extension pde
+    3rd_gen_scale 1.00
+Bourne Again Shell
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension bash
+    script_exe bash
+    3rd_gen_scale 3.81
+    end_of_line_continuation \\$
+Bourne Shell
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension sh
+    script_exe sh
+    3rd_gen_scale 3.81
+    end_of_line_continuation \\$
+C
+    filter remove_matches ^\s*//
+    filter call_regexp_common C
+    filter remove_inline //.*$
+    extension c
+    extension ec
+    extension pgc
+    3rd_gen_scale 0.77
+    end_of_line_continuation \\$
+C++
+    filter remove_matches ^\s*//
+    filter remove_inline //.*$
+    filter call_regexp_common C
+    extension C
+    extension cc
+    extension cpp
+    extension cxx
+    extension pcc
+    3rd_gen_scale 1.51
+    end_of_line_continuation \\$
+C/C++ Header
+    filter remove_matches ^\s*//
+    filter call_regexp_common C
+    filter remove_inline //.*$
+    extension H
+    extension h
+    extension hh
+    extension hpp
+    3rd_gen_scale 1.00
+    end_of_line_continuation \\$
+CCS
+    filter call_regexp_common C
+    extension ccs
+    3rd_gen_scale 5.33
+CMake
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension CMakeLists.txt
+    extension cmake
+    filename CMakeLists.txt
+    3rd_gen_scale 1.00
+    end_of_line_continuation \\$
+CSS
+    filter call_regexp_common C
+    extension css
+    3rd_gen_scale 1.00
+Java
+    filter remove_matches ^\s*//
+    filter call_regexp_common C
+    filter remove_inline //.*$
+    extension java
+    3rd_gen_scale 1.36
+    end_of_line_continuation \\$
+Python
+    filter remove_matches ^\s*#
+    filter docstring_to_C
+    filter call_regexp_common C
+    filter remove_inline #.*$
+    extension py
+    3rd_gen_scale 4.20
+    end_of_line_continuation \\$
+make
+    filter remove_matches ^\s*#
+    filter remove_inline #.*$
+    extension Gnumakefile
+    extension Makefile
+    extension am
+    extension gnumakefile
+    extension makefile
+    filename Gnumakefile
+    filename Makefile
+    filename gnumakefile
+    filename makefile
+    script_exe make
+    3rd_gen_scale 2.50
+    end_of_line_continuation \\$

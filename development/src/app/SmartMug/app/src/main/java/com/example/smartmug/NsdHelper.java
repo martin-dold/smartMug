@@ -21,6 +21,19 @@ import android.net.nsd.NsdServiceInfo;
 import android.net.nsd.NsdManager;
 import android.util.Log;
 
+/*! @file  
+ *  @brief This is the network service discovery helper class of the smartmug project derived from <b>Android Open Source Project</b>.
+ *
+ *  @defgroup nsd Network Service Discovery (NSD)
+ *  @brief Detects Smartmug services in the network. This helper class is derived from <b>Android Open Source Project</b>.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup nsd
+ *  @{
+ */
+
 public class NsdHelper {
 
     Context mContext;

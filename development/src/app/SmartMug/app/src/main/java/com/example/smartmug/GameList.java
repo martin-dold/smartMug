@@ -5,6 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/*! @file  
+ *  @brief This is the game list activity of the smartmug project.
+ *
+ *  @defgroup game_list Drinking game list
+ *  @brief Lists the drinking games of the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup game_list
+ *  @{
+ */
+
 public class GameList extends AppCompatActivity {
 
     @Override
@@ -32,3 +45,8 @@ public class GameList extends AppCompatActivity {
         }
     }
 }
+
+/*!
+ * @}
+ * @}
+ */

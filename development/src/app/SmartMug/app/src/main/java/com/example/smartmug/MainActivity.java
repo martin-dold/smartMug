@@ -17,6 +17,23 @@ import android.widget.TextView;
 
 import static android.R.id.progress;
 
+/*! @file  
+ *  @brief This is the main activity of the smartmug project.
+ *
+ *  @defgroup java Android Code
+ *  @brief Android code of the smartmug firmware.
+ *
+ *  @defgroup main SmartMug Main
+ *  @brief Main acitivity of the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup main
+ *  @{
+ */
+
+
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
@@ -182,3 +199,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         return finalid;
     }
 }
+
+/*!
+ * @}
+ * @}
+ */

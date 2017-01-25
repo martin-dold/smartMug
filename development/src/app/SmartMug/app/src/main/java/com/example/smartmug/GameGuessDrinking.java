@@ -9,6 +9,19 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+/*! @file  
+ *  @brief This is the guess drinking game activity of the smartmug project.
+ *
+ *  @defgroup game_guess Guess drinking game
+ *  @brief Adds guess drinking game to the smartmug app.
+ *
+ *  @addtogroup java
+ *  @{
+ *
+ *  @addtogroup game_guess
+ *  @{
+ */
+
 public class GameGuessDrinking extends AppCompatActivity {
 
     private TextView randomNumber, mugBefore, result, chrono;
@@ -67,3 +80,8 @@ public class GameGuessDrinking extends AppCompatActivity {
     }
 
 }
+
+/*!
+ * @}
+ * @}
+ */
