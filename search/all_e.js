@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['smartmug_20source_20code_20documentation',['SmartMug Source Code Documentation',['../index.html',1,'']]],
+  ['smartmug_20main',['SmartMug Main',['../group__main.html',1,'']]],
+  ['scale',['scale',['../group__hx711.html#ga938c734da19e8e3c4bea1313a82d0ac7',1,'hx711.ino']]],
+  ['send_5fdummy_5fdata',['SEND_DUMMY_DATA',['../group__main.html#ga9b940b11812b069196c2b08afdf01c70',1,'smartmug.ino']]],
+  ['sendmessagebytearray',['sendMessageByteArray',['../classcom_1_1example_1_1smartmug_1_1_t_c_p_client.html#aa47594cd8975bb910206f1fec124e6b5',1,'com::example::smartmug::TCPClient']]],
+  ['serial',['Serial',['../group__serial.html',1,'']]],
+  ['serial_2eino',['serial.ino',['../serial_8ino.html',1,'']]],
+  ['serial_5fsetup',['serial_setup',['../group__serial.html#gaea85ad3b2876e90dfd21e1a15a836fec',1,'serial.ino']]],
+  ['server',['server',['../group__tcp.html#gab04162907310ac5e41f95b86ae06cf41',1,'tcp.ino']]],
+  ['serverremote',['serverRemote',['../group__tcp.html#ga3526215a98a170dfaf6c03fbbdef89b4',1,'tcp.ino']]],
+  ['service_5ftype',['SERVICE_TYPE',['../group__nsd.html#ga1d1b3502991f004a8b72929b9d5a848d',1,'com::example::smartmug::NsdHelper']]],
+  ['setmugcontent',['setMugContent',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#a04f2e011c985468c41e7427e21278e93',1,'com::example::smartmug::MugContent']]],
+  ['setup',['setup',['../group__main.html#ga4fc01d736fe50cf5b977f755b675f11d',1,'smartmug.ino']]],
+  ['sex',['sex',['../classcom_1_1example_1_1smartmug_1_1_personal_data.html#a9042a9406d4cb0535e9953794ff51dd8',1,'com::example::smartmug::PersonalData']]],
+  ['smartmug_2eino',['smartmug.ino',['../smartmug_8ino.html',1,'']]],
+  ['splash',['Splash',['../classcom_1_1example_1_1smartmug_1_1_splash.html',1,'com::example::smartmug']]],
+  ['splash_2ejava',['Splash.java',['../_splash_8java.html',1,'']]],
+  ['ssid',['ssid',['../group__wifi.html#ga587ba0cb07f02913598610049a3bbb79',1,'wifi.ino']]],
+  ['statistic',['Statistic',['../classcom_1_1example_1_1smartmug_1_1_statistic.html',1,'com::example::smartmug']]],
+  ['statistic_2ejava',['Statistic.java',['../_statistic_8java.html',1,'']]],
+  ['statistics',['Statistics',['../group__statistics.html',1,'']]],
+  ['statistics_2emd',['statistics.md',['../statistics_8md.html',1,'']]],
+  ['stopclient',['stopClient',['../classcom_1_1example_1_1smartmug_1_1_t_c_p_client.html#a1871d1938a43ab52ba7915b7f7d8aaa5',1,'com::example::smartmug::TCPClient']]],
+  ['stopdiscovery',['stopDiscovery',['../group__nsd.html#ga3a662b277541de315e42d7e5acd054d7',1,'com::example::smartmug::NsdHelper']]],
+  ['subnet',['subnet',['../group__wifi.html#ga89cf134ada28d8ce0192d9fcbc83614a',1,'wifi.ino']]]
+];

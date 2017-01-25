@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['mainactivity',['MainActivity',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html',1,'com::example::smartmug']]],
+  ['mainactivity_2ejava',['MainActivity.java',['../_main_activity_8java.html',1,'']]],
+  ['mainpage_2edox',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
+  ['mbuilder',['mBuilder',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html#aa42d8a7fdc277eb4378adcb606985450',1,'com::example::smartmug::MainActivity']]],
+  ['mdns_2eino',['mdns.ino',['../mdns_8ino.html',1,'']]],
+  ['mdns_5floop',['mdns_loop',['../mdns_8ino.html#a22db813f3d1d049a3ca30788a8144a03',1,'mdns.ino']]],
+  ['mdns_5fservice_5fname',['MDNS_SERVICE_NAME',['../mdns_8ino.html#a2597be4e15dcb4d93d323730f9ac2838',1,'mdns.ino']]],
+  ['mdns_5fservice_5fport',['MDNS_SERVICE_PORT',['../mdns_8ino.html#a7ad20d359031bc414d0a471b7bebedd6',1,'mdns.ino']]],
+  ['mdns_5fservice_5fproto',['MDNS_SERVICE_PROTO',['../mdns_8ino.html#a43d208ae33ffece4cd9cbf7b4437f2bb',1,'mdns.ino']]],
+  ['mdns_5fservice_5ftype',['MDNS_SERVICE_TYPE',['../mdns_8ino.html#a505137e19f62cb77410aca49d2876bb3',1,'mdns.ino']]],
+  ['mdns_5fsetup',['mdns_setup',['../mdns_8ino.html#a67acd984e1b2bb7fe46a7c8aff692342',1,'mdns.ino']]],
+  ['messagereceived',['messageReceived',['../interfacecom_1_1example_1_1smartmug_1_1_t_c_p_client_1_1_on_message_received.html#a5b412d6226ec2f0fcebc63ab81192667',1,'com::example::smartmug::TCPClient::OnMessageReceived']]],
+  ['mmugcontent_5fdiff_5fto_5flast',['mMugcontent_diff_to_last',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#ab5e5f17a5a2ec8fef4a4f4cb8310f77e',1,'com::example::smartmug::MugContent']]],
+  ['mmugcontent_5fpercent',['mMugcontent_percent',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#a99e8dfad6e3776de177165b028128033',1,'com::example::smartmug::MugContent']]],
+  ['mmugcontent_5fraw',['mMugcontent_raw',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#abef282b85fd401ce81361c6e28a8c0e0',1,'com::example::smartmug::MugContent']]],
+  ['mnsdhelper',['mNsdHelper',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html#adc6e58ea8dbfddac8d4fa8b3dfa31106',1,'com::example::smartmug::MainActivity']]],
+  ['mservicename',['mServiceName',['../group__nsd.html#ga0a4b9d9297a5436b125a09678e5a3e2e',1,'com::example::smartmug::NsdHelper']]],
+  ['mugcontent',['MugContent',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html',1,'com::example::smartmug']]],
+  ['mugcontent_2ejava',['MugContent.java',['../_mug_content_8java.html',1,'']]]
+];
