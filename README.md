@@ -26,7 +26,6 @@ Within this project the following components are involved:
 ## Liquid Level Sensing
 **TODO**: describe HX711 vs. capacitive sensing here in a separate chapter?
 
-
 ## Arduino
 **TODO**: describe
 
@@ -34,6 +33,18 @@ Within this project the following components are involved:
 - Arduino libraries for rapid development (wifi, mdns, ota ...)
 - HX711 library
 - ...
+
+### Pin configuration and functions
+
+| Pin           | Function                |
+| ------------- |:-----------------------:|
+| 5             | RGB-LED Red             |
+| 12            | RGB-LED Green           |
+| 13            | RGB-LED Blue            |
+| 14            | HX711 scale: DOUT       |
+| 16            | HX711 scale: PD_SCK     |
+| 21            | UART Tx data            |
+| 22            | UART Rx data            |
 
 
 ## Android App
