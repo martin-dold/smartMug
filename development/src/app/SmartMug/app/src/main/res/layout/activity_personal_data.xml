@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_personal_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.smartmug.PersonalData"
+    android:background="@drawable/smartmugclear">
+
+    <TextView
+        android:text="Sex: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="48dp"
+        android:id="@+id/txtSex"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_light" />
+
+
+    <TextView
+        android:text="Weight (kg):"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtWeight"
+        android:textSize="24sp"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/txtHeight"
+        android:layout_alignLeft="@+id/txtHeight"
+        android:layout_alignStart="@+id/txtHeight"
+        android:textColor="@android:color/background_light" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Male or Female"
+        android:ems="10"
+        android:id="@+id/txtMaleFemale"
+        android:layout_alignBaseline="@+id/txtSex"
+        android:layout_alignBottom="@+id/txtSex"
+        android:layout_toRightOf="@+id/txtWeight"
+        android:layout_toEndOf="@+id/txtWeight"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:text="save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:id="@+id/saveButton"
+        android:onClick="onClick"
+        android:layout_below="@+id/txtGR"
+        android:layout_toRightOf="@+id/txtSex"
+        android:layout_toEndOf="@+id/txtSex"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:alpha="0.5"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtHeight"
+        android:textSize="24sp"
+        android:layout_marginTop="23dp"
+        android:text="Height (cm):"
+        android:layout_below="@+id/txtMaleFemale"
+        android:layout_alignLeft="@+id/txtSex"
+        android:layout_alignStart="@+id/txtSex"
+        android:textColor="@android:color/background_light" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="5"
+        android:id="@+id/txtCM"
+        android:text="cm"
+        android:layout_alignBaseline="@+id/txtHeight"
+        android:layout_alignBottom="@+id/txtHeight"
+        android:layout_toRightOf="@+id/saveButton"
+        android:layout_toEndOf="@+id/saveButton"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="5"
+        android:id="@+id/txtGR"
+        android:text="kg"
+        android:layout_alignBaseline="@+id/txtWeight"
+        android:layout_alignBottom="@+id/txtWeight"
+        android:layout_alignLeft="@+id/txtCM"
+        android:layout_alignStart="@+id/txtCM"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

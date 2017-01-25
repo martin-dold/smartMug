@@ -1,0 +1,18 @@
+/*! \mainpage SmartMug Source Code Documentation
+
+ \section Content
+
+ This documentation is built using <a href="http://www.stack.nl/~dimitri/doxygen/index.html">Doxygen</a>.\n
+ It concentrates on the source code documentation only.\n
+ Checkout the README.md on GitHub for general information about the project.
+
+ \section Structure
+
+ The content of this documentation is driven by using Doxygen grouping mechanism.
+
+ The documentation is structured by the different kinds of sources produced within the project.
+ You can check out:
+ - @ref arduino for the microcontroller code documentation for the Arduino.
+ - @ref java for the Android App documentation.
+ - [Statistics](statistics.md) for some statistics about the project source code.
+*/

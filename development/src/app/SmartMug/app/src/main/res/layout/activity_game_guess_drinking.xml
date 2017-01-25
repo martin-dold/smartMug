@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game_guess_drinking"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.smartmug.GameGuessDrinking">
+
+    <TextView
+        android:text="Try to drink that measure:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:id="@+id/txtTry"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMugCant"
+        android:ems="2"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btnCreateNumber"
+        android:layout_alignEnd="@+id/btnCreateNumber"
+        android:layout_marginTop="68dp" />
+
+    <TextView
+        android:text="Mug Content: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMugContent"
+        android:textSize="24sp"
+        android:layout_alignBaseline="@+id/txtMugCant"
+        android:layout_alignBottom="@+id/txtMugCant"
+        android:layout_alignLeft="@+id/txtTry"
+        android:layout_alignStart="@+id/txtTry" />
+
+    <TextView
+        android:text=" "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtRandNumb"
+        android:ems="2"
+        android:textSize="30sp"
+        android:layout_alignBaseline="@+id/btnCreateNumber"
+        android:layout_alignBottom="@+id/btnCreateNumber"
+        android:layout_alignRight="@+id/txtTry"
+        android:layout_alignEnd="@+id/txtTry"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCreateNumber"
+        android:layout_alignLeft="@+id/txtResult"
+        android:layout_alignStart="@+id/txtResult"
+        android:layout_marginTop="31dp"
+        android:id="@+id/btnStart" />
+
+    <Button
+        android:text="Random number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:id="@+id/btnCreateNumber"
+        android:onClick="onClick"
+        android:layout_below="@+id/txtTry"
+        android:layout_alignLeft="@+id/txtTry"
+        android:layout_alignStart="@+id/txtTry" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:textSize="24sp"
+        android:id="@+id/txtChrono"
+        android:layout_alignBaseline="@+id/btnStart"
+        android:layout_alignBottom="@+id/btnStart"
+        android:layout_alignRight="@+id/txtRandNumb"
+        android:layout_alignEnd="@+id/txtRandNumb" />
+
+    <TextView
+        android:text="Your result is: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtResult"
+        android:textSize="24sp"
+        android:layout_below="@+id/btnStart"
+        android:layout_alignRight="@+id/txtMugContent"
+        android:layout_alignEnd="@+id/txtMugContent"
+        android:layout_marginTop="49dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:textSize="24sp"
+        android:id="@+id/txtResultNumb"
+        android:layout_alignBaseline="@+id/txtResult"
+        android:layout_alignBottom="@+id/txtResult"
+        android:layout_alignLeft="@+id/txtRandNumb"
+        android:layout_alignStart="@+id/txtRandNumb" />
+</RelativeLayout>

@@ -1,0 +1,24 @@
+H optimize n staggered n
+$0 $NONE$
+$1 CIN1
+$2 CIN2
+$3 CIN3
+$4 CIN4
+$5 GND
+$6 SHLD1
+$7 SHLD2
+#
+#Netlist points
+#
+1 0.013 0.1392158 0.44 B e e staggered 0 0 0
+2 0.013 0.1392158 0.39 B e e staggered 0 0 0
+3 0.013 0.1392158 0.24 B e e staggered 0 0 0
+4 0.013 0.1392158 0.19 B e e staggered 0 0 0
+5 0.013 0.1392158 0.09 B e e staggered 0 0 0
+5 0.013 0.1392158 0.54 B e e staggered 0 0 0
+6 0.013 0.1392158 0.34 B e e staggered 0 0 0
+6 0.013 0.1392158 0.49 B e e staggered 0 0 0
+6 0.005 0.2 0.27 B e c staggered 0 0 0 v
+7 0.013 0.1392158 0.14 B e e staggered 0 0 0
+7 0.013 0.1392158 0.29 B e e staggered 0 0 0
+7 0.005 0.22 0.58 B e c staggered 0 0 0 v
