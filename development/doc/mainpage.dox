@@ -10,9 +10,9 @@
 
  The content of this documentation is driven by using Doxygen grouping mechanism.
 
- The documentation is structured by the different kinds of source code produced within the project.
+ The documentation is structured by the different kinds of sources produced within the project.
  You can check out:
  - @ref arduino for the microcontroller code documentation for the Arduino.
  - @ref java for the Android App documentation.
- - [Statistics](statistics.md) for soem statistics about the project source code.
+ - [Statistics](statistics.md) for some statistics about the project source code.
 */
