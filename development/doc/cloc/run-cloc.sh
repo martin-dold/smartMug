@@ -4,6 +4,13 @@ MINPARAMS=1
 INPUT_PATH=./
 EXCLUDE_LIST_FILE=cloc-exclude-list-file.txt
 DEF_LANG_FILE=./cloc-def-lang.txt
+#CLOC_PROG_CALL=
+case "$OSTYPE" in
+linux*)   CLOC_PROG_CALL=cloc ;;
+msys*)    CLOC_PROG_CALL=cloc.exe ;;
+*)        echo "unknown OS" ;;
+esac
+
 
 if [ $# -lt "$MINPARAMS" ]
 then
@@ -36,5 +43,5 @@ echo -e "\n"
 # param #1 cloc-def-lang.txt:          defines the languages to be included in the lines of code counting
 # param #2 cloc-exclude-list-file.txt: defines the list of directories to be excluded from calculation (e.g. third party code)
 # param #3 root dir:                   dir where cloc starts counting. This should be set to root of git repository.
-cloc-1.64.exe --progress-rate=0 --quiet --force-lang-def=$DEF_LANG_FILE --exclude-list-file=$EXCLUDE_LIST_FILE $INPUT_PATH
+$CLOC_PROG_CALL --progress-rate=0 --quiet --force-lang-def=$DEF_LANG_FILE --exclude-list-file=$EXCLUDE_LIST_FILE $INPUT_PATH
 
