@@ -8,36 +8,42 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.smartmug.ConnectionActivity">
-
-    <Button
-        android:text="QR Code"
-        android:layout_width="wrap_content"
+    tools:context="com.example.smartmug.ConnectionActivity"
+    android:background="@drawable/smartmugclear">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
-        android:id="@+id/qrCodeButoon" />
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <TextView
+        <Button
+            android:text="QR Code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="66dp"
+            android:id="@+id/qrCodeButoon"
+            android:alpha="0.5"
+            android:textStyle="normal|bold" />
+
+        <TextView
         android:text="or"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/qrCodeButoon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
-        android:id="@+id/textOr" />
+        android:id="@+id/textOr"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:textSize="18sp" />
 
-    <Button
-        android:text="Manuell Input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:id="@+id/manuellInput"
-        android:layout_below="@+id/textOr"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
+        <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -48,7 +54,9 @@
         android:id="@+id/ipAdress"
         tools:text="ip Adress"
         android:contentDescription="enter the ip adress"
-        android:hint="ipAdress" />
+        android:hint="ipAdress"
+        android:textStyle="normal|bold"
+        android:textColor="?attr/colorBackgroundFloating" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -61,5 +69,22 @@
         android:layout_marginTop="23dp"
         android:id="@+id/port"
         tools:text="port number "
-        android:hint="port number(8080)" />
+        android:hint="port number(8080)"
+        android:textStyle="normal|bold"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:text="8080" />
+
+        <Button
+            android:text="Enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:id="@+id/manuellInput"
+            android:layout_below="@+id/textOr"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.5"
+            android:textStyle="normal|bold"
+            android:layout_weight="0.10" />
+    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
