@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,8 @@
         <activity android:name=".DrinkingGame" />
         <activity android:name=".GameList" />
         <activity android:name=".GameFiveSeconds" />
-        <activity android:name=".GameGuessDrinking"></activity>
+        <activity android:name=".GameGuessDrinking" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

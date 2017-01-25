@@ -8,8 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.smartmug.reOrderActivity">
+    tools:context="com.example.smartmug.reOrderActivity"
+    android:background="@drawable/smartmugclear">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -19,17 +23,19 @@
         android:layout_alignParentStart="true">
 
         <Button
-            android:text="Red"
+            android:text="Re-Order Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:id="@+id/buttonLightRed"
-            android:background="@android:color/holo_red_light" />
+            android:background="@android:color/holo_red_light"
+            android:alpha="0.5"
+            android:textStyle="normal|bold" />
 
         <Button
-            android:text="Blue"
+            android:text="Call Waitress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buttonLightRed"
@@ -37,10 +43,12 @@
             android:layout_alignStart="@+id/buttonLightRed"
             android:layout_marginTop="40dp"
             android:id="@+id/buttonLightBlue"
-            android:background="@android:color/holo_blue_light" />
+            android:background="@android:color/holo_blue_light"
+            android:alpha="0.5"
+            android:textStyle="normal|bold" />
 
         <Button
-            android:text="Green"
+            android:text="Order bill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buttonLightBlue"
@@ -48,10 +56,12 @@
             android:layout_alignEnd="@+id/buttonLightBlue"
             android:layout_marginTop="40dp"
             android:id="@+id/buttonLightGreen"
-            android:background="@android:color/holo_green_light" />
+            android:background="@android:color/holo_green_light"
+            android:alpha="0.5"
+            android:textStyle="normal|bold" />
 
         <Button
-            android:text="White"
+            android:text="Single"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -59,6 +69,9 @@
             android:layout_alignStart="@+id/buttonLightGreen"
             android:layout_marginTop="40dp"
             android:id="@+id/buttonLightWhite"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            android:alpha="0.5"
+            android:textStyle="normal|bold" />
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

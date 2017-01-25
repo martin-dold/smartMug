@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.smartmug.PersonalData">
+    tools:context="com.example.smartmug.PersonalData"
+    android:background="@drawable/smartmugclear">
 
     <TextView
         android:text="Sex: "
@@ -21,7 +22,8 @@
         android:textSize="24sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_light" />
 
 
     <TextView
@@ -33,7 +35,8 @@
         android:layout_marginTop="42dp"
         android:layout_below="@+id/txtHeight"
         android:layout_alignLeft="@+id/txtHeight"
-        android:layout_alignStart="@+id/txtHeight" />
+        android:layout_alignStart="@+id/txtHeight"
+        android:textColor="@android:color/background_light" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,7 +48,8 @@
         android:layout_alignBaseline="@+id/txtSex"
         android:layout_alignBottom="@+id/txtSex"
         android:layout_toRightOf="@+id/txtWeight"
-        android:layout_toEndOf="@+id/txtWeight" />
+        android:layout_toEndOf="@+id/txtWeight"
+        android:textColor="@android:color/white" />
 
     <Button
         android:text="save"
@@ -58,7 +62,9 @@
         android:layout_toRightOf="@+id/txtSex"
         android:layout_toEndOf="@+id/txtSex"
         android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp" />
+        android:layout_marginStart="23dp"
+        android:alpha="0.5"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +75,8 @@
         android:text="Height (cm):"
         android:layout_below="@+id/txtMaleFemale"
         android:layout_alignLeft="@+id/txtSex"
-        android:layout_alignStart="@+id/txtSex" />
+        android:layout_alignStart="@+id/txtSex"
+        android:textColor="@android:color/background_light" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -81,7 +88,8 @@
         android:layout_alignBaseline="@+id/txtHeight"
         android:layout_alignBottom="@+id/txtHeight"
         android:layout_toRightOf="@+id/saveButton"
-        android:layout_toEndOf="@+id/saveButton" />
+        android:layout_toEndOf="@+id/saveButton"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,6 +101,7 @@
         android:layout_alignBaseline="@+id/txtWeight"
         android:layout_alignBottom="@+id/txtWeight"
         android:layout_alignLeft="@+id/txtCM"
-        android:layout_alignStart="@+id/txtCM" />
+        android:layout_alignStart="@+id/txtCM"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
