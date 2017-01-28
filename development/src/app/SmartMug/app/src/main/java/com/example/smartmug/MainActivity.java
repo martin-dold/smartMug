@@ -23,13 +23,13 @@ import static android.R.id.progress;
  *  @defgroup java Android Code
  *  @brief Android code of the smartmug firmware.
  *
- *  @defgroup main SmartMug Main
+ *  @defgroup main-app SmartMug Main Activity
  *  @brief Main acitivity of the smartmug app.
  *
  *  @addtogroup java
  *  @{
  *
- *  @addtogroup main
+ *  @addtogroup main-app
  *  @{
  */
 
