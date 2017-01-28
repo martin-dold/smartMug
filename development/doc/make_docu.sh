@@ -58,3 +58,7 @@ cd output
 create_index_html
 cd ..
 echo "OK."
+
+echo -n "Copy doxygen html folder to ../../html for gh-pages ..."
+cp -rf $DOCU_OUTPUT_DIR/html/* ../../html
+echo "OK."
