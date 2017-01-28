@@ -1,7 +1,7 @@
 # smartMug
 This is the repository for the smartMug project.
 
-# Source Code Documenation
+# Source Code Documentation
 The source documentation is hosted on GitHub pages.
 Click [here](https://martin-dold.github.io/smartMug/ "Source Code Documentation") to browse the source code docu.
 
@@ -70,11 +70,11 @@ Therefore, the Android device and the SmartMug must be connected to the same wir
 
 The SmartMug acts as TCP server that is continuously waiting for incoming connections right after startup.
 Once a TCP connection is established successfully, the mug provides updated liquid level values once a second.
-The mug publishes its service to the network using [Mulicast DNS](#multicast-dns).
+The mug publishes its service to the network using [Multicast DNS](#multicast-dns).
 
 The Android App acts as TCP client connecting to the SmartMug.
 
-## Mulicast DNS
+## Multicast DNS
 
 The SmartMug publishes its service through "Multicast DNS" (mDNS) including the following properties:
 
@@ -85,7 +85,47 @@ The Android App is listening for providers of the smartmug service type. Using t
 the is able to select the correct mug to connect to out of the list of available mugs within the network.
 
 ## SmartMug Protocol
-**TODO**
+
+The SmartMug Protocol is invented for bidirectional communication between the SmartMug and the Android App. It is used on top of the TCP protocol to format the byte stream.
+It follows the basic principle of < TAG >< LEN >< Value > and is implemented as shown in the following graph:
+
+```
++-----------+------------+----------------+----------------+
+|           |            |                |                |
+|    TAG    |   Length   |      Value     |  End of Frame  |
+|           |            |                |                |
++-----------+------------+----------------+----------------+
+
+   1 byte       1 byte        n bytes           1 byte
+```
+
+Mutli-byte fields are transported with most significant byte (MSB) first.
+
+The following tags are currently defined:
+
+- Tag = **0x01**: (SmartMug to Android App)  
+  Sensor Data: Weight (in gram)  
+- Tag = **0x02**: (Android App to SmartMug)  
+  LED Set Color using color codes transported as value:  
+  - Off:   0
+  - Red:   1
+  - Green: 2
+  - Blue:  3
+  - White: 4
+  Sent from Android App to SmartMug.
+
+Accordingly, an example of a sensor data frame is:
+
+```
++-----------+------------+----------------+----------------+
+|           |            |                |                |
+|   0x01    |    0x02    |     0x017A     |      0x0A      |
+|           |            |                |                |
++-----------+------------+----------------+----------------+
+
+   Sensor       Length          378g             '\n'
+    Data
+```
 
 # Outlook
 
