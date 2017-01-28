@@ -35,7 +35,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_connection_activity_8java.html",
-"group__wifi.html#ga9bfc48b09a38e89139129bad536ff2ea"
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -2,6 +2,7 @@ var searchData=
 [
   ['smartmug_20source_20code_20documentation',['SmartMug Source Code Documentation',['../index.html',1,'']]],
   ['smartmug_20main',['SmartMug Main',['../group__main.html',1,'']]],
+  ['smartmug_20main_20activity',['SmartMug Main Activity',['../group__main-app.html',1,'']]],
   ['scale',['scale',['../group__hx711.html#ga938c734da19e8e3c4bea1313a82d0ac7',1,'hx711.ino']]],
   ['send_5fdummy_5fdata',['SEND_DUMMY_DATA',['../group__main.html#ga9b940b11812b069196c2b08afdf01c70',1,'smartmug.ino']]],
   ['sendmessagebytearray',['sendMessageByteArray',['../classcom_1_1example_1_1smartmug_1_1_t_c_p_client.html#aa47594cd8975bb910206f1fec124e6b5',1,'com::example::smartmug::TCPClient']]],

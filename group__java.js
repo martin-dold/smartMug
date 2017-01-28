@@ -5,7 +5,7 @@ var group__java =
     [ "5 seconds game", "group__game__5s.html", "group__game__5s" ],
     [ "Guess drinking game", "group__game__guess.html", "group__game__guess" ],
     [ "Drinking game list", "group__game__list.html", "group__game__list" ],
-    [ "SmartMug Main", "group__main.html", "group__main" ],
+    [ "SmartMug Main Activity", "group__main-app.html", "group__main-app" ],
     [ "Drinking game list", "group__mugcontent.html", "group__mugcontent" ],
     [ "Network Service Discovery (NSD)", "group__nsd.html", "group__nsd" ],
     [ "Private data", "group__privatedata.html", "group__privatedata" ],
