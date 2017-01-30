@@ -1,8 +1,10 @@
 package com.example.smartmug;
 
+import android.content.Context;
 import android.location.OnNmeaMessageListener;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -51,6 +53,8 @@ public class TCPClient {
     private static boolean isDataToBeSent = false;
 
     private static byte[] txData = new byte[256];
+
+
 
     /** States of the state machine to parse the SmartMug Protocol that consists of:
      *  [TAG] [LEN] [VALUE] [EOF = '\n'] */
@@ -115,6 +119,8 @@ public class TCPClient {
         lenToRead = 0;
         parser_state = PARSER_STATE.PARSER_STATE_READ_TAG;
         currentTag = 0;
+        /*set the tcpClient is not running anymore in the MainActivity*/
+        MainActivity.tcpClientRunning = false;
     }
 
     public void run(String ip, int port) {

@@ -118,8 +118,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                  * IP Input field
                  */
                 ip = ipInput.getText().toString();
-                //por = Integer.parseInt(port.getText().toString());
-
+                /**
+                 * call the TCP Connection Method
+                 */
                 buildNewTCPConnection();
                 break;
 
@@ -143,6 +144,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
                 qrCodeActive = true;
                 ip = result.getContents();
+                /**
+                 * call the TCP Connection Method
+                 */
                 buildNewTCPConnection();
             }
         }
@@ -157,8 +161,17 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
      */
     private void buildNewTCPConnection() {
         new ConnectTask().execute("");
-        Intent intentConect = new Intent (this, MainActivity.class);
-        startActivity(intentConect);
+        /**
+         * if the TCP Connection dont failed go back to the MainActivity
+         * else No Connection
+         */
+        if(MainActivity.tcpClientRunning == true){
+            Intent intentConect = new Intent (this, MainActivity.class);
+            startActivity(intentConect);
+        } else {
+            Toast.makeText(this, "No Connection! Maybe wrong IP Adress ", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     /**
@@ -190,8 +203,11 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
                 }
-            } else {
+            } if(ip != null){
+
                 mTCPClient.run(ip,8080);
+            } else {
+                Toast.makeText(getApplicationContext(), "NO IP", Toast.LENGTH_LONG).show();
             }
             return null;
         }

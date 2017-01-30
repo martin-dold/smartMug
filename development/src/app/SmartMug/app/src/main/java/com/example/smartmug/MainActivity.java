@@ -168,9 +168,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
      * display the Notification
      */
     private void showNotification() {
-
         notificationmanager.notify(finalid,mBuilder.build());
-
     }
 
     /**
