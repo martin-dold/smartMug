@@ -41,10 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
      * Value with the re-order count (how many beers did I drunk up to now)
      */
     public int orderCount = 0;
-    /**
-     *
-     */
-    public static TextView tvOrder;
+
     /**
      * Declare the ProgressBar
      */
@@ -82,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvOrder = (TextView) findViewById(R.id.txtOrder);
+
 
         /**
          * Create ConnectMugButton

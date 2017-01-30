@@ -30,9 +30,6 @@ public class Statistic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
-        Bundle bundle = getIntent().getExtras();
-        int count = bundle.getInt("orderCont");
-        numOrder.setText(count);
 
     }
 
