@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 /*! @file  
  *  @brief This is the game list activity of the smartmug project.
@@ -33,12 +34,16 @@ public class GameList extends AppCompatActivity {
     public void onClick(View arg){
         switch (arg.getId()){
             case R.id.gameFiveSecButton:
-                Intent intentGameFiveSeconds = new Intent (this, GameFiveSeconds.class);
-                startActivity(intentGameFiveSeconds);
+                if(MainActivity.tcpClientRunning == true){
+                    Intent intentGameFiveSeconds = new Intent (this, GameFiveSeconds.class);
+                    startActivity(intentGameFiveSeconds);
+                } else Toast.makeText(this, "You are not connected to any Mug", Toast.LENGTH_LONG).show();
                 break;
             case R.id.gameGuessButton:
-                Intent intentGameGuess = new Intent (this, GameGuessDrinking.class);
-                startActivity(intentGameGuess);
+                if(MainActivity.tcpClientRunning == true){
+                    Intent intentGameGuess = new Intent (this, GameGuessDrinking.class);
+                    startActivity(intentGameGuess);
+                } else Toast.makeText(this, "You are not connected to any Mug", Toast.LENGTH_LONG).show();
                 break;
 
 
