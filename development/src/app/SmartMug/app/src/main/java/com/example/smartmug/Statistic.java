@@ -3,6 +3,7 @@ package com.example.smartmug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /*! @file  
  *  @brief This is the statistics activity of the smartmug project.
@@ -30,6 +31,23 @@ public class Statistic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
+
+        TextView personalData = (TextView)findViewById(R.id.textViewPersonalData);
+        if(PersonalData.height >= 0 && PersonalData.weight >=0){
+            if(PersonalData.sex == false) {
+                personalData.setText("Gender: Female"  + "  Height: " + PersonalData.height + "  Weight: " + PersonalData.weight);
+            } else personalData.setText("Gender: Male"  + "  Height: " + PersonalData.height + "  Weight: " + PersonalData.weight);
+        }
+        TextView promileData = (TextView)findViewById(R.id.textViewPromile);
+        if (promile <= 0.5){
+            promileData.setText("Promile: "+promile);
+        } else promileData.setText("Promile: "+promile +"  Don't drive anymore !!");
+
+        TextView orderCount = (TextView)findViewById(R.id.textViewOrderCount);
+        orderCount.setText("Order Count: ");
+
+        TextView payAmount = (TextView)findViewById(R.id.textViewPayAmount);
+        orderCount.setText("Pay Amount: ");
 
     }
 

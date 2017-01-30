@@ -25,12 +25,49 @@
             android:text="Statistics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2"
+            android:id="@+id/textViewStatistics"
             android:textStyle="normal|bold"
             tools:text="Statistics"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
             android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPlaceHolder" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPersonalData"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPromile"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewOrderCount"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_orange_light" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPayAmount"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_red_dark" />
     </LinearLayout>
     </ScrollView>
 

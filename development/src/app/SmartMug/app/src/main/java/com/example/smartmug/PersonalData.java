@@ -28,7 +28,7 @@ import android.widget.ToggleButton;
 public class PersonalData extends AppCompatActivity {
 
     public static boolean sex;
-    public int height;
+    public static int height;
     public static int weight;
 
 
@@ -42,7 +42,7 @@ public class PersonalData extends AppCompatActivity {
     private static RadioButton male,female,gender;
 
 
-    private SharedPreferences p;
+    public SharedPreferences p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
