@@ -8,26 +8,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.smartmug.DrinkingGame">
-
+    tools:context="com.example.smartmug.DrinkingGame"
+    android:background="@drawable/smartmugclear">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:text="Start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/startButton"
-            android:onClick="onClick"
-            android:layout_marginTop="38dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/crono2"
-            android:layout_alignStart="@+id/crono2" />
+        android:layout_alignParentStart="true"
+        >
 
         <TextView
             android:text="Mug Content"
@@ -39,7 +32,8 @@
             android:layout_below="@+id/crono2"
             android:layout_alignLeft="@+id/mugBeforeText"
             android:layout_alignStart="@+id/mugBeforeText"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp"
+            android:textColor="@color/zxing_custom_viewfinder_laser" />
 
         <TextView
             android:layout_width="match_parent"
@@ -50,7 +44,8 @@
             android:layout_marginTop="15dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/zxing_custom_viewfinder_laser" />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,13 +56,26 @@
             android:textSize="30sp"
             android:layout_above="@+id/crono2"
             android:layout_centerHorizontal="true"
-            />
+            android:textColor="@color/zxing_custom_viewfinder_laser" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="30sp"
-            android:id="@+id/totalText" />
+            android:id="@+id/totalText"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:text="Start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startButton"
+            android:onClick="onClick"
+            android:layout_marginTop="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/crono2"
+            android:layout_alignStart="@+id/crono2" />
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
