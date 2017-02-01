@@ -15,9 +15,11 @@
 /* === Global defines === */
 /*! @brief Scale value obtained by calibration in the lab. (see hx711_weight_calibration_log.txt) */
 #define HX711_SCALE   429.23f
+/*! @brief Pin number of the smartmug where DOUT pin of scale is connected to. */
 #define PIN_DOUT    14
+/*! @brief Pin number of the smartmug where PD_SCK pin of scale is connected to. */
 #define PIN_PD_SCK  16
-
+/*! @ brief Minimum negativ value that is still considered as '0' weight. */
 #define MINIMUM_VALUE (-50)
 
 /* === Global variables === */
