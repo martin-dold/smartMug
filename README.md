@@ -38,9 +38,9 @@ Within this project the following components are involved:
 
 | Pin           | Function                |
 | ------------- |:-----------------------:|
-| 5             | RGB-LED Red             |
-| 12            | RGB-LED Green           |
-| 13            | RGB-LED Blue            |
+| 13            | RGB-LED Red             |
+| 5             | RGB-LED Green           |
+| 12            | RGB-LED Blue            |
 | 14            | HX711 scale: DOUT       |
 | 16            | HX711 scale: PD_SCK     |
 | 21            | UART Tx data            |

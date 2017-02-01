@@ -12,9 +12,9 @@
  */
 
 /* === Global defines === */
-#define LED_1_PIN_R   5
-#define LED_1_PIN_G  12
-#define LED_1_PIN_B  13
+#define LED_1_PIN_R  13
+#define LED_1_PIN_G  5
+#define LED_1_PIN_B  12
 
 #define LED_COLOR_OFF    0
 #define LED_COLOR_RED    1
