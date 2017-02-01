@@ -104,7 +104,7 @@ Mutli-byte fields are transported with most significant byte (MSB) first.
 The following tags are currently defined:
 
 - Tag = **0x01**: (SmartMug to Android App)  
-  Sensor Data: Weight (in gram)  
+  Sensor Data: Weight (in gram)
 - Tag = **0x02**: (Android App to SmartMug)  
   LED Set Color using color codes transported as value:  
   - Off:   0
@@ -112,7 +112,8 @@ The following tags are currently defined:
   - Green: 2
   - Blue:  3
   - White: 4
-  Sent from Android App to SmartMug.
+- Tag = **0x03**: (Android App to SmartMug)  
+  Tare SmartMug scale to '0'
 
 Accordingly, an example of a sensor data frame is:
 
