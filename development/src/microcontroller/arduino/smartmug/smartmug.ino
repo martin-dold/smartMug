@@ -117,7 +117,7 @@ void loop()
     }
     else
     {
-      currentWeight = currentWeight - 50;
+      currentWeight = currentWeight - 10;
     }
 
     #else
