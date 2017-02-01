@@ -125,16 +125,21 @@ void loop()
     currentWeight = hx711_getWeightAsInt();
     #endif
 
-    Serial.print("currentWeight: ");
-    Serial.println(currentWeight);
+    if(currentWeight >= 0)
+    {
+      Serial.print("currentWeight: ");
+      Serial.println(currentWeight);
 
-    /* Set current weight (MSB first) */
-    tcpSensorData[2] = highByte(currentWeight);
-    tcpSensorData[3] = lowByte(currentWeight);
-    tcp_send(tcpSensorData, sizeof(tcpSensorData));
-
+      /* Set current weight (MSB first) */
+      tcpSensorData[2] = highByte(currentWeight);
+      tcpSensorData[3] = lowByte(currentWeight);
+      tcp_send(tcpSensorData, sizeof(tcpSensorData));
+    }
+    else
+    {
+      Serial.println("Invalid weight measured.");
+    }
   }
-
 }
 
 

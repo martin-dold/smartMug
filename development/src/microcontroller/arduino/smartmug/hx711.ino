@@ -18,6 +18,8 @@
 #define PIN_DOUT    14
 #define PIN_PD_SCK  16
 
+#define MINIMUM_VALUE (-50)
+
 /* === Global variables === */
 /*! @brief Global instance of the HX711 scale. */
 HX711 scale;
@@ -74,7 +76,7 @@ float hx711_getWeight()
   ret = scale.get_units(10);
   scale.power_down();
 
-  if(ret < 0)
+  if((ret < 0 ) && (ret > MINIMUM_VALUE))
   {
     ret = 0;
   }
