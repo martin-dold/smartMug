@@ -98,6 +98,20 @@ int hx711_getWeightAsInt()
   return ret;
 }
 
+/*!
+ * @brief Tares the HX711 to 0.
+ *
+ * A power up and power down of the ADC is performed before
+ * and after taring.
+ */
+void hx711_tare()
+{
+  scale.power_up();
+  // reset the scale to 0
+  scale.tare();
+  scale.power_down();
+}
+
 /* === Local utility functions starting here === */
 
 /*!

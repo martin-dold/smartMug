@@ -153,6 +153,7 @@ void tcp_send(const uint8_t *data, uint16_t len)
 
 void parseTcpRxData(uint8_t *data, uint16_t len)
 {
+  /* TAG 0x02 = LED set Color. */
   if(rxData[0] == 0x02)
   {
     if(rxData[1] == 0x01)
@@ -181,6 +182,18 @@ void parseTcpRxData(uint8_t *data, uint16_t len)
       {
         Serial.println("led_setWhite()");
         led_setWhite();
+      }
+    }
+  }
+  /* TAG 0x03 = Tare weight. */
+  else if(rxData[0] == 0x03)
+  {
+    if(rxData[1] == 0x01)
+    {
+      if(rxData[2] == 0x00)
+      {
+        Serial.println("hx711_tare()");
+        hx711_tare();
       }
     }
   }
