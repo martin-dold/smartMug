@@ -16,6 +16,7 @@ import com.google.zxing.integration.android.IntentResult;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+
 /*! @file  
  *  @brief This is the connection activity of the smartmug project.
  *
@@ -45,19 +46,22 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
     private EditText port;
 
     /**
-     * value of the used ip
+     * value of the connected smartmug ip
      */
     private String ip ;
     /**
-     * value of the used port
+     * value of the connected smartmug port
      */
-    private int por;
+    private int portInt;
 
     /**
      * value if qrCode is used
      */
     private boolean qrCodeActive =false;
 
+    /**
+     * Local variable used to store IP address resolved by hostname.
+     */
     private InetAddress serverAddr;
 
     @Override
@@ -118,9 +122,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                  * IP Input field
                  */
                 ip = ipInput.getText().toString();
-                /**
-                 * call the TCP Connection Method
-                 */
+                portInt = Integer.parseInt(port.getText().toString());
                 buildNewTCPConnection();
                 break;
 
@@ -141,13 +143,19 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 Toast.makeText(this, "Scanning Cancelled", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Searching for smartmug id: " + result.getContents(),Toast.LENGTH_LONG).show();
                 qrCodeActive = true;
-                ip = result.getContents();
-                /**
-                 * call the TCP Connection Method
-                 */
-                buildNewTCPConnection();
+                ip = MainActivity.mNsdHelper.getIpString(result.getContents());
+                if(ip != null)
+                {
+                    /* If we found a valid IP we very likely have a valid port too. */
+                    portInt = MainActivity.mNsdHelper.getPortNum(result.getContents());
+                    buildNewTCPConnection();
+                }
+                else
+                {
+                    Log.e("TCP", "SmartMug service not discovered yet.");
+                }
             }
         }
         else {
@@ -195,17 +203,18 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
             /**
              * two cases: one for the QR Code connection, second for the manuell Input
              */
-            if (qrCodeActive == true){
-                try {
+            //if (qrCodeActive == true){
+/*                try {
                     serverAddr = InetAddress.getByName(ip);
-                    mTCPClient.run(serverAddr.getHostAddress(),8080);
+                    mTCPClient.run(serverAddr.getHostAddress(),portInt);
                     qrCodeActive = false;
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
-                }
-            } if(ip != null){
+                }*/
+            //}
 
-                mTCPClient.run(ip,8080);
+            if(ip != null){
+                mTCPClient.run(ip,portInt);
             } else {
                 Toast.makeText(getApplicationContext(), "NO IP", Toast.LENGTH_LONG).show();
             }

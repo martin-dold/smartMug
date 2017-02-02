@@ -48,7 +48,33 @@ public class NsdHelper {
     public static final String TAG = "NsdHelper";
     public String mServiceName = "smartmug";
 
+    // TODO: add a list of services here (e.g. by Vector<>) to allow multiple mugs in a list
+    //       as this will work only for a single mug!
     NsdServiceInfo mService;
+
+    public String getIpString(String hostname){
+        if(mService != null)
+        {
+            if(mService.getServiceName().equals(hostname))
+            {
+                return mService.getHost().getHostAddress();
+            }
+        }
+
+        return null;
+    }
+
+    public int getPortNum(String hostname){
+        if(mService != null)
+        {
+            if(mService.getServiceName().equals(hostname))
+            {
+                return mService.getPort();
+            }
+        }
+
+        return 0;
+    }
 
     public NsdHelper(Context context) {
         mContext = context;
@@ -72,7 +98,7 @@ public class NsdHelper {
 
             @Override
             public void onServiceFound(NsdServiceInfo service) {
-                Log.d(TAG, "Service discovery success" + service);
+                Log.d(TAG, "Service discovery success " + service);
                 if (!service.getServiceType().equals(SERVICE_TYPE)) {
                     Log.d(TAG, "Unknown Service Type: " + service.getServiceType());
                 } else if (service.getServiceName().equals(mServiceName)) {
@@ -85,6 +111,7 @@ public class NsdHelper {
             @Override
             public void onServiceLost(NsdServiceInfo service) {
                 Log.e(TAG, "service lost" + service);
+                // TODO: use a list of services here.
                 if (mService == service) {
                     mService = null;
                 }
@@ -123,6 +150,7 @@ public class NsdHelper {
                     Log.d(TAG, "Same IP.");
                     return;
                 }
+                // TODO: use a list of services here.
                 mService = serviceInfo;
             }
         };
