@@ -131,14 +131,13 @@ void tcp_send(const uint8_t *data, uint16_t len)
 
   if (serverRemote.connected())
   {
-    for (int i = 0; i < len; ++i)
+    /* Firstly, send the whole data in single call. */
+    int bytesWritten = serverRemote.write(data, len);
+    /* Afterwards, make debug print of written data bytes. */
+    for (int i = 0; i < bytesWritten; ++i)
     {
-      // Make debug print of data first.
       Serial.print(data[i], HEX);
       Serial.print(" ");
-
-      // Now actually send data through TCP socket.
-      serverRemote.write(data[i]);
     }
     Serial.println("");
   }
