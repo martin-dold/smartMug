@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.io.*;
 import java.net.Socket;
 import java.lang.System;
+import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
 /*! @file  
@@ -125,6 +126,7 @@ public class TCPClient {
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(ip, port);
+            socket.setSoTimeout(20000);
             //set in the mainactivity that the tcp client is running -> so that its possible to communicate
             MainActivity.tcpClientRunning = true;
             // Reset state machine before start
@@ -193,6 +195,9 @@ public class TCPClient {
                         }
                     }
                 }
+            } catch (SocketTimeoutException e) {
+                Log.e("TCP", "Connection lost.", e);
+
             } catch (Exception e) {
 
                 Log.e("TCP", "S: Error", e);
