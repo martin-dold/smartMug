@@ -55,7 +55,6 @@ public class TCPClient {
     private static byte[] txData = new byte[256];
 
 
-
     /** States of the state machine to parse the SmartMug Protocol that consists of:
      *  [TAG] [LEN] [VALUE] [EOF = '\n'] */
     private enum PARSER_STATE
@@ -66,6 +65,7 @@ public class TCPClient {
         PARSER_STATE_READ_EOF
     }
 
+    /** @brief Current state of the smartmug protocol parser. */
     private PARSER_STATE parser_state;
 
 

@@ -2,6 +2,7 @@ package com.example.smartmug;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -169,13 +170,13 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 portInt = MainActivity.mNsdHelper.getPortNum(smartmugId);
                 if((ip != null) && (portInt != 0))
                 {
-                    Toast.makeText(this, "Connecting to smartmug id: " + smartmugId,Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Connecting to smartmug id: \"" + smartmugId + "\"" ,Toast.LENGTH_LONG).show();
                     Log.i("TCP", "Connecting to smartmug id: " + smartmugId);
                     buildNewTCPConnection();
                 }
                 else
                 {
-                    Toast.makeText(this, "Unknown smartmug id: " + smartmugId,Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "SmartMug \"" + smartmugId + "\" not found yet. Try again!",Toast.LENGTH_LONG).show();
                     Log.e("TCP", "SmartMug service not discovered yet: " + smartmugId);
                 }
             }
@@ -190,15 +191,31 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
      * build the TCP Connection
      */
     private void buildNewTCPConnection() {
+
+        /* Execute asynchronous task that tries to connect to the smartmug. */
         new ConnectTask().execute("");
-        /**
-         * if the TCP Connection dont failed go back to the MainActivity
-         * else No Connection
-         */
-        if(MainActivity.tcpClientRunning == true){
-            Intent intentConect = new Intent (this, MainActivity.class);
-            startActivity(intentConect);
-        }
+
+        /* Lets give 1s to connect to the smartmug. */
+        new CountDownTimer(1000, 1) {
+            public void onFinish() {
+                // When timer is finished
+                if(MainActivity.tcpClientRunning == true){
+                    Toast.makeText(ConnectionActivity.this, "Connected to smartmug.",Toast.LENGTH_LONG).show();
+                    Intent intentConect = new Intent (ConnectionActivity.this, MainActivity.class);
+                    startActivity(intentConect);
+                }
+                else
+                {
+                    Toast.makeText(ConnectionActivity.this, "Unable to connect to smartmug.",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+
+                // Smartmug: simply wait until timer is finished and executes onFinished().
+            }
+        }.start();
     }
 
     /**
@@ -219,6 +236,7 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 }
             });
 
+            /* We actually checked IP and port before, but lets be safe. */
             if( (ip != null) && (portInt != 0) ){
                 mTCPClient.run(ip,portInt);
             } else {
