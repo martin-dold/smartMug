@@ -49,9 +49,9 @@ public class TCPClient {
     private byte[] currentByte = new byte[1];
     /** Current tag value read from current frame. */
     private int currentTag;
-
+    /** @brief True if data shall be sent to the smartmug (asynchronously). False otherwise. */
     private static boolean isDataToBeSent = false;
-
+    /** @brief Array to store the data to be sent to the smartmug. */
     private static byte[] txData = new byte[256];
 
 
@@ -86,14 +86,7 @@ public class TCPClient {
         if (mByteOutputStream != null) {
             txData = array;
             isDataToBeSent = true;
-            /*
-            try {
-                mByteOutputStream.write(array);
-                mByteOutputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
+            /* Store the TX data request and handle it asynchronous run(). */
         }
     }
 
@@ -128,9 +121,6 @@ public class TCPClient {
         mRun = true;
 
         try {
-            //here you must put your computer's IP address.
-
-
             Log.i("TCP Client", "C: Connecting...");
 
             //create a socket to make the connection with the server
