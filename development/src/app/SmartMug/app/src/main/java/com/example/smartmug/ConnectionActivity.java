@@ -14,6 +14,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.net.InetAddress;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /*! @file  
@@ -57,6 +59,13 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
      * Local variable used to store IP address resolved by hostname.
      */
     private InetAddress serverAddr;
+
+    private static final Pattern IP_ADDRESS
+            = Pattern.compile(
+            "((25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(25[0-5]|2[0-4]"
+                    + "[0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]"
+                    + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}"
+                    + "|[1-9][0-9]|[0-9]))");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +128,15 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 portInt = Integer.parseInt(port.getText().toString());
                 if( (ip != null) && (portInt != 0) )
                 {
+                    Matcher matcher = IP_ADDRESS.matcher(ip);
+                    if (matcher.matches()) {
+                        // Entered string is a valid ip address
                         buildNewTCPConnection();
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Enter valid IP address.", Toast.LENGTH_LONG).show();
+                    }
                 }
                 else
                 {
