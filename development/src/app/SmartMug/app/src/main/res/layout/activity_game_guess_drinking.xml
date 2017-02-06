@@ -10,9 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.smartmug.GameGuessDrinking"
     android:background="@drawable/smartmugclear">
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -34,102 +38,110 @@
             android:textStyle="normal|bold"
             android:textColor="@color/zxing_custom_viewfinder_laser" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15">
+
+            <TextView
+                android:text="Mug Content: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMugContent"
+                android:textSize="24sp"
+                android:layout_alignBaseline="@+id/txtMugCant"
+                android:layout_marginTop="49dp"
+                android:textColor="@color/zxing_custom_viewfinder_laser" />
+
+            <TextView
+                android:layout_width="101dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMugCant"
+                android:ems="2"
+                android:textSize="24sp"
+                android:layout_alignBaseline="@+id/txtMugContent"
+                android:textColor="@color/zxing_custom_viewfinder_laser"
+                android:layout_alignParentTop="false"
+                android:layout_marginTop="49dp"
+                android:layout_marginLeft="70dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15">
+
+            <Button
+                android:text="Random number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:id="@+id/btnCreateNumber"
+                android:onClick="onClick" />
+
+            <TextView
+                android:text=" "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRandNumb"
+                android:ems="2"
+                android:layout_marginTop="22dp"
+                android:textSize="30sp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="24dp"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+
         <TextView
+        android:text="Chronometer:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtMugCant"
-        android:ems="2"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btnCreateNumber"
-        android:layout_alignEnd="@+id/btnCreateNumber"
-        android:layout_marginTop="68dp"
-            android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Mug Content: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtMugContent"
-        android:textSize="24sp"
-        android:layout_alignBaseline="@+id/txtMugCant"
-        android:layout_alignBottom="@+id/txtMugCant"
-        android:layout_alignLeft="@+id/txtTry"
-        android:layout_alignStart="@+id/txtTry"
-        android:textColor="@color/zxing_custom_viewfinder_laser" />
-
-    <TextView
-        android:text=" "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtRandNumb"
-        android:ems="2"
-        android:textSize="30sp"
-        android:layout_alignBaseline="@+id/btnCreateNumber"
-        android:layout_alignBottom="@+id/btnCreateNumber"
-        android:layout_alignRight="@+id/txtTry"
-        android:layout_alignEnd="@+id/txtTry"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:textColor="@color/colorAccent" />
-
-    <Button
-        android:text="Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnCreateNumber"
-        android:layout_alignLeft="@+id/txtResult"
-        android:layout_alignStart="@+id/txtResult"
-        android:layout_marginTop="31dp"
-        android:id="@+id/btnStart" />
-
-    <Button
-        android:text="Random number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:id="@+id/btnCreateNumber"
-        android:onClick="onClick"
-        android:layout_below="@+id/txtTry"
-        android:layout_alignLeft="@+id/txtTry"
-        android:layout_alignStart="@+id/txtTry" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="5"
+        android:ems="6"
         android:textSize="24sp"
         android:id="@+id/txtChrono"
-        android:layout_alignBaseline="@+id/btnStart"
-        android:layout_alignBottom="@+id/btnStart"
-        android:layout_alignRight="@+id/txtRandNumb"
-        android:layout_alignEnd="@+id/txtRandNumb"
+            android:layout_gravity="center"
         android:textColor="@color/zxing_custom_viewfinder_laser" />
 
-    <TextView
-        android:text="Your result is: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtResult"
-        android:textSize="24sp"
-        android:layout_below="@+id/btnStart"
-        android:layout_alignRight="@+id/txtMugContent"
-        android:layout_alignEnd="@+id/txtMugContent"
-        android:layout_marginTop="49dp"
-        android:textColor="@color/zxing_custom_viewfinder_laser" />
+        <Button
+            android:text="Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:layout_gravity="center"
+            android:id="@+id/btnStart" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="2"
-        android:textSize="24sp"
-        android:id="@+id/txtResultNumb"
-        android:layout_alignBaseline="@+id/txtResult"
-        android:layout_alignBottom="@+id/txtResult"
-        android:layout_alignLeft="@+id/txtRandNumb"
-        android:layout_alignStart="@+id/txtRandNumb"
-        android:textColor="@color/colorAccent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15">
+
+            <TextView
+                android:text="Your result is: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtResult"
+                android:textSize="24sp"
+                android:layout_marginTop="49dp"
+                android:textColor="@color/zxing_custom_viewfinder_laser" />
+
+            <TextView
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:textSize="24sp"
+                android:id="@+id/txtResultNumb"
+                android:layout_marginTop="49dp"
+                android:textColor="@color/colorAccent" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
     </ScrollView>
 
