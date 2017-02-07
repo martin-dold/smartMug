@@ -7,8 +7,13 @@
 /* === Global defines === */
 /*! @brief Port used for OTA. Default is 8266. */
 #define OTA_PORT       8266
-/*! @brief Host name used for OTA. Default is esp8266-[ChipID] */
-#define OTA_HOSTNAME   "smartmug-ota"
+/*! @brief Host name that should be used for OTA. Default is esp8266-[ChipID]
+ *
+ *  Turns out that this hostname set using OTA library becomes the general
+ *  host name of the smartmug firmware. So use this define for unique names
+ *  of the smartmug.
+ */
+#define OTA_HOSTNAME   "smartmug-001"
 
 /* === Global variables === */
 

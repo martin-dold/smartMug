@@ -55,13 +55,19 @@ public class Statistic extends AppCompatActivity {
     public static double promileCounter(int drinkingVolume){
         double a;
         a = drinkingVolume * 0.05 * 0.8;
-        if(PersonalData.sex == true){
-            promile = a / (0.7*PersonalData.weight);
-        } else if(PersonalData.sex == false){
-            double helper = 0.6*PersonalData.weight;
-            promile = a/helper;
-        }else {promile = 0;}
-
+        if(PersonalData.weight > 0)
+        {
+            if(PersonalData.sex == true){
+                promile = a / (0.7*PersonalData.weight);
+            } else if(PersonalData.sex == false){
+                double helper = 0.6*PersonalData.weight;
+                promile = a/helper;
+            }else {promile = 0;}
+        }
+        else
+        {
+            promile = 0;
+        }
         return promile;
     }
 

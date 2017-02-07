@@ -2,6 +2,7 @@ package com.example.smartmug;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +15,9 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /*! @file  
  *  @brief This is the connection activity of the smartmug project.
@@ -45,20 +48,25 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
     private EditText port;
 
     /**
-     * value of the used ip
+     * value of the connected smartmug ip
      */
     private String ip ;
     /**
-     * value of the used port
+     * value of the connected smartmug port
      */
-    private int por;
+    private int portInt;
 
     /**
-     * value if qrCode is used
+     * Local variable used to store IP address resolved by hostname.
      */
-    private boolean qrCodeActive =false;
-
     private InetAddress serverAddr;
+
+    private static final Pattern IP_ADDRESS
+            = Pattern.compile(
+            "((25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\\.(25[0-5]|2[0-4]"
+                    + "[0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]"
+                    + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}"
+                    + "|[1-9][0-9]|[0-9]))");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,10 +126,23 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                  * IP Input field
                  */
                 ip = ipInput.getText().toString();
-                /**
-                 * call the TCP Connection Method
-                 */
-                buildNewTCPConnection();
+                portInt = Integer.parseInt(port.getText().toString());
+                if( (ip != null) && (portInt != 0) )
+                {
+                    Matcher matcher = IP_ADDRESS.matcher(ip);
+                    if (matcher.matches()) {
+                        // Entered string is a valid ip address
+                        buildNewTCPConnection();
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "Enter valid IP address.", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(this, "Invalid connection settings entered.", Toast.LENGTH_LONG).show();
+                }
                 break;
 
         }
@@ -141,13 +162,23 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 Toast.makeText(this, "Scanning Cancelled", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
-                qrCodeActive = true;
-                ip = result.getContents();
-                /**
-                 * call the TCP Connection Method
-                 */
-                buildNewTCPConnection();
+                /* Get the smartmugId that is contained in the qr-code. */
+                String smartmugId = result.getContents();
+                /* Ask our NSD discovery if that name/id was found in the network by
+                *  reading IP address and port number. */
+                ip = MainActivity.mNsdHelper.getIpString(smartmugId);
+                portInt = MainActivity.mNsdHelper.getPortNum(smartmugId);
+                if((ip != null) && (portInt != 0))
+                {
+                    Toast.makeText(this, "Connecting to smartmug id: \"" + smartmugId + "\"" ,Toast.LENGTH_LONG).show();
+                    Log.i("TCP", "Connecting to smartmug id: " + smartmugId);
+                    buildNewTCPConnection();
+                }
+                else
+                {
+                    Toast.makeText(this, "SmartMug \"" + smartmugId + "\" not found yet. Try again!",Toast.LENGTH_LONG).show();
+                    Log.e("TCP", "SmartMug service not discovered yet: " + smartmugId);
+                }
             }
         }
         else {
@@ -160,18 +191,31 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
      * build the TCP Connection
      */
     private void buildNewTCPConnection() {
-        new ConnectTask().execute("");
-        /**
-         * if the TCP Connection dont failed go back to the MainActivity
-         * else No Connection
-         */
-        if(MainActivity.tcpClientRunning == true){
-            Intent intentConect = new Intent (this, MainActivity.class);
-            startActivity(intentConect);
-        } else {
-            Toast.makeText(this, "No Connection! Maybe wrong IP Adress ", Toast.LENGTH_LONG).show();
-        }
 
+        /* Execute asynchronous task that tries to connect to the smartmug. */
+        new ConnectTask().execute("");
+
+        /* Lets give 1s to connect to the smartmug. */
+        new CountDownTimer(1000, 1) {
+            public void onFinish() {
+                // When timer is finished
+                if(MainActivity.tcpClientRunning == true){
+                    Toast.makeText(ConnectionActivity.this, "Connected to smartmug.",Toast.LENGTH_LONG).show();
+                    Intent intentConect = new Intent (ConnectionActivity.this, MainActivity.class);
+                    startActivity(intentConect);
+                }
+                else
+                {
+                    Toast.makeText(ConnectionActivity.this, "Unable to connect to smartmug.",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+
+                // Smartmug: simply wait until timer is finished and executes onFinished().
+            }
+        }.start();
     }
 
     /**
@@ -192,22 +236,11 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                 }
             });
 
-            /**
-             * two cases: one for the QR Code connection, second for the manuell Input
-             */
-            if (qrCodeActive == true){
-                try {
-                    serverAddr = InetAddress.getByName(ip);
-                    mTCPClient.run(serverAddr.getHostAddress(),8080);
-                    qrCodeActive = false;
-                } catch (UnknownHostException e) {
-                    e.printStackTrace();
-                }
-            } if(ip != null){
-
-                mTCPClient.run(ip,8080);
+            /* We actually checked IP and port before, but lets be safe. */
+            if( (ip != null) && (portInt != 0) ){
+                mTCPClient.run(ip,portInt);
             } else {
-                Toast.makeText(getApplicationContext(), "NO IP", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "No valid IP connection to smartmug.", Toast.LENGTH_LONG).show();
             }
             return null;
         }
@@ -219,10 +252,6 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
-            //response received from server
-            //Log.d("test", "response " + values[0]);
-            //process server response here....
-
         }
     }
 

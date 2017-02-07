@@ -77,7 +77,7 @@ public class MugContent {
                                     /**Update Notification */
                                     if(Statistic.promile >= 0.5){
                                         //Update Notification
-                                        mBuilder.setContentText(mMugcontent_percent +"%" + "\n" +"    Promile : " + Statistic.promile);
+                                        mBuilder.setContentText(mMugcontent_percent +"%" + "\n" +"    Promile : " + String.format("%.2f", Statistic.promile));
                                         notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
                                     } else
                                         //Update Notification
