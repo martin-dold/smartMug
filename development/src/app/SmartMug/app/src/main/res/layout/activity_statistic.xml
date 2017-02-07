@@ -68,6 +68,14 @@
             android:id="@+id/textViewPayAmount"
             android:textSize="18sp"
             android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTimeDrinking"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
     </ScrollView>
 
