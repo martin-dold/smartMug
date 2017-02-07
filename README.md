@@ -171,6 +171,21 @@ Accordingly, an example of a sensor data frame is:
 
 This chapter lists further features that can be added to the project.
 
+## Connect to the Restaurant
+
+A connection between SmartMug and the restaurant would allow the barkeeper to monitor the customers mugs using live data, i.e.
+the barkeeper is able to detect when to serve which guest based on the SmartMug data.
+Furthermore, this allows the customer to directly place an order to the barkeeper via wireless connection.
+
+## Payment via SmartMug App
+
+Once the connection to the restaurant is established, one may advance the SmartMug App to allow a digital payment method for the drinks.
+
+## Health monitoring
+
+The data the SmartMug App currently collects (sex, weight and total amount of liquid) allows to offer further services like health monitoring.
+The SmartMug App can detect when the user did not drink for some hours and can give warnings to ensure that a patient drinks enough liquid during a day.
+
 ## Security
 
 The current security mechanism relies on the encryption mechanism used by the wireless network (e.g. WPA2) both Android app and SmartMug are connected to.
