@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import java.io.*;
 import java.net.Socket;
 import java.lang.System;
+import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
 /*! @file  
@@ -49,11 +50,10 @@ public class TCPClient {
     private byte[] currentByte = new byte[1];
     /** Current tag value read from current frame. */
     private int currentTag;
-
+    /** @brief True if data shall be sent to the smartmug (asynchronously). False otherwise. */
     private static boolean isDataToBeSent = false;
-
+    /** @brief Array to store the data to be sent to the smartmug. */
     private static byte[] txData = new byte[256];
-
 
 
     /** States of the state machine to parse the SmartMug Protocol that consists of:
@@ -66,6 +66,7 @@ public class TCPClient {
         PARSER_STATE_READ_EOF
     }
 
+    /** @brief Current state of the smartmug protocol parser. */
     private PARSER_STATE parser_state;
 
 
@@ -86,14 +87,7 @@ public class TCPClient {
         if (mByteOutputStream != null) {
             txData = array;
             isDataToBeSent = true;
-            /*
-            try {
-                mByteOutputStream.write(array);
-                mByteOutputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
+            /* Store the TX data request and handle it asynchronous run(). */
         }
     }
 
@@ -128,13 +122,11 @@ public class TCPClient {
         mRun = true;
 
         try {
-            //here you must put your computer's IP address.
-
-
             Log.i("TCP Client", "C: Connecting...");
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(ip, port);
+            socket.setSoTimeout(20000);
             //set in the mainactivity that the tcp client is running -> so that its possible to communicate
             MainActivity.tcpClientRunning = true;
             // Reset state machine before start
@@ -203,6 +195,9 @@ public class TCPClient {
                         }
                     }
                 }
+            } catch (SocketTimeoutException e) {
+                Log.e("TCP", "Connection lost.", e);
+
             } catch (Exception e) {
 
                 Log.e("TCP", "S: Error", e);

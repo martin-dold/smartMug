@@ -4,10 +4,17 @@
 #include <ESP8266mDNS.h>
 
 /* === Global defines === */
+/*! @brief Service name of the smartmug service. */
 #define MDNS_SERVICE_NAME   "smartmug"
+/*! @brief Service type (prefix) of the smartmug service.
+ *
+ * This is combined with @ref MDNS_SERVICE_PROTO.
+ */
 #define MDNS_SERVICE_TYPE   "smartmug"
+/*! @brief Protocol used for the smartmug service. */
 #define MDNS_SERVICE_PROTO  "tcp"
-#define MDNS_SERVICE_PORT   8081  // keep in sync with local_port in tcp.ino!
+/*! @brief Port that offers the service. Keep this define in sync with @ref local_port in tcp.ino! */
+#define MDNS_SERVICE_PORT   8080
 
 /* === Global variables === */
 

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     /**
      * Helper class instance for Network Service Discovery (NSD) using mDNS
      */
-    public NsdHelper mNsdHelper;
+    public static NsdHelper mNsdHelper;
 
     /**
      * create the Activity
