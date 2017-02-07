@@ -32,7 +32,7 @@ public class MugContent {
     /** @brief Old value of the MugCcontent*/
     public static int tempOldValue = 0;
 
-    public static boolean newfill = false;
+    public static final int maxLiquidLevel = 300 ;
 
     public static void setMugContent(int tag, int len, byte[] value) {
 
@@ -52,7 +52,7 @@ public class MugContent {
 
                         mMugcontent_diff_to_last = tempOldValue - mMugcontent_raw;
 
-                        mMugcontent_percent = mMugcontent_raw / 4;
+                        mMugcontent_percent = (mMugcontent_raw*100)/maxLiquidLevel;
 
 
                         Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
