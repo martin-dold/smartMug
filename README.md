@@ -144,3 +144,11 @@ Still, AES encryption is state-of-the-art even for small microcontrollers as HW 
 reduce power consumption for battery powered devices.
 
 Therefore, application layer security using AES encryption appears reasonable.
+
+# References
+
+- [1] Lover’s Cups: Drinking Interfaces as New Communication Channels, Chung et al., 2006, [Link](http://dl.acm.org/citation.cfm?id=1125532&dl=ACM&coll=DL&CFID=725409781&CFTOKEN=29915740 "Link to Paper")
+- [2] Ultrasonic Sensing Basics for Liquid Level Sensing, Flow Sensing, and Fluid Identification Applications,  
+Texas Instruments, 2015, [Link](http://www.ti.com/lit/an/snaa220a/snaa220a.pdf "Link to PDF")
+- [3] FDC1004: Basics of Capacitive Sensing and Applications, Texas instruments, 2014, [Link](http://www.ti.com/lit/an/snoa927/snoa927.pdf "Link to PDF")
+- [4] Wireless Liquid Level Sensing for Restaurant Applications, Dietz et al., 2002, [Link](http://www.merl.com/publications/docs/TR2002-21.pdf "Link to Paper")
