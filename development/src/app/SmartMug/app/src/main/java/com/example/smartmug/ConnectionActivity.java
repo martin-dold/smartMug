@@ -1,6 +1,8 @@
 package com.example.smartmug;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -68,6 +70,8 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                     + "[0-9]{2}|[1-9][0-9]|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}"
                     + "|[1-9][0-9]|[0-9]))");
 
+    public SharedPreferences p;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +102,9 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
          * Text field for port
          */
         port = (EditText)findViewById(R.id.port);
+
+        p = getSharedPreferences("ipAdress", Context.MODE_PRIVATE);
+        ipInput.setText(p.getString("ip",""));
     }
 
     /**
@@ -127,6 +134,14 @@ public class ConnectionActivity extends AppCompatActivity implements OnClickList
                  */
                 ip = ipInput.getText().toString();
                 portInt = Integer.parseInt(port.getText().toString());
+
+                SharedPreferences.Editor editor = p.edit();
+                editor.putString("ip", ip);
+                /**
+                 * save the new data
+                 */
+                editor.commit();
+                finish();
                 if( (ip != null) && (portInt != 0) )
                 {
                     Matcher matcher = IP_ADDRESS.matcher(ip);

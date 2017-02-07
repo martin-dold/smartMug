@@ -126,7 +126,8 @@ public class TCPClient {
 
             //create a socket to make the connection with the server
             Socket socket = new Socket(ip, port);
-            socket.setSoTimeout(20000);
+            // Uncomment the next line if connection timeout occurs
+            //socket.setSoTimeout(20000);
             //set in the mainactivity that the tcp client is running -> so that its possible to communicate
             MainActivity.tcpClientRunning = true;
             // Reset state machine before start

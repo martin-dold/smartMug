@@ -35,7 +35,7 @@ public class GameFiveSeconds extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drinking_game);
+        setContentView(R.layout.activity_game_five_seconds);
         start = (Button) findViewById(R.id.startButton);
         crono = (TextView) findViewById(R.id.cronometro) ;
         mugBefore = (TextView) findViewById(R.id.mugBeforeText) ;

@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -31,12 +32,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtTry"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_weight="0.26"
             android:textStyle="normal|bold"
             android:textColor="@color/zxing_custom_viewfinder_laser" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15"
+            android:weightSum="1">
+
+            <Button
+                android:text="Random number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:id="@+id/btnCreateNumber"
+                android:layout_alignBaseline="@+id/btnCreateNumber"
+                android:onClick="onClick" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRandNumb"
+                android:ems="2"
+                android:layout_marginTop="55dp"
+                android:textSize="30sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/zxing_custom_viewfinder_laser"/>
+
+            <TextView
+                android:text="ml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtml"
+                android:layout_weight="1"
+                android:layout_marginTop="55dp"
+                android:textSize="30sp"
+                android:textColor="@color/zxing_custom_viewfinder_laser"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -49,9 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtMugContent"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:layout_alignBaseline="@+id/txtMugCant"
-                android:layout_marginTop="49dp"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/zxing_custom_viewfinder_laser" />
 
             <TextView
@@ -59,61 +100,33 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtMugCant"
                 android:ems="2"
-                android:textSize="24sp"
-                android:layout_alignBaseline="@+id/txtMugContent"
-                android:textColor="@color/zxing_custom_viewfinder_laser"
-                android:layout_alignParentTop="false"
-                android:layout_marginTop="49dp"
-                android:layout_marginLeft="70dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.15">
-
-            <Button
-                android:text="Random number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:id="@+id/btnCreateNumber"
-                android:onClick="onClick" />
-
-            <TextView
-                android:text=" "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRandNumb"
-                android:ems="2"
-                android:layout_marginTop="22dp"
                 android:textSize="30sp"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="24dp"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="10dp" />
 
         </LinearLayout>
 
-
-        <TextView
-        android:text="Chronometer:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="6"
-        android:textSize="24sp"
-        android:id="@+id/txtChrono"
-            android:layout_gravity="center"
-        android:textColor="@color/zxing_custom_viewfinder_laser" />
 
         <Button
-            android:text="Start"
+            android:text="Start Game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="31dp"
             android:layout_gravity="center"
-            android:id="@+id/btnStart" />
+            android:id="@+id/btnStart"
+            android:onClick="onClick" />
+
+        <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:textSize="30sp"
+            android:layout_marginTop="20dp"
+        android:id="@+id/txtCron"
+            android:layout_gravity="center"
+        android:textColor="@color/colorAccent" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -126,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtResult"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:layout_marginTop="49dp"
                 android:textColor="@color/zxing_custom_viewfinder_laser" />
 
@@ -134,7 +147,7 @@
                 android:layout_width="127dp"
                 android:layout_height="wrap_content"
                 android:ems="2"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:id="@+id/txtResultNumb"
                 android:layout_marginTop="49dp"
                 android:textColor="@color/colorAccent" />

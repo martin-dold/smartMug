@@ -1,5 +1,6 @@
 package com.example.smartmug;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -40,8 +41,8 @@ public class Statistic extends AppCompatActivity {
         }
         TextView promileData = (TextView)findViewById(R.id.textViewPromile);
         if (promile <= 0.5){
-            promileData.setText("Promile: "+promile);
-        } else promileData.setText("Promile: "+promile +"  Don't drive anymore !!");
+            promileData.setText("Promile: "+  String.format("%.2f", promile));
+        } else promileData.setText("Promile: "+ String.format("%.2f", promile) +"  Don't drive anymore !!");
 
         TextView orderCount = (TextView)findViewById(R.id.textViewOrderCount);
         orderCount.setText("Order Count: ");

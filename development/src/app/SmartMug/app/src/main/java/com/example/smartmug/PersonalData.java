@@ -88,12 +88,12 @@ public class PersonalData extends AppCompatActivity {
 
                 if(gender !=null) {
                     if (gender.getId() == male.getId()) {
-                        Toast.makeText(this, "Malesss", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(this, "Malesss", Toast.LENGTH_LONG).show();
                         sex = true;
 
 
                     } else if (gender.getId() == female.getId()) {
-                        Toast.makeText(this, "Female", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(this, "Female", Toast.LENGTH_LONG).show();
                         sex = false;
 
                     } else break;

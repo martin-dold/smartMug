@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class GameGuessDrinking extends AppCompatActivity {
 
-    private TextView randomNumber, mugBefore, result, chrono;
+    private TextView randomNumber, mugBefore, result, chrono,ml;
     /**
      * mug content before and after drinking
      */
@@ -35,11 +35,12 @@ public class GameGuessDrinking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_guess_drinking);
         randomNumber = (TextView) findViewById(R.id.txtRandNumb) ;
+        ml = (TextView) findViewById(R.id.txtml) ;
         mugBefore = (TextView) findViewById(R.id.txtMugCant) ;
         mugBef = MugContent.mMugcontent_raw;
         mugBefore.setText(String.valueOf(mugBef));
         result = (TextView) findViewById(R.id.txtResultNumb) ;
-        chrono = (TextView) findViewById(R.id.txtChrono) ;
+        chrono = (TextView) findViewById(R.id.txtCron) ;
         mugAft = MugContent.mMugcontent_raw;
         //result.setText(String.valueOf(r));
 
@@ -53,22 +54,22 @@ public class GameGuessDrinking extends AppCompatActivity {
                 int randomInt = randomGenerator.nextInt(100);
                 randomNumber.setText(String.valueOf(randomInt));
                 break;
-            case R.id.startButton:
+            case R.id.btnStart:
                 /**
                  * start the count down
                  */
-                new CountDownTimer(5000,1000) {
+                new CountDownTimer(10000,1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         // chrono.setBase(millisUntilFinished);
-                        chrono.setText("" + millisUntilFinished / 1000);
+                        chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
                     }
                     @Override
                     /**
                      * when it finish, show the mug content
                      */
                     public void onFinish() {
-                        //crono.setText("done!");
+                        chrono.setText("seconds remaining: " + 0);
                         mugAft = MugContent.mMugcontent_raw;
                         int t = mugBef-mugAft;
                         result.setText(String.valueOf(t));
