@@ -68,7 +68,7 @@ public class reOrderActivity extends AppCompatActivity implements View.OnClickLi
                 byte[] red = new byte[] {0x02,0x01,0x01,0x0A};
                 changeColor(red);
                 countOrders++;
-                
+
                 break;
 
         }
