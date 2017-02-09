@@ -1,7 +1,12 @@
 # smartMug
 This is the repository for the smartMug project.
 
-# Project Startup and Related Work
+# Project Startup and History
+
+This chapter describes initial considerations at project startup that finally lead to the developed SmartMug.
+The documentation of the latest release starts in section [Architecture](#architecture)
+
+## Initial Research and Related Work
 
 At start of the project, the team started research on smart mug applications and required technologies.
 Besides others, the task was to address the following two main questions:
@@ -35,9 +40,62 @@ level of the container itself. Examples are pipets in biology or dosing pumps as
 However, this solution does not fit to the SmartMug project because of hygienic reasons and general user acceptance as
 drinking the liquid in the SmartMug shall be possible and nobody expects a floating gauge in his or her drink.
 - An appropriate technology is used by the project **"Wireless Liquid Level Sensing for Restaurant Applications"** [4]
-that uses capacitive sensing.
+that uses capacitive sensing. Additionally, two appilcation reports give detailed insight into this technology [2] [3].
 - If the weight of the mug is known in advance, the liquid level can be measured by weighting the mug including the liquid.
 The SmartMug project finally used this technology.
+
+## Hardware and Software Selection
+One of the first steps at project startup was to define the required hardware and software components.
+Constraints are:
+
+- A wireless protocol that fits for battery powered nodes.
+- A wireless protocol that allows a huge number of nodes within network, as there are a lot of mugs within a restaurant or bar.
+- A wireless communication module that allows a battery powered application to be attached to the mug.
+It shall be possible to easily run the previously defined wireless protocol.
+- The SmartMug user shall easily connect to its mug, even with its own smartphone.
+
+### Wireless Protocol
+
+In the very first evaluation step, the following wireless protocols were considered:
+
+1. IEEE802.11 Wireless LAN 
+2. IEEE802.15.4 Zigbee
+3. Bluetooth (Low Energy)
+4. 6LoWPAN
+
+The Zigbee as well as the 6LoWPAN protocol fit very well with regards to the power consumption constrain:
+Both procotols are specialized for battery powered nodes as they both are desgined for this application purpose.
+Drawback of these protocols is the missing connection to the users smartphone: 
+By default, none of these protocols are supported by any state-of-the-art smartphone, that typically supports Wireless LAN and Bluetooth.
+Therefore, communication to the smartphone requires a gateway node that forwards messages between the 
+SmartMug and the smartphone.
+Due to this disadvantage of requiring an additionally device for network translation,
+the protocols Bluetooth and Wireless LAN are short-listed.
+
+Finally, the focus changed to Wireless LAN as:
+
+- it is fully supported by almost all smartphones, even older ones,
+- it easily allows to run well-known protocols such as TCP/IP or UDP on top for applications data exchange,
+- it allows a huge number of mugs to be connected to the same network,
+- a lot of today's restaurants and bars already provide a Wireless LAN network to the customers.
+This would allow to reuse existing restaurant infrastructure for future SmartMug services directly connected to the bar.
+- the universities laboratory provides a Wireless LAN module in-house that states promising power consumption in the documentation.
+
+### Wireless LAN module
+
+As a result, the low-power Wireless module [ESP8266](http://espressif.com/en/products/hardware/esp8266ex/resources "ESP8266") was chosen.
+It meets the low-power requirement, has sufficient GPIO pins for the connection to the liquid level sensing unit 
+and provides a huge variety of software development kits (SDK), e.g. NodeMCU (Lua-based), Arduino and MicroPython.
+A full list of available SDKs is available [here](http://www.mikrocontroller.net/articles/ESP8266 "ESP8266 SDKs").
+
+In the end, Arduino was chosen as it is open-source and provides full library support for Wireless LAN, TCP/IP, Multicast DNS
+and even for the HX711 weighting cell that was chosen for liquid level sensing.
+
+### Smartphone App
+
+To allow the SmartMug user to connect to the mug, a smartphone app shall be developed. 
+For the first prototypes, it was defined to develop an app for Android smartphones first.
+Development of an iPhone app was seen as future extension to the project.
 
 
 # Source Code Documentation
@@ -53,25 +111,28 @@ Within this project the following components are involved:
 - **Android app**: Connects to your SmartMug and provides the service(s).
 - **Wifi access**: SmartMug and Android App require a Wireless LAN network to communicate.
 
-
-# Hardware Selection
-**TODO**: describe
-
-- Why WiFi?
-- Why Arduino? Why this specific module?
-- HX711 vs. capacitive sensing or even as separate chapter?
-- ...
-
 ## Liquid Level Sensing
 **TODO**: describe HX711 vs. capacitive sensing here in a separate chapter?
 
 ## Arduino
-**TODO**: describe
 
-- basic SW architecture
-- Arduino libraries for rapid development (wifi, mdns, ota ...)
-- HX711 library
-- ...
+Wireless module [ESP8266](http://espressif.com/en/products/hardware/esp8266ex/resources "ESP8266") 
+is programmed using open-source Arduino SDK. The firmware is composed of several Arduino files.
+Each of them contains a separate software unit/module. 
+For a complete list of software modules and its implementation details, check out the Arduino chapter
+of the [Source Code Documentation](https://martin-dold.github.io/smartMug/ "Source Code Documentation").
+
+Most important software modules are:
+
+- **Wifi:**  
+Uses Arduino ESP8266 Wifi library to establish a Wifi connection.
+After startup, the SmartMug scans its environment for the Wireless LAN SSID "*smartmug*". A pasword for WPA2 is required.
+- **TCP:**  
+TODO: describe
+- **HX711:**  
+TODO: describe
+- **Over-the-air Update:**  
+TODO: describe
 
 ### Pin configuration and functions
 
@@ -97,6 +158,7 @@ Within this project the following components are involved:
 - statistics
 - ...
 
+## SmartMug case manufacturing
 
 # Communication
 
@@ -169,7 +231,7 @@ Accordingly, an example of a sensor data frame is:
 
 # Outlook
 
-This chapter lists further features that can be added to the project.
+This chapter lists further features and ideas in general that can be added to the project.
 
 ## Connect to the Restaurant
 
