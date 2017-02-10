@@ -1,5 +1,14 @@
-/*
- *  This is the Over-The-Air-Update sketch of the smartmug project.
+/*! @file  ota.ino
+ *  @brief This is the Over-The-Air-Update (OTA) sketch of the smartmug project.
+ *
+ *  @defgroup ota Over-The-Air-Update
+ *  @brief Functions for updating the smartmug firmware using wireless connection.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup ota
+ *  @{
  */
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
@@ -88,3 +97,8 @@ void ota_loop()
 }
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */

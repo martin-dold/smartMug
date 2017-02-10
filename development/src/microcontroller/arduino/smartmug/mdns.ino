@@ -1,5 +1,14 @@
-/*
- *  This is the multicast DNS sketch of the smartmug project.
+/*! @file  mdns.ino
+ *  @brief This is the multicast DNS sketch of the smartmug project.
+ *
+ *  @defgroup mdns Multicast DNS
+ *  @brief Functions for publishing smartmug service using MDNS.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup mdns
+ *  @{
  */
 #include <ESP8266mDNS.h>
 
@@ -57,3 +66,8 @@ void mdns_loop()
 }
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */
