@@ -31,6 +31,9 @@
 
 /* === Public API functions starting here === */
 
+/*!
+ * @brief Setup function of this ino sketch to setup mDNS for operation.
+ */
 void mdns_setup()
 {
   Serial.println("\n###");
@@ -56,7 +59,9 @@ void mdns_setup()
   Serial.printf("  mDNS provide service: name=%s, type=_%s._%s, port=%d\n", MDNS_SERVICE_NAME, MDNS_SERVICE_TYPE, MDNS_SERVICE_PROTO, MDNS_SERVICE_PORT);
 }
 
-
+/*!
+ * @brief Loop function of this ino sketch to run mDNS.
+ */
 void mdns_loop()
 {
   /*

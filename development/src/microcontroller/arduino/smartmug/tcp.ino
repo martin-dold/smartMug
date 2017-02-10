@@ -24,7 +24,7 @@ bool remoteConnected;
 WiFiServer server(local_port);
 /*! @brief Create WiFi client that handles client connections received through listening server. */
 WiFiClient serverRemote;
-
+/*! @brief Data array for received SmartMug protocol frames. */
 uint8_t rxData[50];
 
 /* === Local/private function prototypes === */
@@ -150,6 +150,9 @@ void tcp_send(const uint8_t *data, uint16_t len)
 
 /* === Local utility functions starting here === */
 
+/*!
+ * @brief Parses given data for a SmartMug protocol frame.
+ */
 void parseTcpRxData(uint8_t *data, uint16_t len)
 {
   /* TAG 0x02 = LED set Color. */

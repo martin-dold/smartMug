@@ -19,8 +19,6 @@
 #define PIN_DOUT    14
 /*! @brief Pin number of the smartmug where PD_SCK pin of scale is connected to. */
 #define PIN_PD_SCK  16
-/*! @ brief Minimum negativ value that is still considered as '0' weight. */
-#define MINIMUM_VALUE (-50)
 
 /* === Global variables === */
 /*! @brief Global instance of the HX711 scale. */

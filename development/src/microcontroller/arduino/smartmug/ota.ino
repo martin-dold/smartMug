@@ -30,6 +30,9 @@
 
 /* === Public API functions starting here === */
 
+/*!
+ * @brief Setup function of this ino sketch to setup OTA for operation.
+ */
 void ota_setup()
 {
   #ifdef OTA_PORT
@@ -89,7 +92,9 @@ void ota_setup()
 
 }
 
-
+/*!
+ * @brief Loop function of this ino sketch to run the over-the-air update.
+ */
 void ota_loop()
 {
   /* Run the OTA service. */

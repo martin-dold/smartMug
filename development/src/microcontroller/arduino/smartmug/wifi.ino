@@ -18,8 +18,11 @@
 const char* ssid     = "smartmug";
 /*! @brief Password of the SSID the smartmug shall connect to. */
 const char* password = "smartmug12345";
+/*! @brief IP address of the SmartMug. */
 IPAddress ip(192, 168, 5, 10);
+/*! @brief Gateway IP address of the network the SmartMug is connected to. */
 IPAddress gateway(192, 168, 5, 1);
+/*! @brief Subnet mask of the SmartMug. */
 IPAddress subnet(255, 255, 255, 0);
 
 /* === Global variables === */
