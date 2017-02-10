@@ -61,17 +61,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/mugAfterText"
-            android:text="Mug Content"
-            android:textSize="30sp"
-            android:layout_above="@+id/crono2"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/zxing_custom_viewfinder_laser" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:textSize="30sp"
             android:id="@+id/totalText"
             android:textColor="@color/colorAccent" />
