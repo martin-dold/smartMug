@@ -1,6 +1,17 @@
 # SmartMug
 This is the repository for the SmartMug project.
 
+The intention of the project is to turn a standard mug into a SmartMug by mounting the developed
+SmartMug case on the bottom of the mug.
+Using the developed Android App, the user can now connect to its mug.
+Once the wireless connection is established, the following services are available:
+
+- Ordering via app: the SmartMug changes its color to signal the waitress
+that the user wants a new drink, reorder the same drink, asks for the bill or has no request at all.
+- Monitor the current filling level of the mug within the app.
+- Play two different drinking games.
+- Entering personal data to display user statistics, e.g. blood alcohol level.
+
 # Project Startup and History
 
 This chapter describes initial considerations at project startup that finally lead to the developed SmartMug.
@@ -89,7 +100,7 @@ and provides a huge variety of software development kits (SDK), e.g. NodeMCU (Lu
 A full list of available SDKs is available [here](http://www.mikrocontroller.net/articles/ESP8266 "ESP8266 SDKs").
 
 In the end, Arduino was chosen as it is open-source and provides full library support for Wireless LAN, TCP/IP, Multicast DNS
-and even for the HX711 weighting cell that was chosen for liquid level sensing.
+and even for the HX711 load cell that was chosen for liquid level sensing.
 
 ### Smartphone App
 
@@ -128,13 +139,15 @@ Most important software modules are:
 Uses Arduino ESP8266 Wifi library to establish a Wifi connection.
 After startup, the SmartMug scans its environment for the Wireless LAN SSID "*smartmug*". A password for WPA2 is required.
 - **TCP:**  
-TODO: describe
+Uses Arduino TCP library to create a server socket and listen on TCP port 8080 for incomming connection requests.
 - **HX711:**  
-TODO: describe
+Uses HX711 library to measure the weight using HX711 load cell.
 - **Over-the-air Update:**  
-TODO: describe
+Uses Arduino ESP8266 OTA library to provide firmware update over-the-air.
 
 ### Pin configuration and functions
+
+The following table lists the pins that are connected to the microcontroller.
 
 | Pin           | Function                |
 | ------------- |:-----------------------:|
