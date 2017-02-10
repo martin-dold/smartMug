@@ -15,7 +15,7 @@ that the user wants a new drink, reorder the same drink, asks for the bill or ha
 # Project Startup and History
 
 This chapter describes initial considerations at project startup that finally lead to the developed SmartMug.
-The documentation of the latest release starts in section [Architecture](#architecture)
+The documentation of the latest release starts in section [Architecture](#architecture).
 
 ## Initial Research and Related Work
 
