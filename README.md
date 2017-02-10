@@ -179,6 +179,17 @@ For more details check out the [Source Code Documentation](#source-code-document
 
 ## SmartMug case manufacturing
 
+The case manufacturing contains two main tasks namely the case itself and the mounting parts, that are connecting the actual mug with the load cell. All the parts were modelled in SolidWorks 2013 and were printed via the MakerBot Replicator X2 3D-printer.
+
+The case itself has a bottom part, where all the components are mounted. The mounted elements are:
+- Load Cell
+- Adafruit Huzzah ESP8266 Microcontroller
+- Hx711 ADC and Amplifier
+- RGB LED
+- Battery case for AA batteries.
+
+The second part is a bayonet mount, with a female and a male part. Those are used to connect the mug the load cell.
+
 # Communication
 
 This chapter explains the communication schemes and protocols that are used within this project.
