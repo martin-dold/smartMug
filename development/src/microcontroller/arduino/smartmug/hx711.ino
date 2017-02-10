@@ -15,7 +15,9 @@
 /* === Global defines === */
 /*! @brief Scale value obtained by calibration in the lab. (see hx711_weight_calibration_log.txt) */
 #define HX711_SCALE   429.23f
+/*! @brief Pin number of the smartmug where DOUT pin of scale is connected to. */
 #define PIN_DOUT    14
+/*! @brief Pin number of the smartmug where PD_SCK pin of scale is connected to. */
 #define PIN_PD_SCK  16
 
 /* === Global variables === */
@@ -74,11 +76,6 @@ float hx711_getWeight()
   ret = scale.get_units(10);
   scale.power_down();
 
-  if(ret < 0)
-  {
-    ret = 0;
-  }
-
   return ret;
 }
 
@@ -92,6 +89,20 @@ int hx711_getWeightAsInt()
   weight = hx711_getWeight();
   ret = (int)(weight+.5);
   return ret;
+}
+
+/*!
+ * @brief Tares the HX711 to 0.
+ *
+ * A power up and power down of the ADC is performed before
+ * and after taring.
+ */
+void hx711_tare()
+{
+  scale.power_up();
+  // reset the scale to 0
+  scale.tare();
+  scale.power_down();
 }
 
 /* === Local utility functions starting here === */

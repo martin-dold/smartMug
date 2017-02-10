@@ -24,7 +24,7 @@ bool remoteConnected;
 WiFiServer server(local_port);
 /*! @brief Create WiFi client that handles client connections received through listening server. */
 WiFiClient serverRemote;
-
+/*! @brief Data array for received SmartMug protocol frames. */
 uint8_t rxData[50];
 
 /* === Local/private function prototypes === */
@@ -131,14 +131,13 @@ void tcp_send(const uint8_t *data, uint16_t len)
 
   if (serverRemote.connected())
   {
-    for (int i = 0; i < len; ++i)
+    /* Firstly, send the whole data in single call. */
+    int bytesWritten = serverRemote.write(data, len);
+    /* Afterwards, make debug print of written data bytes. */
+    for (int i = 0; i < bytesWritten; ++i)
     {
-      // Make debug print of data first.
       Serial.print(data[i], HEX);
       Serial.print(" ");
-
-      // Now actually send data through TCP socket.
-      serverRemote.write(data[i]);
     }
     Serial.println("");
   }
@@ -151,8 +150,12 @@ void tcp_send(const uint8_t *data, uint16_t len)
 
 /* === Local utility functions starting here === */
 
+/*!
+ * @brief Parses given data for a SmartMug protocol frame.
+ */
 void parseTcpRxData(uint8_t *data, uint16_t len)
 {
+  /* TAG 0x02 = LED set Color. */
   if(rxData[0] == 0x02)
   {
     if(rxData[1] == 0x01)
@@ -181,6 +184,18 @@ void parseTcpRxData(uint8_t *data, uint16_t len)
       {
         Serial.println("led_setWhite()");
         led_setWhite();
+      }
+    }
+  }
+  /* TAG 0x03 = Tare weight. */
+  else if(rxData[0] == 0x03)
+  {
+    if(rxData[1] == 0x01)
+    {
+      if(rxData[2] == 0x00)
+      {
+        Serial.println("hx711_tare()");
+        hx711_tare();
       }
     }
   }

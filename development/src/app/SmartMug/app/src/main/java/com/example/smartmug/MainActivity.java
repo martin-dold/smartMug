@@ -23,13 +23,13 @@ import static android.R.id.progress;
  *  @defgroup java Android Code
  *  @brief Android code of the smartmug firmware.
  *
- *  @defgroup main SmartMug Main
+ *  @defgroup main-app SmartMug Main Activity
  *  @brief Main acitivity of the smartmug app.
  *
  *  @addtogroup java
  *  @{
  *
- *  @addtogroup main
+ *  @addtogroup main-app
  *  @{
  */
 
@@ -41,10 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
      * Value with the re-order count (how many beers did I drunk up to now)
      */
     public int orderCount = 0;
-    /**
-     *
-     */
-    public static TextView tvOrder;
+
     /**
      * Declare the ProgressBar
      */
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     /**
      * Helper class instance for Network Service Discovery (NSD) using mDNS
      */
-    public NsdHelper mNsdHelper;
+    public static NsdHelper mNsdHelper;
 
     /**
      * create the Activity
@@ -82,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvOrder = (TextView) findViewById(R.id.txtOrder);
+
 
         /**
          * Create ConnectMugButton
@@ -168,9 +165,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
      * display the Notification
      */
     private void showNotification() {
-
         notificationmanager.notify(finalid,mBuilder.build());
-
     }
 
     /**

@@ -26,13 +26,19 @@ public class MugContent {
      *  to a mug with max. 400g, i.e. 400g equals 100%. */
     public static int mMugcontent_percent;
     /** @brief Holds the last received content level of the mug in unit 'g' (gramm). */
-    public static int mMugcontent_raw = 0;
+    public static short mMugcontent_raw = 0;
     /** @brief Difference between current _raw and previous _raw. */
     public static int mMugcontent_diff_to_last;
     /** @brief Old value of the MugCcontent*/
     public static int tempOldValue = 0;
 
-    public static boolean newfill = false;
+    public static int testValue = 0;
+
+    public static short testValueShort = 0;
+
+    public static short mugContentRaw = 0;
+
+    public static final int maxLiquidLevel = 300 ;
 
     public static void setMugContent(int tag, int len, byte[] value) {
 
@@ -43,20 +49,29 @@ public class MugContent {
                 /* The tag "sensor data" should have a value length of 2. */
                 if(len == 2)
                 {
+                    testValue = (((value[0] & 0xff) << 8) | (value[1] & 0xff));
+
+                    testValueShort = (short)testValue;
+
+                    if (testValueShort < 0)
+                    {
+                        break;
+                    }
 
                     tempOldValue = mMugcontent_raw;
                     /* Convert the two bytes into one value. update the new Mugcontent*/
-                    mMugcontent_raw = (((value[0] & 0xff) << 8) | (value[1] & 0xff));
+                    mMugcontent_raw = testValueShort;
+
+                    mugContentRaw = mMugcontent_raw;
+
+                    mMugcontent_diff_to_last = tempOldValue - mMugcontent_raw;
+
+                    mMugcontent_percent = (mMugcontent_raw*100)/maxLiquidLevel;
 
 
-
-                        mMugcontent_diff_to_last = tempOldValue - mMugcontent_raw;
-
-                        mMugcontent_percent = mMugcontent_raw / 4;
-
-
-                        Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
-                        Log.d("MugContent", "_percent = " + String.valueOf(mMugcontent_percent));
+                    Log.d("MugContent", "_raw = " + Integer.toString(mMugcontent_raw));
+                    Log.d("MugContent", "_raw16 = " + Integer.toString(mugContentRaw));
+                    Log.d("MugContent", "_percent = " + String.valueOf(mMugcontent_percent));
 
 
                     new Thread(new Runnable() {
@@ -77,7 +92,7 @@ public class MugContent {
                                     /**Update Notification */
                                     if(Statistic.promile >= 0.5){
                                         //Update Notification
-                                        mBuilder.setContentText(mMugcontent_percent +"%" + "\n" +"    Promile : " + Statistic.promile);
+                                        mBuilder.setContentText(mMugcontent_percent +"%" + "\n" +"    Promile : " + String.format("%.2f", Statistic.promile));
                                         notificationmanager.notify(MainActivity.getFinalid(),mBuilder.build());
                                     } else
                                         //Update Notification

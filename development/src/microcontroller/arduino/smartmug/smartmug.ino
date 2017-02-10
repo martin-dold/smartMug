@@ -32,11 +32,11 @@ unsigned long tcpSendTimer;
 
 /*! @brief First weight sensor data package defined by the smartmug group.
  *
- *  The data follows the first version of the smartmug protocol by sending:
- *  TAG:   0x01 (Smartmug sensor data)
- *  LEN:   0x02 (Two bytes of sensor data)
- *  VALUE: two byte weight (in g) as unsigned int with MSB first
- *  EOF:   '\n' (0x0A) to allow easy data reading in Andriod app
+ *  The data follows the first version of the smartmug protocol by sending:\n
+ *  - TAG:   0x01 (Smartmug sensor data)\n
+ *  - LEN:   0x02 (Two bytes of sensor data)\n
+ *  - VALUE: two byte weight (in g) as unsigned int with MSB first\n
+ *  - EOF:   '\\n' (0x0A) to allow easy data reading in Andriod app\n
  */
 uint8_t tcpSensorData[] = {0x01, 0x02, 0x00, 0x00, 0x0A};
 
@@ -117,7 +117,7 @@ void loop()
     }
     else
     {
-      currentWeight = currentWeight - 50;
+      currentWeight = currentWeight - 10;
     }
 
     #else
@@ -132,9 +132,7 @@ void loop()
     tcpSensorData[2] = highByte(currentWeight);
     tcpSensorData[3] = lowByte(currentWeight);
     tcp_send(tcpSensorData, sizeof(tcpSensorData));
-
   }
-
 }
 
 

@@ -12,17 +12,26 @@
  */
 
 /* === Global defines === */
-#define LED_1_PIN_R   5
-#define LED_1_PIN_G  12
-#define LED_1_PIN_B  13
+/*! @brief Pin for RGB-LED color: RED. */
+#define LED_1_PIN_R  13
+/*! @brief Pin for RGB-LED color: Green. */
+#define LED_1_PIN_G  5
+/*! @brief Pin for RGB-LED color: Blue. */
+#define LED_1_PIN_B  12
 
+/*! @brief RGB-LED color code used within SmartMug protocol representing: LED OFF. */
 #define LED_COLOR_OFF    0
+/*! @brief RGB-LED color code used within SmartMug protocol representing color: Red. */
 #define LED_COLOR_RED    1
+/*! @brief RGB-LED color code used within SmartMug protocol representing color: Green. */
 #define LED_COLOR_GREEN  2
+/*! @brief RGB-LED color code used within SmartMug protocol representing color: Blue. */
 #define LED_COLOR_BLUE   3
+/*! @brief RGB-LED color code used within SmartMug protocol representing color: White. */
 #define LED_COLOR_WHITE  4
 
 /* === Global variables === */
+/*! @brief Current color of RGB-LED. */
 uint8_t currentColor;
 
 /* === Local/private function prototypes === */
@@ -49,7 +58,7 @@ void led_setup()
 }
 
 /*!
- * @brief Loop function of this ino sketch to run HX711.
+ * @brief Loop function of this ino sketch to run LED module.
  */
 void led_loop()
 {
@@ -59,6 +68,9 @@ void led_loop()
   return;
 }
 
+/*!
+ * @brief Set RGB-LED to: Red.
+ */
 void led_setRed()
 {
   digitalWrite(LED_1_PIN_R, LOW);
@@ -67,6 +79,9 @@ void led_setRed()
   currentColor = LED_COLOR_RED;
 }
 
+/*!
+ * @brief Set RGB-LED to: Green.
+ */
 void led_setGreen()
 {
   digitalWrite(LED_1_PIN_R, HIGH);
@@ -75,6 +90,9 @@ void led_setGreen()
   currentColor = LED_COLOR_GREEN;
 }
 
+/*!
+ * @brief Set RGB-LED to: Blue.
+ */
 void led_setBlue()
 {
   digitalWrite(LED_1_PIN_R, HIGH);
@@ -83,6 +101,9 @@ void led_setBlue()
   currentColor = LED_COLOR_BLUE;
 }
 
+/*!
+ * @brief Set RGB-LED to: White.
+ */
 void led_setWhite()
 {
   digitalWrite(LED_1_PIN_R, LOW);
@@ -91,6 +112,9 @@ void led_setWhite()
   currentColor = LED_COLOR_WHITE;
 }
 
+/*!
+ * @brief Set RGB-LED to: Off.
+ */
 void led_setOff()
 {
   digitalWrite(LED_1_PIN_R, HIGH);
@@ -98,6 +122,9 @@ void led_setOff()
   digitalWrite(LED_1_PIN_B, HIGH);
 }
 
+/*!
+ * @brief Set RGB-LED to latest color value.
+ */
 void led_turnOnLastColor()
 {
   switch(currentColor)
@@ -119,7 +146,10 @@ void led_turnOnLastColor()
   }
 }
 
-/*! @brief Do not use. Not working properly. */
+/*! @brief Another function to set RGB-LED.
+ *
+ * @attention Do not use! Not working properly. 
+ */
 void led_setColor(int red, int green, int blue)
 {
   analogWrite(LED_1_PIN_R, 255 - red);

@@ -8,27 +8,76 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.smartmug.Statistic">
-
-    <TextView
-        android:text="ORDERS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    tools:context="com.example.smartmug.Statistic"
+    android:background="@drawable/smartmugclear">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="72dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="46dp"
-        android:id="@+id/txtOrder" />
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:text="Number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtOrder"
-        android:layout_alignLeft="@+id/txtOrder"
-        android:layout_alignStart="@+id/txtOrder"
-        android:layout_marginTop="19dp"
-        android:id="@+id/txtCountOrder" />
+        <TextView
+            android:text="Statistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewStatistics"
+            android:textStyle="normal|bold"
+            tools:text="Statistics"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPlaceHolder" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPersonalData"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPromile"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewOrderCount"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_orange_light" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPayAmount"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTimeDrinking"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+    </ScrollView>
+
+
 </RelativeLayout>

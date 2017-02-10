@@ -11,62 +11,18 @@
     tools:context="com.example.smartmug.PersonalData"
     android:background="@drawable/smartmugclear">
 
-    <TextView
-        android:text="Sex: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="31dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="48dp"
-        android:id="@+id/txtSex"
-        android:textSize="24sp"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="@android:color/background_light" />
+        android:layout_alignParentStart="true">
 
-
-    <TextView
-        android:text="Weight (kg):"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtWeight"
-        android:textSize="24sp"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/txtHeight"
-        android:layout_alignLeft="@+id/txtHeight"
-        android:layout_alignStart="@+id/txtHeight"
-        android:textColor="@android:color/background_light" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Male or Female"
-        android:ems="10"
-        android:id="@+id/txtMaleFemale"
-        android:layout_alignBaseline="@+id/txtSex"
-        android:layout_alignBottom="@+id/txtSex"
-        android:layout_toRightOf="@+id/txtWeight"
-        android:layout_toEndOf="@+id/txtWeight"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:text="save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
-        android:id="@+id/saveButton"
-        android:onClick="onClick"
-        android:layout_below="@+id/txtGR"
-        android:layout_toRightOf="@+id/txtSex"
-        android:layout_toEndOf="@+id/txtSex"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:alpha="0.5"
-        android:textStyle="normal|bold" />
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtHeight"
@@ -78,20 +34,32 @@
         android:layout_alignStart="@+id/txtSex"
         android:textColor="@android:color/background_light" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="5"
-        android:id="@+id/txtCM"
-        android:text="cm"
-        android:layout_alignBaseline="@+id/txtHeight"
-        android:layout_alignBottom="@+id/txtHeight"
-        android:layout_toRightOf="@+id/saveButton"
-        android:layout_toEndOf="@+id/saveButton"
-        android:textColor="@android:color/white" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:ems="5"
+            android:id="@+id/txtCM"
+            android:text="cm"
+            android:layout_alignBaseline="@+id/txtHeight"
+            android:layout_alignBottom="@+id/txtHeight"
+            android:layout_toRightOf="@+id/saveButton"
+            android:layout_toEndOf="@+id/saveButton"
+            android:textColor="@android:color/white" />
 
-    <EditText
+        <TextView
+            android:text="Weight (kg):"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtWeight"
+            android:textSize="24sp"
+            android:layout_marginTop="42dp"
+            android:layout_below="@+id/txtHeight"
+            android:layout_alignLeft="@+id/txtHeight"
+            android:layout_alignStart="@+id/txtHeight"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
@@ -103,5 +71,50 @@
         android:layout_alignLeft="@+id/txtCM"
         android:layout_alignStart="@+id/txtCM"
         android:textColor="@android:color/white" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_below="@+id/txtGR"
+        android:layout_marginTop="37dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogroup1">
+
+        <RadioButton
+            android:text="Male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonMale"
+            android:layout_weight="1"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:text="Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonFemale"
+            android:layout_weight="1"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
+    </RadioGroup>
+
+    <Button
+        android:text="save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton"
+        android:onClick="onClick"
+        android:alpha="0.5"
+        android:textStyle="normal|bold"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="84dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

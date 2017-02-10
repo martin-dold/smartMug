@@ -61,7 +61,7 @@
             android:textStyle="normal|bold" />
 
         <Button
-            android:text="Single"
+            android:text="I'm fine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

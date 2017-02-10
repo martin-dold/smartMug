@@ -1,13 +1,29 @@
-/*
- *  This is the multicast DNS sketch of the smartmug project.
+/*! @file  mdns.ino
+ *  @brief This is the multicast DNS sketch of the smartmug project.
+ *
+ *  @defgroup mdns Multicast DNS
+ *  @brief Functions for publishing smartmug service using MDNS.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup mdns
+ *  @{
  */
 #include <ESP8266mDNS.h>
 
 /* === Global defines === */
+/*! @brief Service name of the smartmug service. */
 #define MDNS_SERVICE_NAME   "smartmug"
+/*! @brief Service type (prefix) of the smartmug service.
+ *
+ * This is combined with @ref MDNS_SERVICE_PROTO.
+ */
 #define MDNS_SERVICE_TYPE   "smartmug"
+/*! @brief Protocol used for the smartmug service. */
 #define MDNS_SERVICE_PROTO  "tcp"
-#define MDNS_SERVICE_PORT   8081  // keep in sync with local_port in tcp.ino!
+/*! @brief Port that offers the service. Keep this define in sync with @ref local_port in tcp.ino! */
+#define MDNS_SERVICE_PORT   8080
 
 /* === Global variables === */
 
@@ -15,6 +31,9 @@
 
 /* === Public API functions starting here === */
 
+/*!
+ * @brief Setup function of this ino sketch to setup mDNS for operation.
+ */
 void mdns_setup()
 {
   Serial.println("\n###");
@@ -40,7 +59,9 @@ void mdns_setup()
   Serial.printf("  mDNS provide service: name=%s, type=_%s._%s, port=%d\n", MDNS_SERVICE_NAME, MDNS_SERVICE_TYPE, MDNS_SERVICE_PROTO, MDNS_SERVICE_PORT);
 }
 
-
+/*!
+ * @brief Loop function of this ino sketch to run mDNS.
+ */
 void mdns_loop()
 {
   /*
@@ -50,3 +71,8 @@ void mdns_loop()
 }
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */

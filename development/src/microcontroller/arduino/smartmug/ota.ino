@@ -1,5 +1,14 @@
-/*
- *  This is the Over-The-Air-Update sketch of the smartmug project.
+/*! @file  ota.ino
+ *  @brief This is the Over-The-Air-Update (OTA) sketch of the smartmug project.
+ *
+ *  @defgroup ota Over-The-Air-Update
+ *  @brief Functions for updating the smartmug firmware using wireless connection.
+ *
+ *  @addtogroup arduino
+ *  @{
+ *
+ *  @addtogroup ota
+ *  @{
  */
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
@@ -7,8 +16,13 @@
 /* === Global defines === */
 /*! @brief Port used for OTA. Default is 8266. */
 #define OTA_PORT       8266
-/*! @brief Host name used for OTA. Default is esp8266-[ChipID] */
-#define OTA_HOSTNAME   "smartmug-ota"
+/*! @brief Host name that should be used for OTA. Default is esp8266-[ChipID]
+ *
+ *  Turns out that this hostname set using OTA library becomes the general
+ *  host name of the smartmug firmware. So use this define for unique names
+ *  of the smartmug.
+ */
+#define OTA_HOSTNAME   "smartmug-001"
 
 /* === Global variables === */
 
@@ -16,6 +30,9 @@
 
 /* === Public API functions starting here === */
 
+/*!
+ * @brief Setup function of this ino sketch to setup OTA for operation.
+ */
 void ota_setup()
 {
   #ifdef OTA_PORT
@@ -75,7 +92,9 @@ void ota_setup()
 
 }
 
-
+/*!
+ * @brief Loop function of this ino sketch to run the over-the-air update.
+ */
 void ota_loop()
 {
   /* Run the OTA service. */
@@ -83,3 +102,8 @@ void ota_loop()
 }
 
 /* === Local utility functions starting here === */
+
+/*!
+ * @}
+ * @}
+ */

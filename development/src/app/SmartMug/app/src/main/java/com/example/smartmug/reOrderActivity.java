@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 public class reOrderActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static int countOrders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +48,13 @@ public class reOrderActivity extends AppCompatActivity implements View.OnClickLi
                 byte[] blue = new byte[] {0x02,0x01,0x03,0x0A};
                 changeColor(blue);
 
+
                 break;
             case R.id.buttonLightWhite:
 
                 byte[] white = new byte[] {0x02,0x01,0x04,0x0A};
                 changeColor(white);
+
 
                 break;
             case R.id.buttonLightGreen:
@@ -64,6 +67,7 @@ public class reOrderActivity extends AppCompatActivity implements View.OnClickLi
 
                 byte[] red = new byte[] {0x02,0x01,0x01,0x0A};
                 changeColor(red);
+                countOrders++;
 
                 break;
 

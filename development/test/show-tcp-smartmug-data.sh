@@ -16,8 +16,8 @@ echo -e "${green}=============================${clean}"
 echo -e ""
 
 echo -e "${green}Test config:${clean}"
+echo -e "Remote TCP address: $REMOTE_IP_ADDR"
 echo -e "Remote TCP port: $REMOTE_PORT_DATA"
-echo -e "Remote TCP port: $REMOTE_IP_ADDR"
 echo -e ""
 
 echo -e "Connecting to remote..."
