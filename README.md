@@ -124,7 +124,7 @@ Within this project the following components are involved:
 
 ## Liquid Level Sensing
 
-Initially there were two different approaches for liquid level sensing. Finally the decision was pro weight measurent, because:
+Initially there were two different approaches for liquid level sensing. Finally the decision was pro weight measurement, because:
 
 - Capacitive measurement requires bent or flexible copper plates to be mounted on a circular surface. This material was not available in a suitable amount time. 
 - At the beginning the team was not sure, if such a circuit could be developed in time.
@@ -148,7 +148,7 @@ Most important software modules are:
 Uses Arduino ESP8266 Wifi library to establish a Wifi connection.
 After startup, the SmartMug scans its environment for the Wireless LAN SSID "*smartmug*". A password for WPA2 is required.
 - **TCP:**  
-Uses Arduino TCP library to create a server socket and listen on TCP port 8080 for incomming connection requests.
+Uses Arduino TCP library to create a server socket and listen on TCP port 8080 for incoming connection requests.
 - **HX711:**  
 Uses HX711 library to measure the weight using HX711 load cell.
 - **Over-the-air Update:**  
@@ -177,7 +177,7 @@ For more details check out the [Source Code Documentation](#source-code-document
 - Target API level: 24.
 - Android version: 7.
 - Architecture of the SmartMug App, first view is Main Activity:
-    - Connection to Mug activity -> build connection to SmartMug via manuell input of the IP Adress or via bar code scanner.
+    - Connection to Mug activity -> build connection to SmartMug via manuell input of the IP address or via bar code scanner.
     - Statistics activity -> collects statical data of the user.
     - Order activity -> allows to call the waitress, reorder the same drink or ask for the bill.
     - Personal Data activity -> allows the user to enter personal data information to calculate statistics like blood alcohol level.
@@ -192,7 +192,7 @@ The case manufacturing contains two main tasks namely the case itself and the mo
 
 The case itself has a bottom part, where all the components are mounted. The mounted elements are:
 - Load Cell
-- Adafruit Huzzah ESP8266 Microcontroller
+- Adafruit Huzzah ESP8266 microcontroller
 - Hx711 ADC and Amplifier
 - RGB LED
 - Battery case for AA batteries.
@@ -222,7 +222,7 @@ The SmartMug publishes its service through "Multicast DNS" (mDNS) including the 
 - *Service type*: \_smartmug.\_tcp
 
 The Android App is listening for providers of the smartmug service type. Using the identifier read from the SmartMug bar code,
-the is able to select the correct mug to connect to out of the list of available mugs within the network.
+the app is able to select the correct mug to connect to out of the list of available mugs within the network.
 
 ## SmartMug Protocol
 
