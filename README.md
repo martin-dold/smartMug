@@ -123,7 +123,16 @@ Within this project the following components are involved:
 - **Wifi access**: SmartMug and Android App require a Wireless LAN network to communicate.
 
 ## Liquid Level Sensing
-**TODO**: describe HX711 vs. capacitive sensing here in a separate chapter?
+
+Initially there were two different approaches for liquid level sensing. Finally the decision was pro weight measurent, because:
+
+- Capacitive measurement requires bent or flexible copper plates to be mounted on a circular surface. This material was not available in a suitable amount time. 
+- At the beginning the team was not sure, if such a circuit could be developed in time.
+
+The chosen method of liquid level sensing is weight measurement. This task is accomplished by a load cell, an amplifier and an analog-to-digital converter.
+
+- **load cell**: Contains four strain gauges, that build a Wheatstone Bridge. The differential output voltage can be measured by an amplifier.
+- **HX711**: Uses a built in amplifier and ADC. No further circuits are required.
 
 ## Arduino
 
@@ -179,7 +188,7 @@ For more details check out the [Source Code Documentation](#source-code-document
 
 ## SmartMug case manufacturing
 
-The case manufacturing contains two main tasks namely the case itself and the mounting parts, that are connecting the actual mug with the load cell. All the parts were modelled in SolidWorks 2013 and were printed via the MakerBot Replicator X2 3D-printer.
+The case manufacturing contains two main tasks namely the case itself and the mounting parts, that are connecting the actual mug with the load cell. All the parts are modelled in SolidWorks 2013 and are printed via the MakerBot Replicator X2 3D-printer.
 
 The case itself has a bottom part, where all the components are mounted. The mounted elements are:
 - Load Cell
@@ -188,7 +197,7 @@ The case itself has a bottom part, where all the components are mounted. The mou
 - RGB LED
 - Battery case for AA batteries.
 
-The second part is a bayonet mount, with a female and a male part. Those are used to connect the mug the load cell.
+The second part is a bayonet mount, with a female and a male part. These are used to connect the mug the load cell.
 
 # Communication
 
@@ -298,3 +307,4 @@ Therefore, application layer security using AES encryption appears reasonable.
 Texas Instruments, 2015, [Link](http://www.ti.com/lit/an/snaa220a/snaa220a.pdf "Link to PDF")
 - [3] FDC1004: Basics of Capacitive Sensing and Applications, Texas instruments, 2014, [Link](http://www.ti.com/lit/an/snoa927/snoa927.pdf "Link to PDF")
 - [4] Wireless Liquid Level Sensing for Restaurant Applications, Dietz et al., 2002, [Link](http://www.merl.com/publications/docs/TR2002-21.pdf "Link to Paper")
+- [5] Datasheet of Hx711 [Link] (http://www.ti.com/lit/an/snoa927/snoa927.pdf "Link to datasheet")
