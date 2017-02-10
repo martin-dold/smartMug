@@ -50,8 +50,10 @@ public class GameGuessDrinking extends AppCompatActivity {
     public void onClick(View arg){
         switch (arg.getId()){
             case R.id.btnCreateNumber:
-                Random randomGenerator = new Random();
-                int randomInt = randomGenerator.nextInt(100);
+                int randomInt =  (int)Math.floor(Math.random()*(100-15+1)+15);
+                if (randomInt > mugBef){
+                    randomInt = (int)Math.floor(Math.random()*(mugBef-15+1)+15);
+                }
                 randomNumber.setText(String.valueOf(randomInt));
                 break;
             case R.id.btnStart:
