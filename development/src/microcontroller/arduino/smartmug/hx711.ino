@@ -78,11 +78,6 @@ float hx711_getWeight()
   ret = scale.get_units(10);
   scale.power_down();
 
-  if((ret < 0 ) && (ret > MINIMUM_VALUE))
-  {
-    ret = 0;
-  }
-
   return ret;
 }
 
