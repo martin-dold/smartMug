@@ -38,8 +38,8 @@ cd ..
 echo "OK."
 
 echo -n "Getting git tag... "
-export PROJECT_TAG="$(git tag -l --contains HEAD)"
-if [[ -z  $PROJECT_TAG  ]]
+export PROJECT_NUMBER="$(git tag -l --contains HEAD)"
+if [[ -z  $PROJECT_NUMBER  ]]
 then
   echo "Fail. You are not on a tagged commit! Using SHA-ID for doxygen version string instead."
   echo -n "Getting git SHA-ID... "
