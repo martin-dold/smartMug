@@ -1,9 +1,9 @@
-# SmartMug
+﻿# SmartMug
 This is the repository for the SmartMug project.
 
 The intention of the project is to turn a standard mug into a SmartMug by mounting the developed
 SmartMug case on the bottom of the mug.
-Using the developed Android App, the user can now connect to its mug.
+Using the developed Android App, the user can now connect to his mug.
 Once the wireless connection is established, the following services are available:
 
 - Ordering via app: the SmartMug changes its color to signal the waitress
