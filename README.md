@@ -1,5 +1,5 @@
-# smartMug
-This is the repository for the smartMug project.
+# SmartMug
+This is the repository for the SmartMug project.
 
 # Project Startup and History
 
@@ -16,7 +16,7 @@ Besides others, the task was to address the following two main questions:
 
 With regards to the first question, two interesting papers are found.
 
-The project **"Lover's cup"** [1] connects two spatially seperated cups via wireless network to the internet.
+The project **"Lover's cup"** [1] connects two spatially separated cups via wireless network to the internet.
 This remote connection "enable people to share the time of drinking with someone they care about in different places.
 Using a wireless connection, an otherwise ordinary pair of cups becomes a communication device,
 amplifying the social aspect of drinking behavior" [1].
@@ -25,7 +25,7 @@ However, the focus of the paper is the social aspect of drinking rather than the
 The project **"Wireless Liquid Level Sensing for Restaurant Applications"** [4] is more of interest for the SmartMug project
 as it targets a similar application: "Since restaurants often make much of their profits on drinks, it is critical for servers
 to offer refills in a timely fashion. We propose wireless liquid level sensing glassware to aid in this task." [4]
-Though the motiviation for the project is a more economical aspect, the paper describes
+Though the motivation for the project is a more economical aspect, the paper describes
 the technologies and especially the liquid level sensing in detail. This project solved the liquid level sensing by
 capacitive sensing.
 In fact, the paper aims to the same application as the SmartMug.
@@ -35,12 +35,12 @@ develop the SmartMug using state-of-the-art technologies like low-power optimize
 With regards to the question about liquid level sensing, the research identified:
 
 - In industry, the focus relies on measuring the liquid flow into or from a container whenever possible rather than measuring the
-level of the container itself. Examples are pipets in biology or dosing pumps as medical devices.
+level of the container itself. Examples are pipette in biology or dosing pumps as medical devices.
 - If the liquid level shall be measured within the container, a floating gauge is typically used, e.g. like in car tanks.
 However, this solution does not fit to the SmartMug project because of hygienic reasons and general user acceptance as
 drinking the liquid in the SmartMug shall be possible and nobody expects a floating gauge in his or her drink.
 - An appropriate technology is used by the project **"Wireless Liquid Level Sensing for Restaurant Applications"** [4]
-that uses capacitive sensing. Additionally, two appilcation reports give detailed insight into this technology [2] [3].
+that uses capacitive sensing. Additionally, two application reports give detailed insight into this technology [2] [3].
 - If the weight of the mug is known in advance, the liquid level can be measured by weighting the mug including the liquid.
 The SmartMug project finally used this technology.
 
@@ -64,7 +64,7 @@ In the very first evaluation step, the following wireless protocols were conside
 4. 6LoWPAN
 
 The Zigbee as well as the 6LoWPAN protocol fit very well with regards to the power consumption constrain:
-Both procotols are specialized for battery powered nodes as they both are desgined for this application purpose.
+Both protocols are specialized for battery powered nodes as they both are designed for this application purpose.
 Drawback of these protocols is the missing connection to the users smartphone: 
 By default, none of these protocols are supported by any state-of-the-art smartphone, that typically supports Wireless LAN and Bluetooth.
 Therefore, communication to the smartphone requires a gateway node that forwards messages between the 
@@ -100,7 +100,7 @@ Development of an iPhone app was seen as future extension to the project.
 
 # Source Code Documentation
 The source documentation is hosted on GitHub pages.
-Click [here](https://martin-dold.github.io/smartMug/ "Source Code Documentation") to browse the source code docu.
+Click [here](https://martin-dold.github.io/smartMug/ "Source Code Documentation") to browse the source code documentation.
 
 
 # Architecture
@@ -126,7 +126,7 @@ Most important software modules are:
 
 - **Wifi:**  
 Uses Arduino ESP8266 Wifi library to establish a Wifi connection.
-After startup, the SmartMug scans its environment for the Wireless LAN SSID "*smartmug*". A pasword for WPA2 is required.
+After startup, the SmartMug scans its environment for the Wireless LAN SSID "*smartmug*". A password for WPA2 is required.
 - **TCP:**  
 TODO: describe
 - **HX711:**  
@@ -182,7 +182,7 @@ The SmartMug publishes its service through "Multicast DNS" (mDNS) including the 
 - *Service name*: smartmug
 - *Service type*: \_smartmug.\_tcp
 
-The Android App is listening for providers of the smartmug service type. Using the identifier read from the SmartMug barcode,
+The Android App is listening for providers of the smartmug service type. Using the identifier read from the SmartMug bar code,
 the is able to select the correct mug to connect to out of the list of available mugs within the network.
 
 ## SmartMug Protocol
@@ -200,7 +200,7 @@ It follows the basic principle of < TAG >< LEN >< Value > and is implemented as 
    1 byte       1 byte        n bytes           1 byte
 ```
 
-Mutli-byte fields are transported with most significant byte (MSB) first.
+Multi-byte fields are transported with most significant byte (MSB) first.
 
 The following tags are currently defined:
 
