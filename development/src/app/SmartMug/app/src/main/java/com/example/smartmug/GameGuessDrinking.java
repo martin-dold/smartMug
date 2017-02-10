@@ -52,7 +52,11 @@ public class GameGuessDrinking extends AppCompatActivity {
             case R.id.btnCreateNumber:
                 int randomInt =  (int)Math.floor(Math.random()*(100-15+1)+15);
                 if (randomInt > mugBef){
-                    randomInt = (int)Math.floor(Math.random()*(mugBef-15+1)+15);
+                    if (mugBef > 15) {
+                        randomInt = (int)Math.floor(Math.random()*(mugBef-15+1)+15);
+                    }else {
+                        randomInt = (int)Math.floor(Math.random()*(mugBef));
+                    }
                 }
                 randomNumber.setText(String.valueOf(randomInt));
                 break;
@@ -75,7 +79,8 @@ public class GameGuessDrinking extends AppCompatActivity {
                         mugAft = MugContent.mMugcontent_raw;
                         int t = mugBef-mugAft;
                         result.setText(String.valueOf(t));
-                        mugBef = 0;
+                        mugBef = mugAft;
+                        mugBefore.setText(String.valueOf(mugBef));
                     }
                 }.start();
 

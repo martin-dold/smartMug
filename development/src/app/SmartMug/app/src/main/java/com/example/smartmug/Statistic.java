@@ -66,7 +66,7 @@ public class Statistic extends AppCompatActivity {
         payAmount.setText("Pay Amount: " + (3*reOrderActivity.countOrders)+ "€");
 
         TextView timeDrinking = (TextView)findViewById(R.id.textViewTimeDrinking);
-        timeDrinking.setText("Time Drinking: " + allTheTimeDrinkingAmount);
+        timeDrinking.setText("Total Drinking amount: " + allTheTimeDrinkingAmount);
 
     }
 
