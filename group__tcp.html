@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">smartMug
-   &#160;<span id="projectnumber">SHA-ID: 9d97719b1c6acde60706afdd997149265076176c</span>
+   &#160;<span id="projectnumber">v1.0.0</span>
    </div>
    <div id="projectbrief">smartMug</div>
   </td>
@@ -130,6 +130,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaf6f01d770c99e73ebfc3f3914c99b891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data through established TCP connection.  <a href="#gaf6f01d770c99e73ebfc3f3914c99b891">More...</a><br /></td></tr>
 <tr class="separator:gaf6f01d770c99e73ebfc3f3914c99b891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga75ece350afb9d62203ea987a2fa69039"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__tcp.html#ga75ece350afb9d62203ea987a2fa69039">parseTcpRxData</a> (uint8_t *data, uint16_t len)</td></tr>
+<tr class="memdesc:ga75ece350afb9d62203ea987a2fa69039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses given data for a SmartMug protocol frame.  <a href="#ga75ece350afb9d62203ea987a2fa69039">More...</a><br /></td></tr>
 <tr class="separator:ga75ece350afb9d62203ea987a2fa69039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -144,6 +145,7 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga3526215a98a170dfaf6c03fbbdef89b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create WiFi client that handles client connections received through listening server.  <a href="#ga3526215a98a170dfaf6c03fbbdef89b4">More...</a><br /></td></tr>
 <tr class="separator:ga3526215a98a170dfaf6c03fbbdef89b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga16b23d741757e6960a247345a29e0be6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__tcp.html#ga16b23d741757e6960a247345a29e0be6">rxData</a> [50]</td></tr>
+<tr class="memdesc:ga16b23d741757e6960a247345a29e0be6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data array for received SmartMug protocol frames.  <a href="#ga16b23d741757e6960a247345a29e0be6">More...</a><br /></td></tr>
 <tr class="separator:ga16b23d741757e6960a247345a29e0be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -172,6 +174,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Parses given data for a SmartMug protocol frame. </p>
 
 </div>
 </div>
@@ -317,6 +321,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Data array for received SmartMug protocol frames. </p>
 
 </div>
 </div>

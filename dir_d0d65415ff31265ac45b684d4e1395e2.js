@@ -3,7 +3,6 @@ var dir_d0d65415ff31265ac45b684d4e1395e2 =
     [ "ConnectionActivity.java", "_connection_activity_8java.html", [
       [ "ConnectTask", "classcom_1_1example_1_1smartmug_1_1_connection_activity_1_1_connect_task.html", "classcom_1_1example_1_1smartmug_1_1_connection_activity_1_1_connect_task" ]
     ] ],
-    [ "DrinkingGame.java", "_drinking_game_8java.html", null ],
     [ "GameFiveSeconds.java", "_game_five_seconds_8java.html", null ],
     [ "GameGuessDrinking.java", "_game_guess_drinking_8java.html", null ],
     [ "GameList.java", "_game_list_8java.html", null ],

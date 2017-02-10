@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ordercount',['orderCount',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html#a396c82b10f063bf3b7e638e3d3a8a090',1,'com::example::smartmug::MainActivity']]]
+  ['notificationmanager',['notificationmanager',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html#aec8a891f904ee28b99c6be64db745b65',1,'com::example::smartmug::MainActivity']]]
 ];

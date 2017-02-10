@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['local_5fport',['local_port',['../group__tcp.html#gae8055f65a5e65b48345d419afc8b9e60',1,'tcp.ino']]],
-  ['localipaddr',['localIpAddr',['../group__wifi.html#gac4e4101cfb2e6de7e23dac1bbfef0515',1,'wifi.ino']]]
+  ['height',['height',['../classcom_1_1example_1_1smartmug_1_1_personal_data.html#ad12fc34ce789bce6c8a05d8a17138534',1,'com.example.smartmug.PersonalData.height()'],['../classcom_1_1example_1_1smartmug_1_1_statistic.html#aff88316d3aa5aa027632f4707d7ac644',1,'com.example.smartmug.Statistic.height()']]]
 ];

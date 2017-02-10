@@ -1,7 +1,6 @@
 var group__java =
 [
     [ "Connection", "group__connection.html", "group__connection" ],
-    [ "Drinking Game", "group__drink.html", "group__drink" ],
     [ "5 seconds game", "group__game__5s.html", "group__game__5s" ],
     [ "Guess drinking game", "group__game__guess.html", "group__game__guess" ],
     [ "Drinking game list", "group__game__list.html", "group__game__list" ],

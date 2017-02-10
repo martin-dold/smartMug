@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">smartMug
-   &#160;<span id="projectnumber">SHA-ID: 9d97719b1c6acde60706afdd997149265076176c</span>
+   &#160;<span id="projectnumber">v1.0.0</span>
    </div>
    <div id="projectbrief">smartMug</div>
   </td>
@@ -114,86 +114,33 @@ $(document).ready(function(){initNavTree('ota_8ino.html','');});
 <div class="title">ota.ino File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This is the Over-The-Air-Update (OTA) sketch of the smartmug project.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;WiFiUdp.h&gt;</code><br />
 <code>#include &lt;ArduinoOTA.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a43dc67882a5be5ed6fc21f455dfb4760"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota_8ino.html#a43dc67882a5be5ed6fc21f455dfb4760">OTA_PORT</a>&#160;&#160;&#160;8266</td></tr>
-<tr class="memdesc:a43dc67882a5be5ed6fc21f455dfb4760"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port used for OTA. Default is 8266.  <a href="#a43dc67882a5be5ed6fc21f455dfb4760">More...</a><br /></td></tr>
-<tr class="separator:a43dc67882a5be5ed6fc21f455dfb4760"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota_8ino.html#abe49f9ddb5fc0a7b9c7efb64e78d8f5d">OTA_HOSTNAME</a>&#160;&#160;&#160;&quot;smartmug-ota&quot;</td></tr>
-<tr class="memdesc:abe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Host name used for OTA. Default is esp8266-[ChipID].  <a href="#abe49f9ddb5fc0a7b9c7efb64e78d8f5d">More...</a><br /></td></tr>
-<tr class="separator:abe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43dc67882a5be5ed6fc21f455dfb4760"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ota.html#ga43dc67882a5be5ed6fc21f455dfb4760">OTA_PORT</a>&#160;&#160;&#160;8266</td></tr>
+<tr class="memdesc:ga43dc67882a5be5ed6fc21f455dfb4760"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port used for OTA. Default is 8266.  <a href="group__ota.html#ga43dc67882a5be5ed6fc21f455dfb4760">More...</a><br /></td></tr>
+<tr class="separator:ga43dc67882a5be5ed6fc21f455dfb4760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ota.html#gabe49f9ddb5fc0a7b9c7efb64e78d8f5d">OTA_HOSTNAME</a>&#160;&#160;&#160;&quot;smartmug-001&quot;</td></tr>
+<tr class="memdesc:gabe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Host name that should be used for OTA. Default is esp8266-[ChipID].  <a href="group__ota.html#gabe49f9ddb5fc0a7b9c7efb64e78d8f5d">More...</a><br /></td></tr>
+<tr class="separator:gabe49f9ddb5fc0a7b9c7efb64e78d8f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a38bbb331a186b8fa8c06c1927e41fbe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota_8ino.html#a38bbb331a186b8fa8c06c1927e41fbe0">ota_setup</a> ()</td></tr>
-<tr class="separator:a38bbb331a186b8fa8c06c1927e41fbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc423ab006f28964d227702b9a5c9007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ota_8ino.html#afc423ab006f28964d227702b9a5c9007">ota_loop</a> ()</td></tr>
-<tr class="separator:afc423ab006f28964d227702b9a5c9007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38bbb331a186b8fa8c06c1927e41fbe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ota.html#ga38bbb331a186b8fa8c06c1927e41fbe0">ota_setup</a> ()</td></tr>
+<tr class="memdesc:ga38bbb331a186b8fa8c06c1927e41fbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup function of this ino sketch to setup OTA for operation.  <a href="group__ota.html#ga38bbb331a186b8fa8c06c1927e41fbe0">More...</a><br /></td></tr>
+<tr class="separator:ga38bbb331a186b8fa8c06c1927e41fbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc423ab006f28964d227702b9a5c9007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ota.html#gafc423ab006f28964d227702b9a5c9007">ota_loop</a> ()</td></tr>
+<tr class="memdesc:gafc423ab006f28964d227702b9a5c9007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop function of this ino sketch to run the over-the-air update.  <a href="group__ota.html#gafc423ab006f28964d227702b9a5c9007">More...</a><br /></td></tr>
+<tr class="separator:gafc423ab006f28964d227702b9a5c9007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="abe49f9ddb5fc0a7b9c7efb64e78d8f5d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OTA_HOSTNAME&#160;&#160;&#160;&quot;smartmug-ota&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Host name used for OTA. Default is esp8266-[ChipID]. </p>
-
-</div>
-</div>
-<a class="anchor" id="a43dc67882a5be5ed6fc21f455dfb4760"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define OTA_PORT&#160;&#160;&#160;8266</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Port used for OTA. Default is 8266. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="afc423ab006f28964d227702b9a5c9007"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ota_loop </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a38bbb331a186b8fa8c06c1927e41fbe0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ota_setup </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This is the Over-The-Air-Update (OTA) sketch of the smartmug project. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

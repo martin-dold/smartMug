@@ -17,5 +17,6 @@ var searchData=
   ['tcpsensordata',['tcpSensorData',['../group__main.html#ga6fd3a475e7c37959bd1879d86fad7a0d',1,'smartmug.ino']]],
   ['teardown',['tearDown',['../group__nsd.html#gab804e0f66def63262c1d6b4e3d2a2bd7',1,'com::example::smartmug::NsdHelper']]],
   ['tempoldvalue',['tempOldValue',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#aef70744573cb57d56752d79df8655a88',1,'com::example::smartmug::MugContent']]],
-  ['tvorder',['tvOrder',['../classcom_1_1example_1_1smartmug_1_1_main_activity.html#a1f11e0495c355c93ff4629ea8783c9ad',1,'com::example::smartmug::MainActivity']]]
+  ['testvalue',['testValue',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#af228d2197fbb8822bb077b8d23a77149',1,'com::example::smartmug::MugContent']]],
+  ['testvalueshort',['testValueShort',['../classcom_1_1example_1_1smartmug_1_1_mug_content.html#aff9d7dd46e15b6f08974d876e1370c30',1,'com::example::smartmug::MugContent']]]
 ];

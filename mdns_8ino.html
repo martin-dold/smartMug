@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">smartMug
-   &#160;<span id="projectnumber">SHA-ID: 9d97719b1c6acde60706afdd997149265076176c</span>
+   &#160;<span id="projectnumber">v1.0.0</span>
    </div>
    <div id="projectbrief">smartMug</div>
   </td>
@@ -114,107 +114,38 @@ $(document).ready(function(){initNavTree('mdns_8ino.html','');});
 <div class="title">mdns.ino File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This is the multicast DNS sketch of the smartmug project.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;ESP8266mDNS.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2597be4e15dcb4d93d323730f9ac2838"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a2597be4e15dcb4d93d323730f9ac2838">MDNS_SERVICE_NAME</a>&#160;&#160;&#160;&quot;smartmug&quot;</td></tr>
-<tr class="separator:a2597be4e15dcb4d93d323730f9ac2838"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a505137e19f62cb77410aca49d2876bb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a505137e19f62cb77410aca49d2876bb3">MDNS_SERVICE_TYPE</a>&#160;&#160;&#160;&quot;smartmug&quot;</td></tr>
-<tr class="separator:a505137e19f62cb77410aca49d2876bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43d208ae33ffece4cd9cbf7b4437f2bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a43d208ae33ffece4cd9cbf7b4437f2bb">MDNS_SERVICE_PROTO</a>&#160;&#160;&#160;&quot;tcp&quot;</td></tr>
-<tr class="separator:a43d208ae33ffece4cd9cbf7b4437f2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ad20d359031bc414d0a471b7bebedd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a7ad20d359031bc414d0a471b7bebedd6">MDNS_SERVICE_PORT</a>&#160;&#160;&#160;8081</td></tr>
-<tr class="separator:a7ad20d359031bc414d0a471b7bebedd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2597be4e15dcb4d93d323730f9ac2838"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga2597be4e15dcb4d93d323730f9ac2838">MDNS_SERVICE_NAME</a>&#160;&#160;&#160;&quot;smartmug&quot;</td></tr>
+<tr class="memdesc:ga2597be4e15dcb4d93d323730f9ac2838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service name of the smartmug service.  <a href="group__mdns.html#ga2597be4e15dcb4d93d323730f9ac2838">More...</a><br /></td></tr>
+<tr class="separator:ga2597be4e15dcb4d93d323730f9ac2838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga505137e19f62cb77410aca49d2876bb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga505137e19f62cb77410aca49d2876bb3">MDNS_SERVICE_TYPE</a>&#160;&#160;&#160;&quot;smartmug&quot;</td></tr>
+<tr class="memdesc:ga505137e19f62cb77410aca49d2876bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Service type (prefix) of the smartmug service.  <a href="group__mdns.html#ga505137e19f62cb77410aca49d2876bb3">More...</a><br /></td></tr>
+<tr class="separator:ga505137e19f62cb77410aca49d2876bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43d208ae33ffece4cd9cbf7b4437f2bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga43d208ae33ffece4cd9cbf7b4437f2bb">MDNS_SERVICE_PROTO</a>&#160;&#160;&#160;&quot;tcp&quot;</td></tr>
+<tr class="memdesc:ga43d208ae33ffece4cd9cbf7b4437f2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protocol used for the smartmug service.  <a href="group__mdns.html#ga43d208ae33ffece4cd9cbf7b4437f2bb">More...</a><br /></td></tr>
+<tr class="separator:ga43d208ae33ffece4cd9cbf7b4437f2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ad20d359031bc414d0a471b7bebedd6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga7ad20d359031bc414d0a471b7bebedd6">MDNS_SERVICE_PORT</a>&#160;&#160;&#160;8080</td></tr>
+<tr class="memdesc:ga7ad20d359031bc414d0a471b7bebedd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port that offers the service. Keep this define in sync with <a class="el" href="group__tcp.html#gae8055f65a5e65b48345d419afc8b9e60">local_port</a> in <a class="el" href="tcp_8ino.html" title="This is the TCP sketch of the smartmug project. ">tcp.ino</a>!  <a href="group__mdns.html#ga7ad20d359031bc414d0a471b7bebedd6">More...</a><br /></td></tr>
+<tr class="separator:ga7ad20d359031bc414d0a471b7bebedd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a67acd984e1b2bb7fe46a7c8aff692342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a67acd984e1b2bb7fe46a7c8aff692342">mdns_setup</a> ()</td></tr>
-<tr class="separator:a67acd984e1b2bb7fe46a7c8aff692342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22db813f3d1d049a3ca30788a8144a03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mdns_8ino.html#a22db813f3d1d049a3ca30788a8144a03">mdns_loop</a> ()</td></tr>
-<tr class="separator:a22db813f3d1d049a3ca30788a8144a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67acd984e1b2bb7fe46a7c8aff692342"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga67acd984e1b2bb7fe46a7c8aff692342">mdns_setup</a> ()</td></tr>
+<tr class="memdesc:ga67acd984e1b2bb7fe46a7c8aff692342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup function of this ino sketch to setup mDNS for operation.  <a href="group__mdns.html#ga67acd984e1b2bb7fe46a7c8aff692342">More...</a><br /></td></tr>
+<tr class="separator:ga67acd984e1b2bb7fe46a7c8aff692342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga22db813f3d1d049a3ca30788a8144a03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mdns.html#ga22db813f3d1d049a3ca30788a8144a03">mdns_loop</a> ()</td></tr>
+<tr class="memdesc:ga22db813f3d1d049a3ca30788a8144a03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop function of this ino sketch to run mDNS.  <a href="group__mdns.html#ga22db813f3d1d049a3ca30788a8144a03">More...</a><br /></td></tr>
+<tr class="separator:ga22db813f3d1d049a3ca30788a8144a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a2597be4e15dcb4d93d323730f9ac2838"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MDNS_SERVICE_NAME&#160;&#160;&#160;&quot;smartmug&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a7ad20d359031bc414d0a471b7bebedd6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MDNS_SERVICE_PORT&#160;&#160;&#160;8081</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a43d208ae33ffece4cd9cbf7b4437f2bb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MDNS_SERVICE_PROTO&#160;&#160;&#160;&quot;tcp&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a505137e19f62cb77410aca49d2876bb3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MDNS_SERVICE_TYPE&#160;&#160;&#160;&quot;smartmug&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a22db813f3d1d049a3ca30788a8144a03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mdns_loop </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a67acd984e1b2bb7fe46a7c8aff692342"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mdns_setup </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This is the multicast DNS sketch of the smartmug project. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

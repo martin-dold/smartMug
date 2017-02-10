@@ -1,7 +1,6 @@
 var namespacecom_1_1example_1_1smartmug =
 [
     [ "ConnectionActivity", "classcom_1_1example_1_1smartmug_1_1_connection_activity.html", "classcom_1_1example_1_1smartmug_1_1_connection_activity" ],
-    [ "DrinkingGame", "classcom_1_1example_1_1smartmug_1_1_drinking_game.html", "classcom_1_1example_1_1smartmug_1_1_drinking_game" ],
     [ "GameFiveSeconds", "classcom_1_1example_1_1smartmug_1_1_game_five_seconds.html", "classcom_1_1example_1_1smartmug_1_1_game_five_seconds" ],
     [ "GameGuessDrinking", "classcom_1_1example_1_1smartmug_1_1_game_guess_drinking.html", "classcom_1_1example_1_1smartmug_1_1_game_guess_drinking" ],
     [ "GameList", "classcom_1_1example_1_1smartmug_1_1_game_list.html", "classcom_1_1example_1_1smartmug_1_1_game_list" ],

@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">smartMug
-   &#160;<span id="projectnumber">SHA-ID: 9d97719b1c6acde60706afdd997149265076176c</span>
+   &#160;<span id="projectnumber">v1.0.0</span>
    </div>
    <div id="projectbrief">smartMug</div>
   </td>
@@ -136,13 +136,9 @@ Static Public Member Functions</h2></td></tr>
 Data Fields</h2></td></tr>
 <tr class="memitem:a396c82b10f063bf3b7e638e3d3a8a090"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#a396c82b10f063bf3b7e638e3d3a8a090">orderCount</a> = 0</td></tr>
 <tr class="separator:a396c82b10f063bf3b7e638e3d3a8a090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc6e58ea8dbfddac8d4fa8b3dfa31106"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_nsd_helper.html">NsdHelper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#adc6e58ea8dbfddac8d4fa8b3dfa31106">mNsdHelper</a></td></tr>
-<tr class="separator:adc6e58ea8dbfddac8d4fa8b3dfa31106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a1f11e0495c355c93ff4629ea8783c9ad"><td class="memItemLeft" align="right" valign="top">static TextView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#a1f11e0495c355c93ff4629ea8783c9ad">tvOrder</a></td></tr>
-<tr class="separator:a1f11e0495c355c93ff4629ea8783c9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25be0dd3832f5b7093619e1507f978a2"><td class="memItemLeft" align="right" valign="top">static ProgressBar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#a25be0dd3832f5b7093619e1507f978a2">progressBar</a></td></tr>
 <tr class="separator:a25be0dd3832f5b7093619e1507f978a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58874efe2a22a54d2702b5d23e7a3c12"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#a58874efe2a22a54d2702b5d23e7a3c12">tcpClientRunning</a> = false</td></tr>
@@ -151,6 +147,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:aa42d8a7fdc277eb4378adcb606985450"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec8a891f904ee28b99c6be64db745b65"><td class="memItemLeft" align="right" valign="top">static NotificationManager&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#aec8a891f904ee28b99c6be64db745b65">notificationmanager</a></td></tr>
 <tr class="separator:aec8a891f904ee28b99c6be64db745b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6e58ea8dbfddac8d4fa8b3dfa31106"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcom_1_1example_1_1smartmug_1_1_nsd_helper.html">NsdHelper</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_main_activity.html#adc6e58ea8dbfddac8d4fa8b3dfa31106">mNsdHelper</a></td></tr>
+<tr class="separator:adc6e58ea8dbfddac8d4fa8b3dfa31106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -277,11 +275,19 @@ Protected Member Functions</h2></td></tr>
 <a class="anchor" id="adc6e58ea8dbfddac8d4fa8b3dfa31106"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classcom_1_1example_1_1smartmug_1_1_nsd_helper.html">NsdHelper</a> mNsdHelper</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Helper class instance for Network Service Discovery (NSD) using mDNS </p>
 
@@ -360,26 +366,6 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>value whether tcp connection is true or false </p>
-
-</div>
-</div>
-<a class="anchor" id="a1f11e0495c355c93ff4629ea8783c9ad"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">TextView tvOrder</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>

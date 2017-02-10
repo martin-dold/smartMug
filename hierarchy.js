@@ -9,7 +9,6 @@ var hierarchy =
     [ "TCPClient", "classcom_1_1example_1_1smartmug_1_1_t_c_p_client.html", null ],
     [ "AppCompatActivity", null, [
       [ "ConnectionActivity", "classcom_1_1example_1_1smartmug_1_1_connection_activity.html", null ],
-      [ "DrinkingGame", "classcom_1_1example_1_1smartmug_1_1_drinking_game.html", null ],
       [ "GameFiveSeconds", "classcom_1_1example_1_1smartmug_1_1_game_five_seconds.html", null ],
       [ "GameGuessDrinking", "classcom_1_1example_1_1smartmug_1_1_game_guess_drinking.html", null ],
       [ "GameList", "classcom_1_1example_1_1smartmug_1_1_game_list.html", null ],
