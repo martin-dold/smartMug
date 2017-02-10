@@ -161,16 +161,21 @@ The following table lists the pins that are connected to the microcontroller.
 
 
 ## Android App
-**TODO**: describe
 
-The Android App is targeted to API level 24 and Android version 7. 
-The basic architecture of the SmartMug app consists of the Main.Activity.
-Starting from there it is possible to reach five more independent activities (Connection to Mug, Statistics, Order,
-Personal Data and Games). Through the Connection to Mug activity it is possible to build an connection to our 
-SmartMug via manuell input of the ip adress or via bar code scanner. For this we create a new TCP Connection with the
-TCPClient.class. This class is also used for sending (e.g. re-order) and receiving (e.g. filling level) messages to and from the SmartMug. 
-Through the MugContent.class new received messages from the SmartMug can be handled
-Those messages will influence the Statistic activity as well as the progress bar in the Main activity.
+This section contains a brief overview of the Android App architecture and its main features.
+For more details check out the [Source Code Documentation](#source-code-documentation).
+
+- Target API level: 24.
+- Android version: 7.
+- Architecture of the SmartMug App, first view is Main Activity:
+    - Connection to Mug activity -> build connection to SmartMug via manuell input of the IP Adress or via bar code scanner
+    - Statistics activity
+    - Order activity
+    - Personal Data activity
+    - Games activity
+    - TCPClient class -> create new TCP Connection for sending (e.g. re-order) and receiving (e.g. filling level)
+    - MugContent class -> handle received messages from the SmartMug
+    - NSDManager class
 
 ## SmartMug case manufacturing
 
