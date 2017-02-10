@@ -168,14 +168,14 @@ For more details check out the [Source Code Documentation](#source-code-document
 - Target API level: 24.
 - Android version: 7.
 - Architecture of the SmartMug App, first view is Main Activity:
-    - Connection to Mug activity -> build connection to SmartMug via manuell input of the IP Adress or via bar code scanner
-    - Statistics activity
-    - Order activity
-    - Personal Data activity
-    - Games activity
-    - TCPClient class -> create new TCP Connection for sending (e.g. re-order) and receiving (e.g. filling level)
-    - MugContent class -> handle received messages from the SmartMug
-    - NSDManager class
+    - Connection to Mug activity -> build connection to SmartMug via manuell input of the IP Adress or via bar code scanner.
+    - Statistics activity -> collects statical data of the user.
+    - Order activity -> allows to call the waitress, reorder the same drink or ask for the bill.
+    - Personal Data activity -> allows the user to enter personal data information to calculate statistics like blood alcohol level.
+    - Games activity -> allows to the user to play drinking games.
+    - TCPClient class -> create new TCP Connection for sending (e.g. re-order) and receiving (e.g. filling level).
+    - MugContent class -> handle received messages from the SmartMug.
+    - NSDHelper class -> scans the network for smartmug mug services using mDNS.
 
 ## SmartMug case manufacturing
 
