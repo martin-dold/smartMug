@@ -62,8 +62,8 @@ Constraints are:
 - A wireless protocol that fits for battery powered nodes.
 - A wireless protocol that allows a huge number of nodes within network, as there are a lot of mugs within a restaurant or bar.
 - A wireless communication module that allows a battery powered application to be attached to the mug.
-It shall be possible to easily run the previously defined wireless protocol.
-- The SmartMug user shall easily connect to its mug, even with its own smartphone.
+It should be possible to easily run the previously defined wireless protocol.
+- The SmartMug user should easily connect to its mug, even with its own smartphone.
 
 ### Wireless Protocol
 
@@ -105,7 +105,7 @@ and even for the HX711 load cell that was chosen for liquid level sensing.
 ### Smartphone App
 
 To allow the SmartMug user to connect to the mug, a smartphone app shall be developed. 
-For the first prototypes, it was defined to develop an app for Android smartphones first.
+For the first prototypes, it was defined to develop an app for Android smartphones.
 Development of an iPhone app was seen as future extension to the project.
 
 
@@ -163,13 +163,14 @@ The following table lists the pins that are connected to the microcontroller.
 ## Android App
 **TODO**: describe
 
-- min. API level
-- min. Android version
-- basic SW architecture
-- Bar code scanner
-- TCP client
-- statistics
-- ...
+The Android App is targeted to API level 24 and Android version 7. 
+The basic architecture of the SmartMug app consists of the Main.Activity.
+Starting from there it is possible to reach five more independent activities (Connection to Mug, Statistics, Order,
+Personal Data and Games). Through the Connection to Mug activity it is possible to build an connection to our 
+SmartMug via manuell input of the ip adress or via bar code scanner. For this we create a new TCP Connection with the
+TCPClient.class. This class is also used for sending (e.g. re-order) and receiving (e.g. filling level) messages to and from the SmartMug. 
+Through the MugContent.class new received messages from the SmartMug can be handled
+Those messages will influence the Statistic activity as well as the progress bar in the Main activity.
 
 ## SmartMug case manufacturing
 
